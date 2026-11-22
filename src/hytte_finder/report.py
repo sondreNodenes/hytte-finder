@@ -29,9 +29,9 @@ def _why(r: pd.Series) -> str:
     best = sorted(cats, key=cats.get, reverse=True)[:2]
     worst = min(cats, key=cats.get)
     bits = [f"sterkest på {best[0]} ({cats[best[0]]:.2f}) og {best[1]} ({cats[best[1]]:.2f}); svakest på {worst} ({cats[worst]:.2f})"]
-    facts = [f"{_f(r['drive_min'])} min kjøring (vinter ca. {_f(r['drive_min_winter'])})",
-             f"{_f(r['elevation_m'])} moh", f"skisesong {_f(r['ski_season_days'])} dager (modellert 1991–2020)",
-             f"snittpris i kommunen {_f(r['avg_price_nok']/1e6, 2)} mill ({_f(r['sales_pooled'])} salg samlet, {_f(r['sales_last_year'])} siste år)"]
+    facts = [f"{_f(r.get('drive_min', np.nan))} min kjøring (vinter ca. {_f(r.get('drive_min_winter', np.nan))})",
+             f"{_f(r.get('elevation_m', np.nan))} moh", f"skisesong {_f(r.get('ski_season_days', np.nan))} dager (modellert 1991–2020)",
+             f"snittpris i kommunen {_f(r.get('avg_price_nok', np.nan)/1e6, 2)} mill ({_f(r.get('sales_pooled', np.nan))} salg samlet, {_f(r.get('sales_last_year', np.nan))} siste år)"]
     if pd.notna(r.get("nordic_km_10km")):
         facts.append(f"{_f(r['nordic_km_10km'])} km preparerte løyper innen 10 km")
     if pd.notna(r.get("nearest_grocery_km")):
@@ -62,7 +62,7 @@ def build(cfg: dict) -> None:
         "#": top["rank"], "Område": top["navn"], "Type": top["type"], "Kommune": top["kommune"],
         "Score": top["score"].map(lambda v: _f(v, 1)), "Kjøretid (min)": top["drive_min"].map(_f),
         "Snittpris (mill)": (top["avg_price_nok"] / 1e6).map(lambda v: _f(v, 2)),
-        "Skisesong (d)": top["ski_season_days"].map(_f), "Moh": top["elevation_m"].map(_f),
+        "Skisesong (d)": top.get("ski_season_days", pd.Series(np.nan, index=top.index)).map(_f), "Moh": top["elevation_m"].map(_f),
         "Usikker pris": top["usikker"].map(lambda b: "ja" if b else "")})
     L.append(_md(t) + "\n")
     L.append("### Begrunnelse\n")

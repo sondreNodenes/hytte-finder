@@ -1,0 +1,21 @@
+id,topp5_andel,topp10_andel,snittrang,beste_rang,dårligste_rang,navn,type,kommune,rank
+h-sjusjøen,1.0,1.0,1.127,1,2,Sjusjøen,hyttefelt,Ringsaker,1
+h-nordseter,1.0,1.0,1.946,1,5,Nordseter,hyttefelt,Lillehammer,2
+k3411,0.973,1.0,3.375,2,7,Ringsaker,kommune,Ringsaker,3
+k3412,0.92,1.0,4.824,2,8,Løten,kommune,Løten,5
+k3318,0.876,1.0,4.157,1,8,Krødsherad,kommune,Krødsherad,4
+k3442,0.183,1.0,6.044,1,10,Østre Toten,kommune,Østre Toten,6
+h-norefjell,0.031,0.903,8.026,4,13,Norefjell,hyttefelt,Krødsherad,7
+h-eggedal,0.015,0.456,10.695,4,15,Eggedal,hyttefelt,Sigdal,11
+k3407,0.002,0.653,9.847,5,17,Gjøvik,kommune,Gjøvik,9
+k3334,0.0,0.499,10.473,8,13,Flesberg,kommune,Flesberg,10
+k3403,0.0,0.877,8.382,6,14,Hamar,kommune,Hamar,8
+k3446,0.0,0.261,11.846,7,15,Gran,kommune,Gran,12
+k3305,0.0,0.155,12.086,8,15,Ringerike,kommune,Ringerike,13
+h-blefjell,0.0,0.194,12.459,7,17,Blefjell,hyttefelt,Tinn,14
+k3332,0.0,0.002,15.238,10,17,Sigdal,kommune,Sigdal,15
+k3303,0.0,0.0,15.554,12,17,Kongsberg,kommune,Kongsberg,16
+k3320,0.0,0.0,16.93,12,18,Flå,kommune,Flå,17
+k3336,0.0,0.0,18.099,17,20,Rollag,kommune,Rollag,18
+k4005,0.0,0.0,18.998,18,20,Notodden,kommune,Notodden,19
+k4020,0.0,0.0,19.894,18,20,Midt-Telemark,kommune,Midt-Telemark,20

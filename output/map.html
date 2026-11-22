@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c2369815c35670565faf2420d70bb15b {
+                    position: relative;
+                    width: 100.0vw;
+                    height: 100.0vh;
+
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>/*
+ * Glyphicons Halflings -- the icon font used by folium's default Awesome Markers
+ * (Icon(prefix="glyphicon")). Extracted from Bootstrap 3's glyphicon rules only.
+ *
+ * folium previously loaded netdna's bootstrap-glyphicons.css, which despite its
+ * name ships a full Bootstrap-3 base stylesheet (normalize reset + global `body`
+ * rules) that leaked onto the host page (GH-1820). This file provides just the
+ * @font-face and .glyphicon/.glyphicon-* rules needed for the markers, with no
+ * page-wide side effects. Font files are served from jsDelivr.
+ */
+@font-face{font-family:'Glyphicons Halflings';src:url('https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/fonts/glyphicons-halflings-regular.eot');src:url('https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),url('https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/fonts/glyphicons-halflings-regular.woff') format('woff'),url('https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/fonts/glyphicons-halflings-regular.ttf') format('truetype'),url('https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');}.glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;}
+.glyphicon-asterisk:before{content:"\2a";}
+.glyphicon-plus:before{content:"\2b";}
+.glyphicon-euro:before{content:"\20ac";}
+.glyphicon-minus:before{content:"\2212";}
+.glyphicon-cloud:before{content:"\2601";}
+.glyphicon-envelope:before{content:"\2709";}
+.glyphicon-pencil:before{content:"\270f";}
+.glyphicon-glass:before{content:"\e001";}
+.glyphicon-music:before{content:"\e002";}
+.glyphicon-search:before{content:"\e003";}
+.glyphicon-heart:before{content:"\e005";}
+.glyphicon-star:before{content:"\e006";}
+.glyphicon-star-empty:before{content:"\e007";}
+.glyphicon-user:before{content:"\e008";}
+.glyphicon-film:before{content:"\e009";}
+.glyphicon-th-large:before{content:"\e010";}
+.glyphicon-th:before{content:"\e011";}
+.glyphicon-th-list:before{content:"\e012";}
+.glyphicon-ok:before{content:"\e013";}
+.glyphicon-remove:before{content:"\e014";}
+.glyphicon-zoom-in:before{content:"\e015";}
+.glyphicon-zoom-out:before{content:"\e016";}
+.glyphicon-off:before{content:"\e017";}
+.glyphicon-signal:before{content:"\e018";}
+.glyphicon-cog:before{content:"\e019";}
+.glyphicon-trash:before{content:"\e020";}
+.glyphicon-home:before{content:"\e021";}
+.glyphicon-file:before{content:"\e022";}
+.glyphicon-time:before{content:"\e023";}
+.glyphicon-road:before{content:"\e024";}
+.glyphicon-download-alt:before{content:"\e025";}
+.glyphicon-download:before{content:"\e026";}
+.glyphicon-upload:before{content:"\e027";}
+.glyphicon-inbox:before{content:"\e028";}
+.glyphicon-play-circle:before{content:"\e029";}
+.glyphicon-repeat:before{content:"\e030";}
+.glyphicon-refresh:before{content:"\e031";}
+.glyphicon-list-alt:before{content:"\e032";}
+.glyphicon-flag:before{content:"\e034";}
+.glyphicon-headphones:before{content:"\e035";}
+.glyphicon-volume-off:before{content:"\e036";}
+.glyphicon-volume-down:before{content:"\e037";}
+.glyphicon-volume-up:before{content:"\e038";}
+.glyphicon-qrcode:before{content:"\e039";}
+.glyphicon-barcode:before{content:"\e040";}
+.glyphicon-tag:before{content:"\e041";}
+.glyphicon-tags:before{content:"\e042";}
+.glyphicon-book:before{content:"\e043";}
+.glyphicon-print:before{content:"\e045";}
+.glyphicon-font:before{content:"\e047";}
+.glyphicon-bold:before{content:"\e048";}
+.glyphicon-italic:before{content:"\e049";}
+.glyphicon-text-height:before{content:"\e050";}
+.glyphicon-text-width:before{content:"\e051";}
+.glyphicon-align-left:before{content:"\e052";}
+.glyphicon-align-center:before{content:"\e053";}
+.glyphicon-align-right:before{content:"\e054";}
+.glyphicon-align-justify:before{content:"\e055";}
+.glyphicon-list:before{content:"\e056";}
+.glyphicon-indent-left:before{content:"\e057";}
+.glyphicon-indent-right:before{content:"\e058";}
+.glyphicon-facetime-video:before{content:"\e059";}
+.glyphicon-picture:before{content:"\e060";}
+.glyphicon-map-marker:before{content:"\e062";}
+.glyphicon-adjust:before{content:"\e063";}
+.glyphicon-tint:before{content:"\e064";}
+.glyphicon-edit:before{content:"\e065";}
+.glyphicon-share:before{content:"\e066";}
+.glyphicon-check:before{content:"\e067";}
+.glyphicon-move:before{content:"\e068";}
+.glyphicon-step-backward:before{content:"\e069";}
+.glyphicon-fast-backward:before{content:"\e070";}
+.glyphicon-backward:before{content:"\e071";}
+.glyphicon-play:before{content:"\e072";}
+.glyphicon-pause:before{content:"\e073";}
+.glyphicon-stop:before{content:"\e074";}
+.glyphicon-forward:before{content:"\e075";}
+.glyphicon-fast-forward:before{content:"\e076";}
+.glyphicon-step-forward:before{content:"\e077";}
+.glyphicon-eject:before{content:"\e078";}
+.glyphicon-chevron-left:before{content:"\e079";}
+.glyphicon-chevron-right:before{content:"\e080";}
+.glyphicon-plus-sign:before{content:"\e081";}
+.glyphicon-minus-sign:before{content:"\e082";}
+.glyphicon-remove-sign:before{content:"\e083";}
+.glyphicon-ok-sign:before{content:"\e084";}
+.glyphicon-question-sign:before{content:"\e085";}
+.glyphicon-info-sign:before{content:"\e086";}
+.glyphicon-screenshot:before{content:"\e087";}
+.glyphicon-remove-circle:before{content:"\e088";}
+.glyphicon-ok-circle:before{content:"\e089";}
+.glyphicon-ban-circle:before{content:"\e090";}
+.glyphicon-arrow-left:before{content:"\e091";}
+.glyphicon-arrow-right:before{content:"\e092";}
+.glyphicon-arrow-up:before{content:"\e093";}
+.glyphicon-arrow-down:before{content:"\e094";}
+.glyphicon-share-alt:before{content:"\e095";}
+.glyphicon-resize-full:before{content:"\e096";}
+.glyphicon-resize-small:before{content:"\e097";}
+.glyphicon-exclamation-sign:before{content:"\e101";}
+.glyphicon-gift:before{content:"\e102";}
+.glyphicon-leaf:before{content:"\e103";}
+.glyphicon-eye-open:before{content:"\e105";}
+.glyphicon-eye-close:before{content:"\e106";}
+.glyphicon-warning-sign:before{content:"\e107";}
+.glyphicon-plane:before{content:"\e108";}
+.glyphicon-random:before{content:"\e110";}
+.glyphicon-comment:before{content:"\e111";}
+.glyphicon-magnet:before{content:"\e112";}
+.glyphicon-chevron-up:before{content:"\e113";}
+.glyphicon-chevron-down:before{content:"\e114";}
+.glyphicon-retweet:before{content:"\e115";}
+.glyphicon-shopping-cart:before{content:"\e116";}
+.glyphicon-folder-close:before{content:"\e117";}
+.glyphicon-folder-open:before{content:"\e118";}
+.glyphicon-resize-vertical:before{content:"\e119";}
+.glyphicon-resize-horizontal:before{content:"\e120";}
+.glyphicon-hdd:before{content:"\e121";}
+.glyphicon-bullhorn:before{content:"\e122";}
+.glyphicon-certificate:before{content:"\e124";}
+.glyphicon-thumbs-up:before{content:"\e125";}
+.glyphicon-thumbs-down:before{content:"\e126";}
+.glyphicon-hand-right:before{content:"\e127";}
+.glyphicon-hand-left:before{content:"\e128";}
+.glyphicon-hand-up:before{content:"\e129";}
+.glyphicon-hand-down:before{content:"\e130";}
+.glyphicon-circle-arrow-right:before{content:"\e131";}
+.glyphicon-circle-arrow-left:before{content:"\e132";}
+.glyphicon-circle-arrow-up:before{content:"\e133";}
+.glyphicon-circle-arrow-down:before{content:"\e134";}
+.glyphicon-globe:before{content:"\e135";}
+.glyphicon-tasks:before{content:"\e137";}
+.glyphicon-filter:before{content:"\e138";}
+.glyphicon-fullscreen:before{content:"\e140";}
+.glyphicon-dashboard:before{content:"\e141";}
+.glyphicon-heart-empty:before{content:"\e143";}
+.glyphicon-link:before{content:"\e144";}
+.glyphicon-phone:before{content:"\e145";}
+.glyphicon-usd:before{content:"\e148";}
+.glyphicon-gbp:before{content:"\e149";}
+.glyphicon-sort:before{content:"\e150";}
+.glyphicon-sort-by-alphabet:before{content:"\e151";}
+.glyphicon-sort-by-alphabet-alt:before{content:"\e152";}
+.glyphicon-sort-by-order:before{content:"\e153";}
+.glyphicon-sort-by-order-alt:before{content:"\e154";}
+.glyphicon-sort-by-attributes:before{content:"\e155";}
+.glyphicon-sort-by-attributes-alt:before{content:"\e156";}
+.glyphicon-unchecked:before{content:"\e157";}
+.glyphicon-expand:before{content:"\e158";}
+.glyphicon-collapse-down:before{content:"\e159";}
+.glyphicon-collapse-up:before{content:"\e160";}
+.glyphicon-log-in:before{content:"\e161";}
+.glyphicon-flash:before{content:"\e162";}
+.glyphicon-log-out:before{content:"\e163";}
+.glyphicon-new-window:before{content:"\e164";}
+.glyphicon-record:before{content:"\e165";}
+.glyphicon-save:before{content:"\e166";}
+.glyphicon-open:before{content:"\e167";}
+.glyphicon-saved:before{content:"\e168";}
+.glyphicon-import:before{content:"\e169";}
+.glyphicon-export:before{content:"\e170";}
+.glyphicon-send:before{content:"\e171";}
+.glyphicon-floppy-disk:before{content:"\e172";}
+.glyphicon-floppy-saved:before{content:"\e173";}
+.glyphicon-floppy-remove:before{content:"\e174";}
+.glyphicon-floppy-save:before{content:"\e175";}
+.glyphicon-floppy-open:before{content:"\e176";}
+.glyphicon-credit-card:before{content:"\e177";}
+.glyphicon-transfer:before{content:"\e178";}
+.glyphicon-cutlery:before{content:"\e179";}
+.glyphicon-header:before{content:"\e180";}
+.glyphicon-compressed:before{content:"\e181";}
+.glyphicon-earphone:before{content:"\e182";}
+.glyphicon-phone-alt:before{content:"\e183";}
+.glyphicon-tower:before{content:"\e184";}
+.glyphicon-stats:before{content:"\e185";}
+.glyphicon-sd-video:before{content:"\e186";}
+.glyphicon-hd-video:before{content:"\e187";}
+.glyphicon-subtitles:before{content:"\e188";}
+.glyphicon-sound-stereo:before{content:"\e189";}
+.glyphicon-sound-dolby:before{content:"\e190";}
+.glyphicon-sound-5-1:before{content:"\e191";}
+.glyphicon-sound-6-1:before{content:"\e192";}
+.glyphicon-sound-7-1:before{content:"\e193";}
+.glyphicon-copyright-mark:before{content:"\e194";}
+.glyphicon-registration-mark:before{content:"\e195";}
+.glyphicon-cloud-download:before{content:"\e197";}
+.glyphicon-cloud-upload:before{content:"\e198";}
+.glyphicon-tree-conifer:before{content:"\e199";}
+.glyphicon-tree-deciduous:before{content:"\e200";}
+.glyphicon-briefcase:before{content:"\1f4bc";}
+.glyphicon-calendar:before{content:"\1f4c5";}
+.glyphicon-pushpin:before{content:"\1f4cc";}
+.glyphicon-paperclip:before{content:"\1f4ce";}
+.glyphicon-camera:before{content:"\1f4f7";}
+.glyphicon-lock:before{content:"\1f512";}
+.glyphicon-bell:before{content:"\1f514";}
+.glyphicon-bookmark:before{content:"\1f516";}
+.glyphicon-fire:before{content:"\1f525";}
+.glyphicon-wrench:before{content:"\1f527";}
+</style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+            
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c2369815c35670565faf2420d70bb15b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c2369815c35670565faf2420d70bb15b = L.map(
+                "map_c2369815c35670565faf2420d70bb15b",
+                {
+                    center: [60.8, 9.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_39964a5e1f3c760d81f95e901b578892 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_39964a5e1f3c760d81f95e901b578892.addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+            var marker_7f2e183bed703f9f3fb0e36dc67efc43 = L.marker(
+                [59.964, 10.667],
+                {
+}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+            var icon_d85e902316997b4d43d181b1af718b11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7f2e183bed703f9f3fb0e36dc67efc43.bindTooltip(
+                `<div>
+                     Holmenkollen, Oslo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                {
+                    const element = marker_7f2e183bed703f9f3fb0e36dc67efc43.getElement();
+                    if (element) {
+                        element.style.width = "";
+                        element.style.height = "";
+                        element.style.marginLeft = "";
+                        element.style.marginTop = "";
+                    }
+                }
+                marker_7f2e183bed703f9f3fb0e36dc67efc43.setIcon(icon_d85e902316997b4d43d181b1af718b11);
+            
+    
+            var circle_marker_a0dce385e30137d2241f71024d1104f5 = L.circleMarker(
+                [61.1527731, 10.6920426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1a9850ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_1b954e1d924b36b8d08f10f5850ebb02 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_17a55c1b74b1af0c33f5d236031def5a = $(`<div id="html_17a55c1b74b1af0c33f5d236031def5a" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>h-sjusjøen </td></tr><tr><td><b>navn</b></td><td>Sjusjøen </td></tr><tr><td><b>type</b></td><td>hyttefelt </td></tr><tr><td><b>kommunenr</b></td><td>3411 </td></tr><tr><td><b>kommune</b></td><td>Ringsaker </td></tr><tr><td><b>lat</b></td><td>61.15 </td></tr><tr><td><b>lon</b></td><td>10.69 </td></tr><tr><td><b>loc_source</b></td><td>OSM Nominatim place/village osm:node/258719444 </td></tr><tr><td><b>air_km</b></td><td>132.19 </td></tr><tr><td><b>mountain_cabins</b></td><td>6436 </td></tr><tr><td><b>drive_min</b></td><td>154.53 min</td></tr><tr><td><b>drive_km</b></td><td>189.27 </td></tr><tr><td><b>snap_m</b></td><td>11.11 </td></tr><tr><td><b>elevation_m</b></td><td>840.59 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>177.71 min</td></tr><tr><td><b>sales_pooled</b></td><td>478 antall</td></tr><tr><td><b>sales_last_year</b></td><td>162 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,883,831 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>33,747 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>4 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>5 antall</td></tr><tr><td><b>villrein_areas</b></td><td>Rondane-Sølnkletten </td></tr><tr><td><b>ski_season_days</b></td><td>174.55 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>436.77 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-26.63 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>147.92 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>5 antall</td></tr><tr><td><b>eat_15km</b></td><td>75 antall</td></tr><tr><td><b>gathering_5km</b></td><td>5 antall</td></tr><tr><td><b>gathering_15km</b></td><td>46 </td></tr><tr><td><b>ev_5km</b></td><td>1 </td></tr><tr><td><b>ev_15km</b></td><td>29 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.3 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>0.3 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>0.07 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>12.85 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>11.54 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>12.55 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>5.56 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>0.07 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>0.65 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>0.1 km</td></tr><tr><td><b>grocery_5km</b></td><td>1 </td></tr><tr><td><b>ev_charging_15km</b></td><td>29 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Kiwi Sjusjøen </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Brannhytta; Låven bar; Rømåssetra; Sjusjøen café; Sjusjøtunet Camping og Caravansenter </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>351.02 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.07 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>2.16 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>2.16 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>170.59 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>2.9 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.54 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>927.45 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.92 </td></tr><tr><td><b>value_price_per_snow</b></td><td>3,149,010 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>353.18 </td></tr><tr><td><b>value_price_per_trail</b></td><td>8,165 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.82 </td></tr><tr><td><b>Rando</b></td><td>0.54 </td></tr><tr><td><b>Praktisk</b></td><td>0.83 </td></tr><tr><td><b>Kjøretid</b></td><td>0.26 </td></tr><tr><td><b>score</b></td><td>74.81 </td></tr><tr><td><b>rank</b></td><td>1 </td></tr></table></div></div>`)[0];
+                popup_1b954e1d924b36b8d08f10f5850ebb02.setContent(html_17a55c1b74b1af0c33f5d236031def5a);
+            
+        
+
+        circle_marker_a0dce385e30137d2241f71024d1104f5.bindPopup(popup_1b954e1d924b36b8d08f10f5850ebb02)
+        ;
+
+        
+    
+    
+            circle_marker_a0dce385e30137d2241f71024d1104f5.bindTooltip(
+                `<div>
+                     #1 Sjusjøen (hyttefelt) – 75
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_70c48c4126e5a03e2ec994402b0deb16 = L.circleMarker(
+                [61.1755677, 10.6148464],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#299d54ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_5aca4e6a1e72167de56b700d4db03e87 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_794c3dac433f47a4044d5a45d77ebf5a = $(`<div id="html_794c3dac433f47a4044d5a45d77ebf5a" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>h-nordseter </td></tr><tr><td><b>navn</b></td><td>Nordseter </td></tr><tr><td><b>type</b></td><td>hyttefelt </td></tr><tr><td><b>kommunenr</b></td><td>3405 </td></tr><tr><td><b>kommune</b></td><td>Lillehammer </td></tr><tr><td><b>lat</b></td><td>61.18 </td></tr><tr><td><b>lon</b></td><td>10.61 </td></tr><tr><td><b>loc_source</b></td><td>OSM Nominatim place/village osm:node/258768998 </td></tr><tr><td><b>air_km</b></td><td>134.75 </td></tr><tr><td><b>mountain_cabins</b></td><td>1488 </td></tr><tr><td><b>drive_min</b></td><td>161.93 min</td></tr><tr><td><b>drive_km</b></td><td>194.55 </td></tr><tr><td><b>snap_m</b></td><td>2.73 </td></tr><tr><td><b>elevation_m</b></td><td>774.2 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>186.22 min</td></tr><tr><td><b>sales_pooled</b></td><td>114 antall</td></tr><tr><td><b>sales_last_year</b></td><td>41 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,252,342 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>6,572 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>4 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>170.85 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>412.37 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-27.36 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>143.49 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>1 antall</td></tr><tr><td><b>eat_15km</b></td><td>86 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>50 </td></tr><tr><td><b>ev_5km</b></td><td>1 </td></tr><tr><td><b>ev_15km</b></td><td>40 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.83 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>0.83 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>0.83 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>10.45 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>10.12 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>10.24 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>9.21 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>4.85 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>4.91 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>0.28 km</td></tr><tr><td><b>grocery_5km</b></td><td>2 </td></tr><tr><td><b>ev_charging_15km</b></td><td>40 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Mini-Kiosk </td></tr><tr><td><b>eat_names</b></td><td>Nordseter kafé </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>409.01 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.16 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>2.16 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>2.16 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>223.55 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>2.52 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.57 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>959.77 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.86 </td></tr><tr><td><b>value_price_per_snow</b></td><td>2,609,421 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>411.17 </td></tr><tr><td><b>value_price_per_trail</b></td><td>5,478 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.92 </td></tr><tr><td><b>Rando</b></td><td>0.6 </td></tr><tr><td><b>Praktisk</b></td><td>0.73 </td></tr><tr><td><b>Kjøretid</b></td><td>0.05 </td></tr><tr><td><b>score</b></td><td>73.03 </td></tr><tr><td><b>rank</b></td><td>2 </td></tr></table></div></div>`)[0];
+                popup_5aca4e6a1e72167de56b700d4db03e87.setContent(html_794c3dac433f47a4044d5a45d77ebf5a);
+            
+        
+
+        circle_marker_70c48c4126e5a03e2ec994402b0deb16.bindPopup(popup_5aca4e6a1e72167de56b700d4db03e87)
+        ;
+
+        
+    
+    
+            circle_marker_70c48c4126e5a03e2ec994402b0deb16.bindTooltip(
+                `<div>
+                     #2 Nordseter (hyttefelt) – 73
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cc50e14e827b0467d85feef433cc6aac = L.circleMarker(
+                [61.146567, 10.867801],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#58ac60ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_74165ef8986eefb0b13212e12f2ac8e4 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_5ce1f690abcc9f09bac39492c439a627 = $(`<div id="html_5ce1f690abcc9f09bac39492c439a627" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3411 </td></tr><tr><td><b>navn</b></td><td>Ringsaker </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3411 </td></tr><tr><td><b>kommune</b></td><td>Ringsaker </td></tr><tr><td><b>lat</b></td><td>61.15 </td></tr><tr><td><b>lon</b></td><td>10.87 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 1559 celler; snappet til vei (155 m) </td></tr><tr><td><b>air_km</b></td><td>113.95 </td></tr><tr><td><b>mountain_cabins</b></td><td>6436 </td></tr><tr><td><b>drive_min</b></td><td>155.59 min</td></tr><tr><td><b>drive_km</b></td><td>180.62 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>851.46 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>178.93 min</td></tr><tr><td><b>sales_pooled</b></td><td>478 antall</td></tr><tr><td><b>sales_last_year</b></td><td>162 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,883,831 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>33,747 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>4 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>5 antall</td></tr><tr><td><b>villrein_areas</b></td><td>Rondane-Sølnkletten </td></tr><tr><td><b>ski_season_days</b></td><td>174.97 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>437.47 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-25.27 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>149.7 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>1 antall</td></tr><tr><td><b>eat_15km</b></td><td>8 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>8 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>2 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.71 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>0.71 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>9.52 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>21.87 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>20.03 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>21.33 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>10.39 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>9.5 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>6.65 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>7.92 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>2 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Kiwi Sjusjøen </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Hygga </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>291.87 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.1 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.53 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.53 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>159.48 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>8.95 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.35 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>884.79 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.97 </td></tr><tr><td><b>value_price_per_snow</b></td><td>2,977,868 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>292.4 </td></tr><tr><td><b>value_price_per_trail</b></td><td>9,863 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.82 </td></tr><tr><td><b>Rando</b></td><td>0.44 </td></tr><tr><td><b>Praktisk</b></td><td>0.4 </td></tr><tr><td><b>Kjøretid</b></td><td>0.21 </td></tr><tr><td><b>score</b></td><td>67.5 </td></tr><tr><td><b>rank</b></td><td>3 </td></tr></table></div></div>`)[0];
+                popup_74165ef8986eefb0b13212e12f2ac8e4.setContent(html_5ce1f690abcc9f09bac39492c439a627);
+            
+        
+
+        circle_marker_cc50e14e827b0467d85feef433cc6aac.bindPopup(popup_74165ef8986eefb0b13212e12f2ac8e4)
+        ;
+
+        
+    
+    
+            circle_marker_cc50e14e827b0467d85feef433cc6aac.bindTooltip(
+                `<div>
+                     #3 Ringsaker (kommune) – 67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_63651c1be56a71570b653c768397db13 = L.circleMarker(
+                [60.231334, 9.56496],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6eb366ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_31dcbe07b4ea83ed2392caf039376ac3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_fcf54d252f5e5c5486129de363a01b84 = $(`<div id="html_fcf54d252f5e5c5486129de363a01b84" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3318 </td></tr><tr><td><b>navn</b></td><td>Krødsherad </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3318 </td></tr><tr><td><b>kommune</b></td><td>Krødsherad </td></tr><tr><td><b>lat</b></td><td>60.23 </td></tr><tr><td><b>lon</b></td><td>9.56 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 222 celler; snappet til vei (1301 m) </td></tr><tr><td><b>air_km</b></td><td>60.78 </td></tr><tr><td><b>mountain_cabins</b></td><td>940 </td></tr><tr><td><b>drive_min</b></td><td>128.66 min</td></tr><tr><td><b>drive_km</b></td><td>112.74 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>918.64 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>147.96 min</td></tr><tr><td><b>sales_pooled</b></td><td>189 antall</td></tr><tr><td><b>sales_last_year</b></td><td>96 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>4,274,667 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>8,423 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>2 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>146.48 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>338.29 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-29.74 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>116.74 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>3 antall</td></tr><tr><td><b>eat_15km</b></td><td>7 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>1 </td></tr><tr><td><b>ev_15km</b></td><td>6 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.99 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>8.97 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>2.08 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>6.63 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>22.95 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>6.09 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>6.64 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>2.53 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>0.13 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>1.98 km</td></tr><tr><td><b>grocery_5km</b></td><td>1 </td></tr><tr><td><b>ev_charging_15km</b></td><td>6 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Joker Norefjell </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>NorefjellHytta; Olympique; Restaurant 815 </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>125.45 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.58 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.06 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>264.63 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>1.62 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.76 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>1,064 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.8 </td></tr><tr><td><b>value_price_per_snow</b></td><td>5,343,333 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>126.19 </td></tr><tr><td><b>value_price_per_trail</b></td><td>33,875 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.42 </td></tr><tr><td><b>Rando</b></td><td>0.65 </td></tr><tr><td><b>Praktisk</b></td><td>0.7 </td></tr><tr><td><b>Kjøretid</b></td><td>0.68 </td></tr><tr><td><b>score</b></td><td>64.89 </td></tr><tr><td><b>rank</b></td><td>4 </td></tr></table></div></div>`)[0];
+                popup_31dcbe07b4ea83ed2392caf039376ac3.setContent(html_fcf54d252f5e5c5486129de363a01b84);
+            
+        
+
+        circle_marker_63651c1be56a71570b653c768397db13.bindPopup(popup_31dcbe07b4ea83ed2392caf039376ac3)
+        ;
+
+        
+    
+    
+            circle_marker_63651c1be56a71570b653c768397db13.bindTooltip(
+                `<div>
+                     #4 Krødsherad (kommune) – 65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d718fa20cca13f6517d816eb30138b78 = L.circleMarker(
+                [60.980694, 11.274827],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7db86aff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_d837a2b4b1a1b7777e1e17945beb1dcc = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_a33fe30ddb3d1650d2f2a9c422d935ad = $(`<div id="html_a33fe30ddb3d1650d2f2a9c422d935ad" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3412 </td></tr><tr><td><b>navn</b></td><td>Løten </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3412 </td></tr><tr><td><b>kommune</b></td><td>Løten </td></tr><tr><td><b>lat</b></td><td>60.98 </td></tr><tr><td><b>lon</b></td><td>11.27 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 227 celler; snappet til vei (253 m) </td></tr><tr><td><b>air_km</b></td><td>107.44 </td></tr><tr><td><b>mountain_cabins</b></td><td>1153 </td></tr><tr><td><b>drive_min</b></td><td>130.55 min</td></tr><tr><td><b>drive_km</b></td><td>150.78 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>721.42 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>150.14 min</td></tr><tr><td><b>sales_pooled</b></td><td>119 antall</td></tr><tr><td><b>sales_last_year</b></td><td>48 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,550,983 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>5,910 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3.3 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>157.85 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>366.08 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-29.39 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>128.46 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>4 antall</td></tr><tr><td><b>eat_15km</b></td><td>8 antall</td></tr><tr><td><b>gathering_5km</b></td><td>4 antall</td></tr><tr><td><b>gathering_15km</b></td><td>8 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>0 </td></tr><tr><td><b>nearest_eat_km</b></td><td>1.96 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>1.96 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>15.61 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>17.67 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>17.71 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>17.65 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>15.22 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>15.47 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>2.99 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>7.5 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>0 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Spar Vang </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Budor Gjestegård; Målia serveringshytte; Skipøb’n </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>220.47 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.07 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.15 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.15 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.79 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>709.34 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.79 </td></tr><tr><td><b>value_price_per_snow</b></td><td>3,209,846 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>220.62 </td></tr><tr><td><b>value_price_per_trail</b></td><td>11,563 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.74 </td></tr><tr><td><b>Rando</b></td><td>0.39 </td></tr><tr><td><b>Praktisk</b></td><td>0.36 </td></tr><tr><td><b>Kjøretid</b></td><td>0.63 </td></tr><tr><td><b>score</b></td><td>63.07 </td></tr><tr><td><b>rank</b></td><td>5 </td></tr></table></div></div>`)[0];
+                popup_d837a2b4b1a1b7777e1e17945beb1dcc.setContent(html_a33fe30ddb3d1650d2f2a9c422d935ad);
+            
+        
+
+        circle_marker_d718fa20cca13f6517d816eb30138b78.bindPopup(popup_d837a2b4b1a1b7777e1e17945beb1dcc)
+        ;
+
+        
+    
+    
+            circle_marker_d718fa20cca13f6517d816eb30138b78.bindTooltip(
+                `<div>
+                     #5 Løten (kommune) – 63
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1b00054b294918dd5791a0fba2a50b60 = L.circleMarker(
+                [60.55394, 10.9499],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9cc172ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_055a464be622286e48a5c86c63beff0e = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4e7f4c2f95cefca8d16f97383f910e2d = $(`<div id="html_4e7f4c2f95cefca8d16f97383f910e2d" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3442 </td></tr><tr><td><b>navn</b></td><td>Østre Toten </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3442 </td></tr><tr><td><b>kommune</b></td><td>Østre Toten </td></tr><tr><td><b>lat</b></td><td>60.55 </td></tr><tr><td><b>lon</b></td><td>10.95 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 462 celler; snappet til vei (789 m) </td></tr><tr><td><b>air_km</b></td><td>74.47 </td></tr><tr><td><b>mountain_cabins</b></td><td>461 </td></tr><tr><td><b>drive_min</b></td><td>113.64 min</td></tr><tr><td><b>drive_km</b></td><td>105.79 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>521.7 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>130.69 min</td></tr><tr><td><b>sales_pooled</b></td><td>61 antall</td></tr><tr><td><b>sales_last_year</b></td><td>32 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,174,180 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>2,139 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3.27 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>141.75 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>316.16 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-28.52 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>113.23 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>3 antall</td></tr><tr><td><b>gathering_5km</b></td><td>2 antall</td></tr><tr><td><b>gathering_15km</b></td><td>2 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>4 </td></tr><tr><td><b>nearest_eat_km</b></td><td>1.94 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>1.94 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>10.81 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>15.52 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>11.07 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>11.08 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>10.89 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>11.14 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>11.67 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>7.55 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>4 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Kiwi Skreia </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Rausteinshytta; Torsætra </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>159.23 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.18 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.03 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.74 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>706.89 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.45 </td></tr><tr><td><b>value_price_per_snow</b></td><td>2,594,119 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>159.23 </td></tr><tr><td><b>value_price_per_trail</b></td><td>7,374 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.92 </td></tr><tr><td><b>Rando</b></td><td>0.4 </td></tr><tr><td><b>Praktisk</b></td><td>0.36 </td></tr><tr><td><b>Kjøretid</b></td><td>0.84 </td></tr><tr><td><b>score</b></td><td>59.47 </td></tr><tr><td><b>rank</b></td><td>6 </td></tr></table></div></div>`)[0];
+                popup_055a464be622286e48a5c86c63beff0e.setContent(html_4e7f4c2f95cefca8d16f97383f910e2d);
+            
+        
+
+        circle_marker_1b00054b294918dd5791a0fba2a50b60.bindPopup(popup_055a464be622286e48a5c86c63beff0e)
+        ;
+
+        
+    
+    
+            circle_marker_1b00054b294918dd5791a0fba2a50b60.bindTooltip(
+                `<div>
+                     #6 Østre Toten (kommune) – 59
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a26eaa5d61a41298563ceaac7321f32d = L.circleMarker(
+                [60.217707, 9.565482],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c4ce7cff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_aee3f87e4d01b6cea66173ec97bb1bc3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_32f79c7f53c3f457e10e2cbabca2bcbb = $(`<div id="html_32f79c7f53c3f457e10e2cbabca2bcbb" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>h-norefjell </td></tr><tr><td><b>navn</b></td><td>Norefjell </td></tr><tr><td><b>type</b></td><td>hyttefelt </td></tr><tr><td><b>kommunenr</b></td><td>3318 </td></tr><tr><td><b>kommune</b></td><td>Krødsherad </td></tr><tr><td><b>lat</b></td><td>60.22 </td></tr><tr><td><b>lon</b></td><td>9.57 </td></tr><tr><td><b>loc_source</b></td><td>OSM Nominatim highway/bus_stop osm:node/12514833453 </td></tr><tr><td><b>air_km</b></td><td>67.27 </td></tr><tr><td><b>mountain_cabins</b></td><td>940 </td></tr><tr><td><b>drive_min</b></td><td>120.16 min</td></tr><tr><td><b>drive_km</b></td><td>110.96 </td></tr><tr><td><b>snap_m</b></td><td>4.62 </td></tr><tr><td><b>elevation_m</b></td><td>762.43 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>138.18 min</td></tr><tr><td><b>sales_pooled</b></td><td>189 antall</td></tr><tr><td><b>sales_last_year</b></td><td>96 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>4,274,667 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>8,423 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>2 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>135.39 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>305.6 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-30.67 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>104.72 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>3 antall</td></tr><tr><td><b>eat_15km</b></td><td>7 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>1 </td></tr><tr><td><b>ev_15km</b></td><td>6 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.45 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>10.2 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>0.58 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>5.36 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>24.43 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>4.82 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>5.37 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>2.67 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>0.09 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>2.4 km</td></tr><tr><td><b>grocery_5km</b></td><td>1 </td></tr><tr><td><b>ev_charging_15km</b></td><td>6 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Joker Norefjell </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>NorefjellHytta; Olympique; Restaurant 815 </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>113.05 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.05 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.05 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>416.79 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>2.95 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.73 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>1,008 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.55 </td></tr><tr><td><b>value_price_per_snow</b></td><td>7,735,111 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>113.79 </td></tr><tr><td><b>value_price_per_trail</b></td><td>37,566 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.29 </td></tr><tr><td><b>Rando</b></td><td>0.6 </td></tr><tr><td><b>Praktisk</b></td><td>0.78 </td></tr><tr><td><b>Kjøretid</b></td><td>0.74 </td></tr><tr><td><b>score</b></td><td>54.71 </td></tr><tr><td><b>rank</b></td><td>7 </td></tr></table></div></div>`)[0];
+                popup_aee3f87e4d01b6cea66173ec97bb1bc3.setContent(html_32f79c7f53c3f457e10e2cbabca2bcbb);
+            
+        
+
+        circle_marker_a26eaa5d61a41298563ceaac7321f32d.bindPopup(popup_aee3f87e4d01b6cea66173ec97bb1bc3)
+        ;
+
+        
+    
+    
+            circle_marker_a26eaa5d61a41298563ceaac7321f32d.bindTooltip(
+                `<div>
+                     #7 Norefjell (hyttefelt) – 55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e9a2cdf21d7dc2280659f0f30262b9f = L.circleMarker(
+                [61.036309, 11.13255],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c8cf7dff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_dec4c57661111a4a4c44da1bc67fa192 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_6f1a59a88173792073975ba3aa6970c0 = $(`<div id="html_6f1a59a88173792073975ba3aa6970c0" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3403 </td></tr><tr><td><b>navn</b></td><td>Hamar </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3403 </td></tr><tr><td><b>kommune</b></td><td>Hamar </td></tr><tr><td><b>lat</b></td><td>61.04 </td></tr><tr><td><b>lon</b></td><td>11.13 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 628 celler; snappet til vei (268 m) </td></tr><tr><td><b>air_km</b></td><td>118.54 </td></tr><tr><td><b>mountain_cabins</b></td><td>537 </td></tr><tr><td><b>drive_min</b></td><td>149.51 min</td></tr><tr><td><b>drive_km</b></td><td>164.72 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>681.53 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>171.94 min</td></tr><tr><td><b>sales_pooled</b></td><td>60 antall</td></tr><tr><td><b>sales_last_year</b></td><td>22 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,791,250 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>747 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>5.7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>4 </td></tr><tr><td><b>villrein_cabins</b></td><td>11 antall</td></tr><tr><td><b>villrein_areas</b></td><td>Rondane-Sølnkletten </td></tr><tr><td><b>ski_season_days</b></td><td>147.23 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>300.99 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-30.62 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>116.62 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>1 antall</td></tr><tr><td><b>eat_15km</b></td><td>8 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>8 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>0 </td></tr><tr><td><b>nearest_eat_km</b></td><td>2.77 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>2.77 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>16.51 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>16.72 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>16.8 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>16.77 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>16.56 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>16.57 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>12.03 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>10.17 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>0 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Rema 1000 Rena </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Brumund fjellstue </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>122.32 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.35 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.25 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.25 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.7 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>695.58 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.71 </td></tr><tr><td><b>value_price_per_snow</b></td><td>2,521,019 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>122.57 </td></tr><tr><td><b>value_price_per_trail</b></td><td>14,614 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.74 </td></tr><tr><td><b>Rando</b></td><td>0.33 </td></tr><tr><td><b>Praktisk</b></td><td>0.21 </td></tr><tr><td><b>Kjøretid</b></td><td>0.37 </td></tr><tr><td><b>score</b></td><td>54.32 </td></tr><tr><td><b>rank</b></td><td>8 </td></tr></table></div></div>`)[0];
+                popup_dec4c57661111a4a4c44da1bc67fa192.setContent(html_6f1a59a88173792073975ba3aa6970c0);
+            
+        
+
+        circle_marker_2e9a2cdf21d7dc2280659f0f30262b9f.bindPopup(popup_dec4c57661111a4a4c44da1bc67fa192)
+        ;
+
+        
+    
+    
+            circle_marker_2e9a2cdf21d7dc2280659f0f30262b9f.bindTooltip(
+                `<div>
+                     #8 Hamar (kommune) – 54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ba29d89ae4f310adeb0c8e829443946 = L.circleMarker(
+                [60.94527, 10.362817],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d7d481ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_1ff386ac302c7ac4110a3ef76a23e718 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_362fbc636b444511dff280d2f4bcfebf = $(`<div id="html_362fbc636b444511dff280d2f4bcfebf" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3407 </td></tr><tr><td><b>navn</b></td><td>Gjøvik </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3407 </td></tr><tr><td><b>kommune</b></td><td>Gjøvik </td></tr><tr><td><b>lat</b></td><td>60.95 </td></tr><tr><td><b>lon</b></td><td>10.36 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 590 celler; snappet til vei (231 m) </td></tr><tr><td><b>air_km</b></td><td>101.38 </td></tr><tr><td><b>mountain_cabins</b></td><td>330 </td></tr><tr><td><b>drive_min</b></td><td>163.87 min</td></tr><tr><td><b>drive_km</b></td><td>190.4 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>666.24 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>188.45 min</td></tr><tr><td><b>sales_pooled</b></td><td>61 antall</td></tr><tr><td><b>sales_last_year</b></td><td>24 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,384,557 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>1,286 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>5 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>4 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>145.23 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>322.92 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-32.28 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>112.95 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>6 antall</td></tr><tr><td><b>gathering_5km</b></td><td>2 antall</td></tr><tr><td><b>gathering_15km</b></td><td>4 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>3 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.05 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>0.05 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>7.34 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>18.4 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>13.34 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>7.34 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>7.24 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>7.33 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>14.11 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>4.4 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>3 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Coop Prix Snertingdal </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Skihytta i Snertingdal </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>116.48 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.02 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.01 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.52 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>702.06 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.58 </td></tr><tr><td><b>value_price_per_snow</b></td><td>2,369,963 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>116.48 </td></tr><tr><td><b>value_price_per_trail</b></td><td>11,887 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.87 </td></tr><tr><td><b>Rando</b></td><td>0.26 </td></tr><tr><td><b>Praktisk</b></td><td>0.45 </td></tr><tr><td><b>Kjøretid</b></td><td>0 </td></tr><tr><td><b>score</b></td><td>52.54 </td></tr><tr><td><b>rank</b></td><td>9 </td></tr></table></div></div>`)[0];
+                popup_1ff386ac302c7ac4110a3ef76a23e718.setContent(html_362fbc636b444511dff280d2f4bcfebf);
+            
+        
+
+        circle_marker_4ba29d89ae4f310adeb0c8e829443946.bindPopup(popup_1ff386ac302c7ac4110a3ef76a23e718)
+        ;
+
+        
+    
+    
+            circle_marker_4ba29d89ae4f310adeb0c8e829443946.bindTooltip(
+                `<div>
+                     #9 Gjøvik (kommune) – 53
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a561933ab941a00721d5d5906a595e33 = L.circleMarker(
+                [59.827416, 9.333186],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e1d783ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_ca69c67b37dd6eee40c12d6d447c4e8c = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_eb0ea10278d3dabb007316746848a006 = $(`<div id="html_eb0ea10278d3dabb007316746848a006" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3334 </td></tr><tr><td><b>navn</b></td><td>Flesberg </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3334 </td></tr><tr><td><b>kommune</b></td><td>Flesberg </td></tr><tr><td><b>lat</b></td><td>59.83 </td></tr><tr><td><b>lon</b></td><td>9.33 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 412 celler; snappet til vei (893 m) </td></tr><tr><td><b>air_km</b></td><td>69.15 </td></tr><tr><td><b>mountain_cabins</b></td><td>1818 </td></tr><tr><td><b>drive_min</b></td><td>142.92 min</td></tr><tr><td><b>drive_km</b></td><td>126.91 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>598.5 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>164.36 min</td></tr><tr><td><b>sales_pooled</b></td><td>243 antall</td></tr><tr><td><b>sales_last_year</b></td><td>130 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,478,115 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>13,523 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>138.51 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>374.43 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-26.89 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>111.61 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>12 antall</td></tr><tr><td><b>gathering_5km</b></td><td>2 antall</td></tr><tr><td><b>gathering_15km</b></td><td>7 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>3 </td></tr><tr><td><b>nearest_eat_km</b></td><td>3.66 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>3.66 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>6.63 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>25.03 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>24.76 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>13.93 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>6.72 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>13.78 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>1.44 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>5.89 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>3 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Joker Flesberg </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Blåberg Kafe; Gvelven Kro </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>174.24 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.23 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.02 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>564.4 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>6.79 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.71 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>967.18 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.48 </td></tr><tr><td><b>value_price_per_snow</b></td><td>5,174,087 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>174.24 </td></tr><tr><td><b>value_price_per_trail</b></td><td>14,222 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.61 </td></tr><tr><td><b>Rando</b></td><td>0.54 </td></tr><tr><td><b>Praktisk</b></td><td>0.43 </td></tr><tr><td><b>Kjøretid</b></td><td>0.47 </td></tr><tr><td><b>score</b></td><td>51.31 </td></tr><tr><td><b>rank</b></td><td>10 </td></tr></table></div></div>`)[0];
+                popup_ca69c67b37dd6eee40c12d6d447c4e8c.setContent(html_eb0ea10278d3dabb007316746848a006);
+            
+        
+
+        circle_marker_a561933ab941a00721d5d5906a595e33.bindPopup(popup_ca69c67b37dd6eee40c12d6d447c4e8c)
+        ;
+
+        
+    
+    
+            circle_marker_a561933ab941a00721d5d5906a595e33.bindTooltip(
+                `<div>
+                     #10 Flesberg (kommune) – 51
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_32941c06e946263d139d19026d60611a = L.circleMarker(
+                [60.2463468, 9.3564909],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e3d884ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_4f93724521ac80ab791249d2eb42f00a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b77eb6fc8bbcd59ac0c193992dd857ae = $(`<div id="html_b77eb6fc8bbcd59ac0c193992dd857ae" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>h-eggedal </td></tr><tr><td><b>navn</b></td><td>Eggedal </td></tr><tr><td><b>type</b></td><td>hyttefelt </td></tr><tr><td><b>kommunenr</b></td><td>3332 </td></tr><tr><td><b>kommune</b></td><td>Sigdal </td></tr><tr><td><b>lat</b></td><td>60.25 </td></tr><tr><td><b>lon</b></td><td>9.36 </td></tr><tr><td><b>loc_source</b></td><td>OSM Nominatim place/village osm:node/1015709943 </td></tr><tr><td><b>air_km</b></td><td>79.12 </td></tr><tr><td><b>mountain_cabins</b></td><td>4547 </td></tr><tr><td><b>drive_min</b></td><td>142.88 min</td></tr><tr><td><b>drive_km</b></td><td>137.5 </td></tr><tr><td><b>snap_m</b></td><td>12.85 </td></tr><tr><td><b>elevation_m</b></td><td>296.56 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>164.31 min</td></tr><tr><td><b>sales_pooled</b></td><td>239 antall</td></tr><tr><td><b>sales_last_year</b></td><td>115 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,665,728 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>18,121 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>4 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>127.2 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>262.89 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-29.37 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>97.84 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>8 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>4 </td></tr><tr><td><b>ev_5km</b></td><td>2 </td></tr><tr><td><b>ev_15km</b></td><td>3 </td></tr><tr><td><b>nearest_eat_km</b></td><td>0.14 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>4.2 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>0.02 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>0.03 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>21.28 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>16.13 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>0.05 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>0.05 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>4.44 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>0.02 km</td></tr><tr><td><b>grocery_5km</b></td><td>2 </td></tr><tr><td><b>ev_charging_15km</b></td><td>3 antall</td></tr><tr><td><b>eat_names</b></td><td>Borgerstua </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>206.23 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.38 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.06 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>715.61 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>3.52 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.76 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>1,176 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.25 </td></tr><tr><td><b>value_price_per_snow</b></td><td>10,551,840 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>206.97 </td></tr><tr><td><b>value_price_per_trail</b></td><td>12,880 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.45 </td></tr><tr><td><b>Rando</b></td><td>0.85 </td></tr><tr><td><b>Praktisk</b></td><td>0.79 </td></tr><tr><td><b>Kjøretid</b></td><td>0.53 </td></tr><tr><td><b>score</b></td><td>51.12 </td></tr><tr><td><b>rank</b></td><td>11 </td></tr></table></div></div>`)[0];
+                popup_4f93724521ac80ab791249d2eb42f00a.setContent(html_b77eb6fc8bbcd59ac0c193992dd857ae);
+            
+        
+
+        circle_marker_32941c06e946263d139d19026d60611a.bindPopup(popup_4f93724521ac80ab791249d2eb42f00a)
+        ;
+
+        
+    
+    
+            circle_marker_32941c06e946263d139d19026d60611a.bindTooltip(
+                `<div>
+                     #11 Eggedal (hyttefelt) – 51
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c177af436a7c314afba3c60116e4ca3c = L.circleMarker(
+                [60.419951, 10.696051],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1dc88ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_59a9d5f824efab0f396ba54c1f9ddf16 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_f5214e7607745b157a0cc3c05c01a626 = $(`<div id="html_f5214e7607745b157a0cc3c05c01a626" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3446 </td></tr><tr><td><b>navn</b></td><td>Gran </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3446 </td></tr><tr><td><b>kommune</b></td><td>Gran </td></tr><tr><td><b>lat</b></td><td>60.42 </td></tr><tr><td><b>lon</b></td><td>10.7 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 458 celler; snappet til vei (231 m) </td></tr><tr><td><b>air_km</b></td><td>54.37 </td></tr><tr><td><b>mountain_cabins</b></td><td>383 </td></tr><tr><td><b>drive_min</b></td><td>101.05 min</td></tr><tr><td><b>drive_km</b></td><td>86.57 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>662 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>116.2 min</td></tr><tr><td><b>sales_pooled</b></td><td>132 antall</td></tr><tr><td><b>sales_last_year</b></td><td>48 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,615,098 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>2,595 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3.5 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>132.75 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>292.86 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-26.3 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>106.45 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>3 antall</td></tr><tr><td><b>eat_15km</b></td><td>10 antall</td></tr><tr><td><b>gathering_5km</b></td><td>2 antall</td></tr><tr><td><b>gathering_15km</b></td><td>8 </td></tr><tr><td><b>ev_5km</b></td><td>1 </td></tr><tr><td><b>ev_15km</b></td><td>8 </td></tr><tr><td><b>nearest_eat_km</b></td><td>1.53 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>1.53 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>8.09 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>9.84 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>10.02 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>8.03 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>4.85 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>4.81 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>3.82 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>3.87 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>8 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Kiwi Jaren </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Lushaughytta; Lygnasæter; Sagvollstallen </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>126.98 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.18 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.01 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.62 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>681.7 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.42 </td></tr><tr><td><b>value_price_per_snow</b></td><td>6,210,859 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>126.98 </td></tr><tr><td><b>value_price_per_trail</b></td><td>20,595 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.42 </td></tr><tr><td><b>Rando</b></td><td>0.32 </td></tr><tr><td><b>Praktisk</b></td><td>0.6 </td></tr><tr><td><b>Kjøretid</b></td><td>1 </td></tr><tr><td><b>score</b></td><td>49.43 </td></tr><tr><td><b>rank</b></td><td>12 </td></tr></table></div></div>`)[0];
+                popup_59a9d5f824efab0f396ba54c1f9ddf16.setContent(html_f5214e7607745b157a0cc3c05c01a626);
+            
+        
+
+        circle_marker_c177af436a7c314afba3c60116e4ca3c.bindPopup(popup_59a9d5f824efab0f396ba54c1f9ddf16)
+        ;
+
+        
+    
+    
+            circle_marker_c177af436a7c314afba3c60116e4ca3c.bindTooltip(
+                `<div>
+                     #12 Gran (kommune) – 49
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb6913cf74a4742f290c5540ed616721 = L.circleMarker(
+                [60.400937, 10.000508],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f3dd88ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_3586f3673c9652a33d0ad74c33787513 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c0e5cddbada6e0ab8bdc0410d6c333f9 = $(`<div id="html_c0e5cddbada6e0ab8bdc0410d6c333f9" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3305 </td></tr><tr><td><b>navn</b></td><td>Ringerike </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3305 </td></tr><tr><td><b>kommune</b></td><td>Ringerike </td></tr><tr><td><b>lat</b></td><td>60.4 </td></tr><tr><td><b>lon</b></td><td>10 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 830 celler; snappet til vei (524 m) </td></tr><tr><td><b>air_km</b></td><td>53.93 </td></tr><tr><td><b>mountain_cabins</b></td><td>856 </td></tr><tr><td><b>drive_min</b></td><td>108.06 min</td></tr><tr><td><b>drive_km</b></td><td>95.93 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>709.51 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>124.27 min</td></tr><tr><td><b>sales_pooled</b></td><td>158 antall</td></tr><tr><td><b>sales_last_year</b></td><td>95 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,502,127 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>2,983 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>3.7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>2.4 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>129.72 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>308.18 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-28.34 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>101.37 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>0 antall</td></tr><tr><td><b>eat_15km</b></td><td>1 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>0 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>0 </td></tr><tr><td><b>nearest_eat_km</b></td><td>6.59 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>18.39 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>6.6 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>27.67 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>27.55 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>17.74 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>17.26 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>17.27 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>0.08 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>2.69 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>0 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Nærbutikken Buttingsrud </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>63.35 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.06 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.05 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>289.08 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>1.93 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.81 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>803.56 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.45 </td></tr><tr><td><b>value_price_per_snow</b></td><td>3,357,695 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>63.35 </td></tr><tr><td><b>value_price_per_trail</b></td><td>23,712 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.5 </td></tr><tr><td><b>Rando</b></td><td>0.41 </td></tr><tr><td><b>Praktisk</b></td><td>0.38 </td></tr><tr><td><b>Kjøretid</b></td><td>0.89 </td></tr><tr><td><b>score</b></td><td>49.23 </td></tr><tr><td><b>rank</b></td><td>13 </td></tr></table></div></div>`)[0];
+                popup_3586f3673c9652a33d0ad74c33787513.setContent(html_c0e5cddbada6e0ab8bdc0410d6c333f9);
+            
+        
+
+        circle_marker_fb6913cf74a4742f290c5540ed616721.bindPopup(popup_3586f3673c9652a33d0ad74c33787513)
+        ;
+
+        
+    
+    
+            circle_marker_fb6913cf74a4742f290c5540ed616721.bindTooltip(
+                `<div>
+                     #13 Ringerike (kommune) – 49
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3d8e9f27b17d6f03a2d9b6281caf41a8 = L.circleMarker(
+                [59.8088379, 9.1504463],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fadf8aff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_d8d58e40d29ce87598ff218edaab7332 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_ceae8fc9dc3650ed4dca67bc51706bad = $(`<div id="html_ceae8fc9dc3650ed4dca67bc51706bad" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>h-blefjell </td></tr><tr><td><b>navn</b></td><td>Blefjell </td></tr><tr><td><b>type</b></td><td>hyttefelt </td></tr><tr><td><b>kommunenr</b></td><td>4026 </td></tr><tr><td><b>kommune</b></td><td>Tinn </td></tr><tr><td><b>lat</b></td><td>59.81 </td></tr><tr><td><b>lon</b></td><td>9.15 </td></tr><tr><td><b>loc_source</b></td><td>OSM Nominatim natural/hill osm:node/11394578994 </td></tr><tr><td><b>air_km</b></td><td>86.35 </td></tr><tr><td><b>mountain_cabins</b></td><td>3180 </td></tr><tr><td><b>drive_min</b></td><td>148.88 min</td></tr><tr><td><b>drive_km</b></td><td>131.9 </td></tr><tr><td><b>snap_m</b></td><td>1,436 </td></tr><tr><td><b>elevation_m</b></td><td>1,307 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>171.21 min</td></tr><tr><td><b>sales_pooled</b></td><td>225 antall</td></tr><tr><td><b>sales_last_year</b></td><td>115 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>4,549,787 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>0 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>villrein_cabins</b></td><td>316 antall</td></tr><tr><td><b>villrein_areas</b></td><td>Hardangervidda </td></tr><tr><td><b>ski_season_days</b></td><td>146.2 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>385.55 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-26.14 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>120.06 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>0 antall</td></tr><tr><td><b>eat_15km</b></td><td>5 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>0 </td></tr><tr><td><b>nearest_eat_km</b></td><td>9.88 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>11.1 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>8.21 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>28.62 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>20.99 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>24.29 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>8.18 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>24.15 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>9.01 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>3.51 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>0 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Matkroken Hovin </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>98 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>0.12 </td></tr><tr><td><b>nordic_direct_access</b></td><td>True bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.07 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>35.26 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>0.2 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.84 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>1,045 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.78 </td></tr><tr><td><b>value_price_per_snow</b></td><td>5,840,942 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>98 </td></tr><tr><td><b>value_price_per_trail</b></td><td>46,426 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.34 </td></tr><tr><td><b>Rando</b></td><td>0.5 </td></tr><tr><td><b>Praktisk</b></td><td>0.16 </td></tr><tr><td><b>Kjøretid</b></td><td>0.42 </td></tr><tr><td><b>score</b></td><td>48.4 </td></tr><tr><td><b>rank</b></td><td>14 </td></tr></table></div></div>`)[0];
+                popup_d8d58e40d29ce87598ff218edaab7332.setContent(html_ceae8fc9dc3650ed4dca67bc51706bad);
+            
+        
+
+        circle_marker_3d8e9f27b17d6f03a2d9b6281caf41a8.bindPopup(popup_d8d58e40d29ce87598ff218edaab7332)
+        ;
+
+        
+    
+    
+            circle_marker_3d8e9f27b17d6f03a2d9b6281caf41a8.bindTooltip(
+                `<div>
+                     #14 Blefjell (hyttefelt) – 48
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_119c32d9f4211cf9f6aa54bed3fcbd8e = L.circleMarker(
+                [60.222251, 9.291502],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f6bb76ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_79b02fdbc5c3214bdfcb33d94b1c9b40 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_29ce94cff60bd2a5cc265a894c2fffdc = $(`<div id="html_29ce94cff60bd2a5cc265a894c2fffdc" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3332 </td></tr><tr><td><b>navn</b></td><td>Sigdal </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3332 </td></tr><tr><td><b>kommune</b></td><td>Sigdal </td></tr><tr><td><b>lat</b></td><td>60.22 </td></tr><tr><td><b>lon</b></td><td>9.29 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 1235 celler; snappet til vei (1385 m) </td></tr><tr><td><b>air_km</b></td><td>72.2 </td></tr><tr><td><b>mountain_cabins</b></td><td>4547 </td></tr><tr><td><b>drive_min</b></td><td>159.49 min</td></tr><tr><td><b>drive_km</b></td><td>145.02 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>689.03 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>183.42 min</td></tr><tr><td><b>sales_pooled</b></td><td>239 antall</td></tr><tr><td><b>sales_last_year</b></td><td>115 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>2,665,728 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>18,121 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>4 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>126.96 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>262.19 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-28.65 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>98.32 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>1 antall</td></tr><tr><td><b>eat_15km</b></td><td>5 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>2 </td></tr><tr><td><b>ev_15km</b></td><td>3 </td></tr><tr><td><b>nearest_eat_km</b></td><td>4.42 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>8.66 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>4.44 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>4.45 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>19.87 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>18.64 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>4.45 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>4.4 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>8.89 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>3.7 km</td></tr><tr><td><b>grocery_5km</b></td><td>2 </td></tr><tr><td><b>ev_charging_15km</b></td><td>3 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Spar Eggedal </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Borgerstua </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>173.51 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>2.44 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0.74 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.06 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>349.66 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>1.93 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.76 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>984.71 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.36 </td></tr><tr><td><b>value_price_per_snow</b></td><td>7,448,358 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>174.25 </td></tr><tr><td><b>value_price_per_trail</b></td><td>15,298 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.42 </td></tr><tr><td><b>Rando</b></td><td>0.7 </td></tr><tr><td><b>Praktisk</b></td><td>0.48 </td></tr><tr><td><b>Kjøretid</b></td><td>0.11 </td></tr><tr><td><b>score</b></td><td>42.13 </td></tr><tr><td><b>rank</b></td><td>15 </td></tr></table></div></div>`)[0];
+                popup_79b02fdbc5c3214bdfcb33d94b1c9b40.setContent(html_29ce94cff60bd2a5cc265a894c2fffdc);
+            
+        
+
+        circle_marker_119c32d9f4211cf9f6aa54bed3fcbd8e.bindPopup(popup_79b02fdbc5c3214bdfcb33d94b1c9b40)
+        ;
+
+        
+    
+    
+            circle_marker_119c32d9f4211cf9f6aa54bed3fcbd8e.bindTooltip(
+                `<div>
+                     #15 Sigdal (kommune) – 42
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7cbb31d7962f46ae7f77f347bc21c9f9 = L.circleMarker(
+                [59.597254, 9.521424],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f4b170ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_e3e7faaded6073e06d15079ef314d12f = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_69fff7a75471699bf49c529e134aeebe = $(`<div id="html_69fff7a75471699bf49c529e134aeebe" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3303 </td></tr><tr><td><b>navn</b></td><td>Kongsberg </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3303 </td></tr><tr><td><b>kommune</b></td><td>Kongsberg </td></tr><tr><td><b>lat</b></td><td>59.6 </td></tr><tr><td><b>lon</b></td><td>9.52 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 424 celler; snappet til vei (1378 m) </td></tr><tr><td><b>air_km</b></td><td>69.25 </td></tr><tr><td><b>mountain_cabins</b></td><td>782 </td></tr><tr><td><b>drive_min</b></td><td>103.41 min</td></tr><tr><td><b>drive_km</b></td><td>100.54 </td></tr><tr><td><b>snap_m</b></td><td>342.44 </td></tr><tr><td><b>elevation_m</b></td><td>597.84 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>118.92 min</td></tr><tr><td><b>sales_pooled</b></td><td>160 antall</td></tr><tr><td><b>sales_last_year</b></td><td>98 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,876,444 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>465 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>98.99 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>227.38 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-33.27 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>65.72 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>0 antall</td></tr><tr><td><b>eat_15km</b></td><td>43 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>22 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>11 </td></tr><tr><td><b>nearest_eat_km</b></td><td>7.75 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>7.75 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>6.65 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>10.92 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>9.21 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>6.31 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>5.83 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>5.55 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>7.86 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>3.75 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>11 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Kiwi Moane </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>128.9 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>2.08 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.02 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>0 m</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.66 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>649.65 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.21 </td></tr><tr><td><b>value_price_per_snow</b></td><td>9,141,649 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>128.9 </td></tr><tr><td><b>value_price_per_trail</b></td><td>14,557 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.42 </td></tr><tr><td><b>Rando</b></td><td>0.37 </td></tr><tr><td><b>Praktisk</b></td><td>0.46 </td></tr><tr><td><b>Kjøretid</b></td><td>0.95 </td></tr><tr><td><b>score</b></td><td>40.69 </td></tr><tr><td><b>rank</b></td><td>16 </td></tr></table></div></div>`)[0];
+                popup_e3e7faaded6073e06d15079ef314d12f.setContent(html_69fff7a75471699bf49c529e134aeebe);
+            
+        
+
+        circle_marker_7cbb31d7962f46ae7f77f347bc21c9f9.bindPopup(popup_e3e7faaded6073e06d15079ef314d12f)
+        ;
+
+        
+    
+    
+            circle_marker_7cbb31d7962f46ae7f77f347bc21c9f9.bindTooltip(
+                `<div>
+                     #16 Kongsberg (kommune) – 41
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_db21aeab96a6aed497bdb2d7d47a32e2 = L.circleMarker(
+                [60.408737, 9.475129],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ea8456ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_5867446a9604d324ca3a35f58deb6ce2 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_13fc0d8cfa3ebbe8075a6c78caab27d8 = $(`<div id="html_13fc0d8cfa3ebbe8075a6c78caab27d8" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3320 </td></tr><tr><td><b>navn</b></td><td>Flå </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3320 </td></tr><tr><td><b>kommune</b></td><td>Flå </td></tr><tr><td><b>lat</b></td><td>60.41 </td></tr><tr><td><b>lon</b></td><td>9.48 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 1573 celler; snappet til vei (638 m) </td></tr><tr><td><b>air_km</b></td><td>81.31 </td></tr><tr><td><b>mountain_cabins</b></td><td>2323 </td></tr><tr><td><b>drive_min</b></td><td>119.31 min</td></tr><tr><td><b>drive_km</b></td><td>117.05 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>201.99 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>137.2 min</td></tr><tr><td><b>sales_pooled</b></td><td>155 antall</td></tr><tr><td><b>sales_last_year</b></td><td>72 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>3,750,387 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>12,001 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>4 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>90.61 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>174.84 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-27.46 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>63.15 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>6 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>4 </td></tr><tr><td><b>ev_15km</b></td><td>7 </td></tr><tr><td><b>nearest_eat_km</b></td><td>2.4 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>6.85 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>2.58 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>2.59 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>2.63 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>2.33 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>2.47 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>2.62 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>6.78 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>0.98 km</td></tr><tr><td><b>grocery_5km</b></td><td>2 </td></tr><tr><td><b>ev_charging_15km</b></td><td>7 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Rema 1000 Flå </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Café og restaurant Rumi </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>80.64 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>4.79 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.09 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>828.15 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>2.55 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.81 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>993.22 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.07 </td></tr><tr><td><b>value_price_per_snow</b></td><td>50,898,111 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>80.64 </td></tr><tr><td><b>value_price_per_trail</b></td><td>46,508 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.08 </td></tr><tr><td><b>Rando</b></td><td>0.66 </td></tr><tr><td><b>Praktisk</b></td><td>0.67 </td></tr><tr><td><b>Kjøretid</b></td><td>0.79 </td></tr><tr><td><b>score</b></td><td>33.72 </td></tr><tr><td><b>rank</b></td><td>17 </td></tr></table></div></div>`)[0];
+                popup_5867446a9604d324ca3a35f58deb6ce2.setContent(html_13fc0d8cfa3ebbe8075a6c78caab27d8);
+            
+        
+
+        circle_marker_db21aeab96a6aed497bdb2d7d47a32e2.bindPopup(popup_5867446a9604d324ca3a35f58deb6ce2)
+        ;
+
+        
+    
+    
+            circle_marker_db21aeab96a6aed497bdb2d7d47a32e2.bindTooltip(
+                `<div>
+                     #17 Flå (kommune) – 34
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3709e51ce8e57831df9f139bf65190f3 = L.circleMarker(
+                [60.01495, 9.193685],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#df513aff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_7f64aa1ba57d1a186095f19f88fde1e4 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_58104a7ec68ca051da86fcea6c2048f8 = $(`<div id="html_58104a7ec68ca051da86fcea6c2048f8" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k3336 </td></tr><tr><td><b>navn</b></td><td>Rollag </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>3336 </td></tr><tr><td><b>kommune</b></td><td>Rollag </td></tr><tr><td><b>lat</b></td><td>60.01 </td></tr><tr><td><b>lon</b></td><td>9.19 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 1128 celler; snappet til vei (571 m) </td></tr><tr><td><b>air_km</b></td><td>81.34 </td></tr><tr><td><b>mountain_cabins</b></td><td>2361 </td></tr><tr><td><b>drive_min</b></td><td>154.21 min</td></tr><tr><td><b>drive_km</b></td><td>140.27 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>574.46 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>177.34 min</td></tr><tr><td><b>sales_pooled</b></td><td>125 antall</td></tr><tr><td><b>sales_last_year</b></td><td>75 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>3,001,736 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>8,304 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>7 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3 </td></tr><tr><td><b>villrein_cabins</b></td><td>3 antall</td></tr><tr><td><b>villrein_areas</b></td><td>Hardangervidda </td></tr><tr><td><b>ski_season_days</b></td><td>99.81 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>217.05 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-25.52 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>74.29 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>2 antall</td></tr><tr><td><b>eat_15km</b></td><td>7 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>2 </td></tr><tr><td><b>ev_15km</b></td><td>2 </td></tr><tr><td><b>nearest_eat_km</b></td><td>3.51 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>3.51 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>3.54 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>27.24 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>31.3 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>20.97 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>3.67 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>3.49 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>11.18 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>1.8 km</td></tr><tr><td><b>grocery_5km</b></td><td>1 </td></tr><tr><td><b>ev_charging_15km</b></td><td>2 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Extra Veggli </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Veggli Bakeri; Veggli vertshus </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>55.77 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>4.62 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.04 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>435.17 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>2.93 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.8 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>880.01 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.23 </td></tr><tr><td><b>value_price_per_snow</b></td><td>13,263,485 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>55.77 </td></tr><tr><td><b>value_price_per_trail</b></td><td>53,823 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.13 </td></tr><tr><td><b>Rando</b></td><td>0.41 </td></tr><tr><td><b>Praktisk</b></td><td>0.36 </td></tr><tr><td><b>Kjøretid</b></td><td>0.32 </td></tr><tr><td><b>score</b></td><td>26.05 </td></tr><tr><td><b>rank</b></td><td>18 </td></tr></table></div></div>`)[0];
+                popup_7f64aa1ba57d1a186095f19f88fde1e4.setContent(html_58104a7ec68ca051da86fcea6c2048f8);
+            
+        
+
+        circle_marker_3709e51ce8e57831df9f139bf65190f3.bindPopup(popup_7f64aa1ba57d1a186095f19f88fde1e4)
+        ;
+
+        
+    
+    
+            circle_marker_3709e51ce8e57831df9f139bf65190f3.bindTooltip(
+                `<div>
+                     #18 Rollag (kommune) – 26
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ad8e1959f6ce2ece6bfee1e7badbaeb6 = L.circleMarker(
+                [59.710343, 9.038292],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#db4131ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_f46fc74fa26760e24c8e05f309e7e29a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_f37b60b0810c9599cb3c4b4c2ca96f5e = $(`<div id="html_f37b60b0810c9599cb3c4b4c2ca96f5e" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k4005 </td></tr><tr><td><b>navn</b></td><td>Notodden </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>4005 </td></tr><tr><td><b>kommune</b></td><td>Notodden </td></tr><tr><td><b>lat</b></td><td>59.71 </td></tr><tr><td><b>lon</b></td><td>9.04 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 1109 celler; snappet til vei (1383 m) </td></tr><tr><td><b>air_km</b></td><td>90.15 </td></tr><tr><td><b>mountain_cabins</b></td><td>306 </td></tr><tr><td><b>drive_min</b></td><td>132.83 min</td></tr><tr><td><b>drive_km</b></td><td>131.29 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>280.93 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>152.75 min</td></tr><tr><td><b>sales_pooled</b></td><td>52 antall</td></tr><tr><td><b>sales_last_year</b></td><td>32 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,368,269 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>3,638 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>6.4 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>3.5 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>70.04 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>152.75 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-29.75 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>40.29 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>0 antall</td></tr><tr><td><b>eat_15km</b></td><td>3 antall</td></tr><tr><td><b>gathering_5km</b></td><td>0 antall</td></tr><tr><td><b>gathering_15km</b></td><td>3 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>1 </td></tr><tr><td><b>nearest_eat_km</b></td><td>8.75 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>8.75 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>2.19 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>20.98 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>14.72 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>11.72 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>2.14 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>11.92 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>19.03 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>1.35 km</td></tr><tr><td><b>grocery_5km</b></td><td>1 </td></tr><tr><td><b>ev_charging_15km</b></td><td>1 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Matkroken Gransherad </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>1.06 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>9.02 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.07 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>715.4 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>5.92 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.8 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>755.41 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.05 </td></tr><tr><td><b>value_price_per_snow</b></td><td>25,997,115 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>1.06 </td></tr><tr><td><b>value_price_per_trail</b></td><td>1,290,820 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.05 </td></tr><tr><td><b>Rando</b></td><td>0.56 </td></tr><tr><td><b>Praktisk</b></td><td>0.35 </td></tr><tr><td><b>Kjøretid</b></td><td>0.58 </td></tr><tr><td><b>score</b></td><td>23.54 </td></tr><tr><td><b>rank</b></td><td>19 </td></tr></table></div></div>`)[0];
+                popup_f46fc74fa26760e24c8e05f309e7e29a.setContent(html_f37b60b0810c9599cb3c4b4c2ca96f5e);
+            
+        
+
+        circle_marker_ad8e1959f6ce2ece6bfee1e7badbaeb6.bindPopup(popup_f46fc74fa26760e24c8e05f309e7e29a)
+        ;
+
+        
+    
+    
+            circle_marker_ad8e1959f6ce2ece6bfee1e7badbaeb6.bindTooltip(
+                `<div>
+                     #19 Notodden (kommune) – 24
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_378404a4e9aa3913e647ea1fba130582 = L.circleMarker(
+                [59.456665, 9.15564],
+                {"bubblingMouseEvents": true, "color": "#555", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+        
+    
+        var popup_aace3db22ce9988416e9593414613aac = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_e54da695ad4ce604895ee6927f9a5060 = $(`<div id="html_e54da695ad4ce604895ee6927f9a5060" style="width: 100.0%; height: 100.0%;"><div style='max-height:320px;overflow:auto;font-size:12px'><table><tr><td><b>id</b></td><td>k4020 </td></tr><tr><td><b>navn</b></td><td>Midt-Telemark </td></tr><tr><td><b>type</b></td><td>kommune </td></tr><tr><td><b>kommunenr</b></td><td>4020 </td></tr><tr><td><b>kommune</b></td><td>Midt-Telemark </td></tr><tr><td><b>lat</b></td><td>59.46 </td></tr><tr><td><b>lon</b></td><td>9.16 </td></tr><tr><td><b>loc_source</b></td><td>DTM-høydebånd 600–1100 moh, 261 celler; snappet til vei (357 m) </td></tr><tr><td><b>air_km</b></td><td>105.59 </td></tr><tr><td><b>mountain_cabins</b></td><td>693 </td></tr><tr><td><b>drive_min</b></td><td>157.94 min</td></tr><tr><td><b>drive_km</b></td><td>138.39 </td></tr><tr><td><b>snap_m</b></td><td>0 </td></tr><tr><td><b>elevation_m</b></td><td>536.71 moh</td></tr><tr><td><b>elevation_source</b></td><td>Kartverket hoydedata </td></tr><tr><td><b>drive_min_winter</b></td><td>181.63 min</td></tr><tr><td><b>sales_pooled</b></td><td>88 antall</td></tr><tr><td><b>sales_last_year</b></td><td>44 antall</td></tr><tr><td><b>avg_price_nok</b></td><td>1,689,477 NOK</td></tr><tr><td><b>tax_cabins_total_1000</b></td><td>4,007 1000 NOK</td></tr><tr><td><b>tax_exempt_cabins</b></td><td>0 1/0</td></tr><tr><td><b>tax_has</b></td><td>1 </td></tr><tr><td><b>tax_rate_permille</b></td><td>5.6 ‰</td></tr><tr><td><b>tax_rate_residential_permille</b></td><td>4 </td></tr><tr><td><b>villrein_cabins</b></td><td>0 antall</td></tr><tr><td><b>ski_season_days</b></td><td>66.28 dager/år</td></tr><tr><td><b>swe_max_mm</b></td><td>162.5 mm</td></tr><tr><td><b>ski_season_change_2041_2070_rcp45</b></td><td>-29.73 dager/år</td></tr><tr><td><b>ski_season_proj_2041_2070</b></td><td>36.55 dager/år</td></tr><tr><td><b>osm_ok</b></td><td>True </td></tr><tr><td><b>eat_5km</b></td><td>4 antall</td></tr><tr><td><b>eat_15km</b></td><td>32 antall</td></tr><tr><td><b>gathering_5km</b></td><td>1 antall</td></tr><tr><td><b>gathering_15km</b></td><td>15 </td></tr><tr><td><b>ev_5km</b></td><td>0 </td></tr><tr><td><b>ev_15km</b></td><td>13 </td></tr><tr><td><b>nearest_eat_km</b></td><td>4.53 km</td></tr><tr><td><b>nearest_gathering_km</b></td><td>4.65 </td></tr><tr><td><b>nearest_grocery_km</b></td><td>6.83 km</td></tr><tr><td><b>nearest_vinmonopol_km</b></td><td>6.94 km</td></tr><tr><td><b>nearest_pharmacy_km</b></td><td>6.94 km</td></tr><tr><td><b>nearest_doctor_km</b></td><td>4.61 km</td></tr><tr><td><b>nearest_fuel_km</b></td><td>5.87 km</td></tr><tr><td><b>nearest_ev_km</b></td><td>6.91 km</td></tr><tr><td><b>nearest_alpine_km</b></td><td>6.82 km</td></tr><tr><td><b>nearest_main_road_km</b></td><td>3.78 km</td></tr><tr><td><b>grocery_5km</b></td><td>0 </td></tr><tr><td><b>ev_charging_15km</b></td><td>13 antall</td></tr><tr><td><b>nearest_grocery_name</b></td><td>Extra Bø </td></tr><tr><td><b>nearest_grocery_weekend_open</b></td><td>True bool</td></tr><tr><td><b>eat_names</b></td><td>Go&#x27;biten Leikeland; Parkkjøkken Flow Rider; Parkkjøkken Leikeland; Parkkjøkken Vannland </td></tr><tr><td><b>osm_lines_ok</b></td><td>True </td></tr><tr><td><b>nordic_km_10km</b></td><td>27.2 km</td></tr><tr><td><b>nordic_nearest_km</b></td><td>7.01 </td></tr><tr><td><b>nordic_direct_access</b></td><td>False bool</td></tr><tr><td><b>dnt_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>dnt_routes_n</b></td><td>0 </td></tr><tr><td><b>winter_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>marked_routes_km_15km</b></td><td>0 km</td></tr><tr><td><b>slope_25_40_share</b></td><td>0.06 andel</td></tr><tr><td><b>relief_to_1000m_peak_m</b></td><td>549.02 m</td></tr><tr><td><b>dist_to_1000m_peak_km</b></td><td>10 km</td></tr><tr><td><b>avalanche_zone_share_of_steep</b></td><td>0.77 andel</td></tr><tr><td><b>terrain_elev_p90_m</b></td><td>586.11 </td></tr><tr><td><b>usikker</b></td><td>False </td></tr><tr><td><b>Snø</b></td><td>0.06 </td></tr><tr><td><b>value_price_per_snow</b></td><td>26,750,057 NOK/poeng</td></tr><tr><td><b>trail_offer_km</b></td><td>27.2 </td></tr><tr><td><b>value_price_per_trail</b></td><td>62,113 NOK/km</td></tr><tr><td><b>Verdi</b></td><td>0.05 </td></tr><tr><td><b>Rando</b></td><td>0.5 </td></tr><tr><td><b>Praktisk</b></td><td>0.5 </td></tr><tr><td><b>Kjøretid</b></td><td>0.16 </td></tr><tr><td><b>score</b></td><td>20.9 </td></tr><tr><td><b>rank</b></td><td>20 </td></tr></table></div></div>`)[0];
+                popup_aace3db22ce9988416e9593414613aac.setContent(html_e54da695ad4ce604895ee6927f9a5060);
+            
+        
+
+        circle_marker_378404a4e9aa3913e647ea1fba130582.bindPopup(popup_aace3db22ce9988416e9593414613aac)
+        ;
+
+        
+    
+    
+            circle_marker_378404a4e9aa3913e647ea1fba130582.bindTooltip(
+                `<div>
+                     #20 Midt-Telemark (kommune) – 21
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_d42c8b61eab2be42e11c0761a71f101c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_4cbcd772098eac5de57545e0ea0030cb = L.circleMarker(
+                [60.549055, 9.056927],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_4cbcd772098eac5de57545e0ea0030cb.bindTooltip(
+                `<div>
+                     Nesbyen: kjøretid 182 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4487688df48900da8758f62d510c4afc = L.circleMarker(
+                [60.748014, 9.012275],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_4487688df48900da8758f62d510c4afc.bindTooltip(
+                `<div>
+                     Gol: kjøretid 196 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97afb9f74f82da0b4338f62f0c6658fa = L.circleMarker(
+                [60.878607, 8.561678],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_97afb9f74f82da0b4338f62f0c6658fa.bindTooltip(
+                `<div>
+                     Hemsedal: kjøretid 217 min > 165; snittpris 5.7 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2d5070f1a15fc2e6e464514165e015df = L.circleMarker(
+                [60.649727, 8.542864],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_2d5070f1a15fc2e6e464514165e015df.bindTooltip(
+                `<div>
+                     Ål: kjøretid 213 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c6a3a263ce366b2d1aec2e60b7b33cea = L.circleMarker(
+                [60.556695, 8.201237],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_c6a3a263ce366b2d1aec2e60b7b33cea.bindTooltip(
+                `<div>
+                     Hol: kjøretid 226 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95ff5ad0713749a68d4064282515ac1d = L.circleMarker(
+                [60.321254, 8.811231],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_95ff5ad0713749a68d4064282515ac1d.bindTooltip(
+                `<div>
+                     Nore og Uvdal: kjøretid 202 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15dea9bd7061fe4c8b9e0d3e3acbab02 = L.circleMarker(
+                [61.127113, 10.353268],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_15dea9bd7061fe4c8b9e0d3e3acbab02.bindTooltip(
+                `<div>
+                     Lillehammer: kjøretid 171 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a0748526b1facd1db3ab333a8f893d03 = L.circleMarker(
+                [61.413418, 12.251463],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_a0748526b1facd1db3ab333a8f893d03.bindTooltip(
+                `<div>
+                     Trysil: kjøretid 213 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b2e623325cb1512597a7c464befd9b0 = L.circleMarker(
+                [61.295701, 11.501943],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9b2e623325cb1512597a7c464befd9b0.bindTooltip(
+                `<div>
+                     Åmot: kjøretid 184 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9ba447c6a8ed5e96a50db9e6b531b79a = L.circleMarker(
+                [61.614931, 10.737159],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9ba447c6a8ed5e96a50db9e6b531b79a.bindTooltip(
+                `<div>
+                     Stor-Elvdal: kjøretid 227 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_08f994ad5780247acce657a52140b763 = L.circleMarker(
+                [61.565532, 9.491595],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_08f994ad5780247acce657a52140b763.bindTooltip(
+                `<div>
+                     Nord-Fron: kjøretid 255 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0ec42bcabc2f835f0adfc1c83910f134 = L.circleMarker(
+                [61.524292, 9.793135],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_0ec42bcabc2f835f0adfc1c83910f134.bindTooltip(
+                `<div>
+                     Sør-Fron: kjøretid 237 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e895346c8bdec78b33d46e138d0a8d1 = L.circleMarker(
+                [61.557097, 10.325148],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_7e895346c8bdec78b33d46e138d0a8d1.bindTooltip(
+                `<div>
+                     Ringebu: kjøretid 218 min > 165; snittpris 5.2 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3321072ecd15a7b749b3245ec7fc5ee0 = L.circleMarker(
+                [61.328602, 10.56246],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_3321072ecd15a7b749b3245ec7fc5ee0.bindTooltip(
+                `<div>
+                     Øyer: kjøretid 189 min > 165; snittpris 6.9 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aff26aa607fa61018cfe901b71042b01 = L.circleMarker(
+                [61.281575, 9.870837],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_aff26aa607fa61018cfe901b71042b01.bindTooltip(
+                `<div>
+                     Gausdal: kjøretid 221 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_01b1d180a2621eb2c92a24ae028a05a8 = L.circleMarker(
+                [60.96373, 9.934798],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_01b1d180a2621eb2c92a24ae028a05a8.bindTooltip(
+                `<div>
+                     Nordre Land: kjøretid 182 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9367b162cdb75520bda52b1e7f954c38 = L.circleMarker(
+                [60.688576, 9.590024],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9367b162cdb75520bda52b1e7f954c38.bindTooltip(
+                `<div>
+                     Sør-Aurdal: kjøretid 166 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0b76c45e1879c630eb357f1fa262b147 = L.circleMarker(
+                [60.983358, 9.631802],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_0b76c45e1879c630eb357f1fa262b147.bindTooltip(
+                `<div>
+                     Etnedal: kjøretid 208 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_330bda62ce9aa5b95671d5c0d168b8a7 = L.circleMarker(
+                [60.979743, 9.295885],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_330bda62ce9aa5b95671d5c0d168b8a7.bindTooltip(
+                `<div>
+                     Nord-Aurdal: kjøretid 184 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3f443e74c61ef9d868cf8c7d5b710007 = L.circleMarker(
+                [61.026872, 8.871942],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_3f443e74c61ef9d868cf8c7d5b710007.bindTooltip(
+                `<div>
+                     Vestre Slidre: kjøretid 220 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e6d077b48fd850a7a74a50ee5bd02cfb = L.circleMarker(
+                [61.20744, 9.142801],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_e6d077b48fd850a7a74a50ee5bd02cfb.bindTooltip(
+                `<div>
+                     Øystre Slidre: kjøretid 225 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_27b73a2ab338d8d39777c61dcbebb86e = L.circleMarker(
+                [61.189841, 8.528493],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_27b73a2ab338d8d39777c61dcbebb86e.bindTooltip(
+                `<div>
+                     Vang: kjøretid 252 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7d93f903bce63514e47a3fec00fd8cca = L.circleMarker(
+                [59.598059, 8.478602],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_7d93f903bce63514e47a3fec00fd8cca.bindTooltip(
+                `<div>
+                     Seljord: kjøretid 175 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3101f5360e094c019e376b2829d4f6a3 = L.circleMarker(
+                [59.705379, 8.684631],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_3101f5360e094c019e376b2829d4f6a3.bindTooltip(
+                `<div>
+                     Hjartdal: kjøretid 182 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bb31bc1b2c554924982edcf4ba76be64 = L.circleMarker(
+                [59.971913, 8.68359],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_bb31bc1b2c554924982edcf4ba76be64.bindTooltip(
+                `<div>
+                     Tinn: kjøretid 175 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9d6829e8a1652f70304aadab8e1a2fd4 = L.circleMarker(
+                [59.141331, 8.533435],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9d6829e8a1652f70304aadab8e1a2fd4.bindTooltip(
+                `<div>
+                     Nissedal: kjøretid 223 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_81eccdcc6f81853cf5b4d045fb977696 = L.circleMarker(
+                [59.164217, 8.023029],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_81eccdcc6f81853cf5b4d045fb977696.bindTooltip(
+                `<div>
+                     Fyresdal: kjøretid 247 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_04f0717fe10c9d6fb5d67f392bf02574 = L.circleMarker(
+                [59.463155, 7.954466],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_04f0717fe10c9d6fb5d67f392bf02574.bindTooltip(
+                `<div>
+                     Tokke: kjøretid 222 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7694c549ef2bb5ff08c8dab86b7123dd = L.circleMarker(
+                [59.751735, 7.814339],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_7694c549ef2bb5ff08c8dab86b7123dd.bindTooltip(
+                `<div>
+                     Vinje: kjøretid 225 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9a768b9ecb142c9873cc4718e2c88f4c = L.circleMarker(
+                [60.421201, 7.218432],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9a768b9ecb142c9873cc4718e2c88f4c.bindTooltip(
+                `<div>
+                     Eidfjord: kjøretid 299 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b4dfcc73b42b6f3bf5b0f38ef3f4937 = L.circleMarker(
+                [61.050482, 7.602066],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_4b4dfcc73b42b6f3bf5b0f38ef3f4937.bindTooltip(
+                `<div>
+                     Lærdal: kjøretid 277 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_68811c4c926b59408966b718e3bea030 = L.circleMarker(
+                [61.3507719, 10.0884721],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_68811c4c926b59408966b718e3bea030.bindTooltip(
+                `<div>
+                     Skeikampen: kjøretid 192 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f07a3a12964687c64ab97dfb0679aacc = L.circleMarker(
+                [61.234578, 10.446579],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_f07a3a12964687c64ab97dfb0679aacc.bindTooltip(
+                `<div>
+                     Hafjell: kjøretid 167 min > 165; snittpris 6.9 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_130d41d69f03737c3669320c8250a794 = L.circleMarker(
+                [61.4726217, 10.1666899],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_130d41d69f03737c3669320c8250a794.bindTooltip(
+                `<div>
+                     Kvitfjell: kjøretid 202 min > 165; snittpris 5.2 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c504c11657b6b6d1ba6aedae8413e868 = L.circleMarker(
+                [61.5058146, 9.7847118],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_c504c11657b6b6d1ba6aedae8413e868.bindTooltip(
+                `<div>
+                     Gålå: kjøretid 230 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85e0b66edfed059f680e5b67f2bd7557 = L.circleMarker(
+                [60.8266807, 8.9874011],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_85e0b66edfed059f680e5b67f2bd7557.bindTooltip(
+                `<div>
+                     Golsfjellet: kjøretid 202 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4274be0acf47b7d999b2e94ae4c3f87d = L.circleMarker(
+                [60.5337182, 8.2089732],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_4274be0acf47b7d999b2e94ae4c3f87d.bindTooltip(
+                `<div>
+                     Geilo: kjøretid 220 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_00320e046c4cc190afcb2c01641b2b4b = L.circleMarker(
+                [59.880244, 8.733849],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_00320e046c4cc190afcb2c01641b2b4b.bindTooltip(
+                `<div>
+                     Gaustablikk: kjøretid 180 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd62a5643d9ad574553962eff54dad01 = L.circleMarker(
+                [61.2487161, 8.9062594],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_dd62a5643d9ad574553962eff54dad01.bindTooltip(
+                `<div>
+                     Beitostølen: kjøretid 229 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4510488301ab8e10e37a1cbc9f93f0d8 = L.circleMarker(
+                [60.8511315, 8.4901722],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_4510488301ab8e10e37a1cbc9f93f0d8.bindTooltip(
+                `<div>
+                     Hemsedal: kjøretid 216 min > 165; snittpris 5.7 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b447f4dd966a47d878339fb982ea399f = L.circleMarker(
+                [61.3080068, 12.1727681],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_b447f4dd966a47d878339fb982ea399f.bindTooltip(
+                `<div>
+                     Trysilfjellet: kjøretid 204 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d3f3e70e713cf14a328f5b468b895dab = L.circleMarker(
+                [62.3113109, 10.528948],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_d3f3e70e713cf14a328f5b468b895dab.bindTooltip(
+                `<div>
+                     Savalen: kjøretid 302 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_44904555abd37148147d0cf71b450ecb = L.circleMarker(
+                [60.2986052, 8.5303394],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_44904555abd37148147d0cf71b450ecb.bindTooltip(
+                `<div>
+                     Uvdal: kjøretid 207 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_03b5a54ab78de84dab0f2a8a234844af = L.circleMarker(
+                [60.8694254, 9.2183715],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_03b5a54ab78de84dab0f2a8a234844af.bindTooltip(
+                `<div>
+                     Tisleidalen: kjøretid 190 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bb9a65bee78cd0e1d3461569a3a6e7cb = L.circleMarker(
+                [61.6504424, 10.1101658],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_bb9a65bee78cd0e1d3461569a3a6e7cb.bindTooltip(
+                `<div>
+                     Venabu: kjøretid 224 min > 165; snittpris 5.2 mill > 5.07 mill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b7b77706722ee56dbbbedf8d5fce2ea = L.circleMarker(
+                [61.4828067, 9.014363],
+                {"bubblingMouseEvents": true, "color": "#888", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#888", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d42c8b61eab2be42e11c0761a71f101c);
+        
+    
+            circle_marker_9b7b77706722ee56dbbbedf8d5fce2ea.bindTooltip(
+                `<div>
+                     Sikkilsdalen: kjøretid 290 min > 165
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+    var color_map_a473fdcab8b42448951bb50539627e33 = {};
+
+    
+    color_map_a473fdcab8b42448951bb50539627e33.color = d3.scale.threshold()
+              .domain([20.895036310548775, 21.003074502677585, 21.111112694806398, 21.219150886935207, 21.32718907906402, 21.43522727119283, 21.543265463321642, 21.65130365545045, 21.759341847579265, 21.867380039708074, 21.975418231836887, 22.083456423965696, 22.19149461609451, 22.29953280822332, 22.407571000352128, 22.51560919248094, 22.62364738460975, 22.731685576738563, 22.839723768867373, 22.947761960996186, 23.055800153124995, 23.163838345253808, 23.271876537382617, 23.37991472951143, 23.48795292164024, 23.595991113769053, 23.704029305897862, 23.81206749802667, 23.920105690155484, 24.028143882284294, 24.136182074413107, 24.244220266541916, 24.35225845867073, 24.46029665079954, 24.56833484292835, 24.67637303505716, 24.784411227185974, 24.892449419314783, 25.000487611443596, 25.108525803572405, 25.216563995701215, 25.324602187830028, 25.43264037995884, 25.54067857208765, 25.64871676421646, 25.756754956345272, 25.86479314847408, 25.972831340602895, 26.080869532731704, 26.188907724860513, 26.296945916989326, 26.40498410911814, 26.51302230124695, 26.621060493375758, 26.72909868550457, 26.83713687763338, 26.945175069762193, 27.053213261891003, 27.161251454019816, 27.269289646148625, 27.377327838277438, 27.485366030406247, 27.59340422253506, 27.70144241466387, 27.809480606792683, 27.917518798921492, 28.0255569910503, 28.133595183179114, 28.241633375307927, 28.349671567436737, 28.457709759565546, 28.56574795169436, 28.67378614382317, 28.78182433595198, 28.88986252808079, 28.9979007202096, 29.105938912338413, 29.213977104467226, 29.322015296596035, 29.430053488724845, 29.538091680853658, 29.64612987298247, 29.75416806511128, 29.86220625724009, 29.970244449368902, 30.07828264149771, 30.186320833626525, 30.294359025755334, 30.402397217884143, 30.510435410012956, 30.61847360214177, 30.72651179427058, 30.834549986399388, 30.9425881785282, 31.050626370657014, 31.158664562785823, 31.266702754914633, 31.374740947043442, 31.482779139172255, 31.590817331301068, 31.698855523429877, 31.806893715558687, 31.9149319076875, 32.02297009981631, 32.13100829194512, 32.23904648407393, 32.34708467620274, 32.45512286833156, 32.56316106046037, 32.671199252589176, 32.779237444717985, 32.887275636846795, 32.99531382897561, 33.10335202110442, 33.21139021323323, 33.319428405362046, 33.427466597490856, 33.535504789619665, 33.643542981748475, 33.751581173877284, 33.8596193660061, 33.96765755813491, 34.07569575026372, 34.183733942392536, 34.291772134521345, 34.399810326650154, 34.507848518778964, 34.61588671090777, 34.72392490303659, 34.8319630951654, 34.94000128729421, 35.04803947942302, 35.15607767155183, 35.264115863680644, 35.37215405580945, 35.48019224793826, 35.58823044006708, 35.69626863219588, 35.8043068243247, 35.91234501645351, 36.02038320858232, 36.12842140071113, 36.23645959283994, 36.34449778496875, 36.45253597709756, 36.56057416922637, 36.66861236135519, 36.776650553484, 36.884688745612806, 36.99272693774162, 37.100765129870425, 37.20880332199924, 37.31684151412805, 37.42487970625686, 37.532917898385676, 37.640956090514486, 37.748994282643295, 37.85703247477211, 37.965070666900914, 38.07310885902973, 38.18114705115854, 38.28918524328735, 38.397223435416166, 38.50526162754497, 38.613299819673784, 38.721338011802594, 38.8293762039314, 38.93741439606022, 39.04545258818903, 39.15349078031784, 39.26152897244665, 39.36956716457546, 39.477605356704274, 39.58564354883308, 39.69368174096189, 39.80171993309071, 39.90975812521951, 40.01779631734833, 40.12583450947714, 40.23387270160595, 40.34191089373476, 40.449949085863565, 40.55798727799238, 40.66602547012119, 40.77406366225, 40.88210185437882, 40.990140046507626, 41.098178238636436, 41.20621643076525, 41.314254622894055, 41.42229281502287, 41.53033100715168, 41.63836919928049, 41.746407391409306, 41.85444558353811, 41.962483775666925, 42.070521967795734, 42.178560159924544, 42.28659835205336, 42.39463654418217, 42.50267473631098, 42.610712928439796, 42.7187511205686, 42.826789312697414, 42.934827504826224, 43.04286569695503, 43.15090388908385, 43.25894208121265, 43.36698027334147, 43.47501846547028, 43.58305665759909, 43.691094849727904, 43.79913304185671, 43.90717123398552, 44.01520942611434, 44.12324761824315, 44.23128581037196, 44.33932400250077, 44.44736219462958, 44.55540038675839, 44.663438578887195, 44.77147677101601, 44.87951496314482, 44.98755315527363, 45.09559134740245, 45.203629539531256, 45.311667731660066, 45.419705923788875, 45.527744115917685, 45.6357823080465, 45.74382050017531, 45.85185869230412, 45.959896884432936, 46.06793507656174, 46.175973268690555, 46.28401146081937, 46.392049652948174, 46.50008784507699, 46.6081260372058, 46.71616422933461, 46.82420242146342, 46.93224061359223, 47.040278805721044, 47.148316997849854, 47.25635518997866, 47.36439338210748, 47.47243157423629, 47.5804697663651, 47.688507958493915, 47.79654615062272, 47.904584342751534, 48.012622534880336, 48.12066072700915, 48.22869891913796, 48.33673711126677, 48.44477530339559, 48.5528134955244, 48.66085168765321, 48.76888987978202, 48.87692807191083, 48.98496626403964, 49.09300445616846, 49.20104264829726, 49.30908084042608, 49.41711903255488, 49.525157224683696, 49.633195416812505, 49.741233608941315, 49.84927180107013, 49.95730999319894, 50.06534818532775, 50.173386377456566, 50.281424569585376, 50.389462761714185, 50.497500953842994, 50.605539145971804, 50.71357733810062, 50.82161553022942, 50.92965372235824, 51.037691914487056, 51.14573010661586, 51.253768298744674, 51.361806490873484, 51.46984468300229, 51.57788287513111, 51.68592106725992, 51.79395925938873, 51.90199745151754, 52.01003564364635, 52.118073835775164, 52.22611202790397, 52.33415022003278, 52.4421884121616, 52.5502266042904, 52.65826479641922, 52.76630298854803, 52.874341180676836, 52.982379372805646, 53.09041756493446, 53.19845575706327, 53.30649394919208, 53.4145321413209, 53.52257033344971, 53.630608525578516, 53.738646717707326, 53.846684909836135, 53.95472310196495, 54.06276129409376, 54.17079948622257, 54.27883767835138, 54.386875870480196, 54.494914062609006, 54.602952254737815, 54.71099044686663, 54.81902863899544, 54.92706683112424, 55.03510502325305, 55.14314321538187, 55.25118140751068, 55.35921959963949, 55.467257791768304, 55.575295983897114, 55.68333417602592, 55.79137236815473, 55.89941056028355, 56.00744875241236, 56.11548694454117, 56.22352513666998, 56.331563328798794, 56.4396015209276, 56.54763971305641, 56.65567790518523, 56.76371609731404, 56.87175428944285, 56.97979248157166, 57.08783067370047, 57.19586886582928, 57.30390705795809, 57.411945250086895, 57.51998344221571, 57.62802163434452, 57.73605982647333, 57.844098018602146, 57.952136210730956, 58.060174402859765, 58.168212594988574, 58.27625078711739, 58.3842889792462, 58.49232717137501, 58.60036536350382, 58.708403555632636, 58.816441747761445, 58.924479939890254, 59.03251813201907, 59.14055632414788, 59.24859451627669, 59.3566327084055, 59.464670900534315, 59.572709092663125, 59.680747284791934, 59.788785476920744, 59.89682366904955, 60.00486186117836, 60.11290005330717, 60.22093824543599, 60.3289764375648, 60.43701462969361, 60.545052821822416, 60.65309101395123, 60.76112920608004, 60.86916739820885, 60.97720559033766, 61.08524378246648, 61.19328197459529, 61.301320166724096, 61.40935835885291, 61.51739655098172, 61.62543474311053, 61.73347293523934, 61.84151112736816, 61.94954931949697, 62.057587511625776, 62.165625703754586, 62.2736638958834, 62.381702088012204, 62.489740280141014, 62.59777847226983, 62.70581666439864, 62.81385485652745, 62.92189304865626, 63.029931240785075, 63.137969432913884, 63.246007625042694, 63.3540458171715, 63.46208400930032, 63.57012220142913, 63.67816039355794, 63.786198585686755, 63.894236777815564, 64.00227496994438, 64.11031316207318, 64.218351354202, 64.3263895463308, 64.43442773845962, 64.54246593058843, 64.65050412271725, 64.75854231484605, 64.86658050697486, 64.97461869910367, 65.08265689123249, 65.19069508336129, 65.2987332754901, 65.40677146761891, 65.51480965974773, 65.62284785187654, 65.73088604400535, 65.83892423613416, 65.94696242826296, 66.05500062039178, 66.1630388125206, 66.27107700464941, 66.37911519677822, 66.48715338890702, 66.59519158103583, 66.70322977316465, 66.81126796529347, 66.91930615742227, 67.02734434955109, 67.13538254167989, 67.2434207338087, 67.35145892593752, 67.45949711806632, 67.56753531019513, 67.67557350232394, 67.78361169445276, 67.89164988658158, 67.99968807871038, 68.10772627083918, 68.215764462968, 68.32380265509681, 68.43184084722563, 68.53987903935445, 68.64791723148325, 68.75595542361205, 68.86399361574087, 68.97203180786968, 69.0800699999985, 69.1881081921273, 69.2961463842561, 69.40418457638492, 69.51222276851374, 69.62026096064255, 69.72829915277137, 69.83633734490017, 69.94437553702898, 70.05241372915779, 70.16045192128661, 70.26849011341541, 70.37652830554421, 70.48456649767303, 70.59260468980185, 70.70064288193066, 70.80868107405946, 70.91671926618828, 71.02475745831708, 71.1327956504459, 71.24083384257472, 71.34887203470353, 71.45691022683233, 71.56494841896114, 71.67298661108995, 71.78102480321877, 71.88906299534759, 71.99710118747639, 72.1051393796052, 72.21317757173401, 72.32121576386282, 72.42925395599163, 72.53729214812044, 72.64533034024925, 72.75336853237806, 72.86140672450688, 72.9694449166357, 73.0774831087645, 73.1855213008933, 73.29355949302212, 73.40159768515093, 73.50963587727975, 73.61767406940855, 73.72571226153737, 73.83375045366617, 73.94178864579499, 74.0498268379238, 74.15786503005262, 74.26590322218142, 74.37394141431022, 74.48197960643904, 74.59001779856786, 74.69805599069667, 74.80609418282548])
+              .range(['#d73027ff', '#d73027ff', '#d83127ff', '#d83228ff', '#d83328ff', '#d83329ff', '#d83429ff', '#d83529ff', '#d9352aff', '#d9362aff', '#d9372bff', '#d9372bff', '#d9382bff', '#d9392cff', '#da3a2cff', '#da3a2dff', '#da3b2dff', '#da3c2dff', '#da3c2eff', '#da3d2eff', '#da3e2fff', '#db3f2fff', '#db3f30ff', '#db4030ff', '#db4130ff', '#db4131ff', '#db4231ff', '#dc4332ff', '#dc4432ff', '#dc4432ff', '#dc4533ff', '#dc4633ff', '#dc4634ff', '#dd4734ff', '#dd4834ff', '#dd4835ff', '#dd4935ff', '#dd4a36ff', '#dd4b36ff', '#dd4b36ff', '#de4c37ff', '#de4d37ff', '#de4d38ff', '#de4e38ff', '#de4f38ff', '#de5039ff', '#df5039ff', '#df513aff', '#df523aff', '#df523aff', '#df533bff', '#df543bff', '#e0553cff', '#e0553cff', '#e0563cff', '#e0573dff', '#e0573dff', '#e0583eff', '#e0593eff', '#e1593eff', '#e15a3fff', '#e15b3fff', '#e15c40ff', '#e15c40ff', '#e15d40ff', '#e25e41ff', '#e25e41ff', '#e25f42ff', '#e26042ff', '#e26142ff', '#e26143ff', '#e26243ff', '#e36344ff', '#e36344ff', '#e36444ff', '#e36545ff', '#e36645ff', '#e36646ff', '#e46746ff', '#e46846ff', '#e46847ff', '#e46947ff', '#e46a48ff', '#e46a48ff', '#e56b48ff', '#e56c49ff', '#e56d49ff', '#e56d4aff', '#e56e4aff', '#e56f4aff', '#e56f4bff', '#e6704bff', '#e6714cff', '#e6724cff', '#e6724cff', '#e6734dff', '#e6744dff', '#e7744eff', '#e7754eff', '#e7764eff', '#e7774fff', '#e7774fff', '#e77850ff', '#e87950ff', '#e87950ff', '#e87a51ff', '#e87b51ff', '#e87b52ff', '#e87c52ff', '#e87d53ff', '#e97e53ff', '#e97e53ff', '#e97f54ff', '#e98054ff', '#e98055ff', '#e98155ff', '#ea8255ff', '#ea8356ff', '#ea8356ff', '#ea8457ff', '#ea8557ff', '#ea8557ff', '#ea8658ff', '#eb8758ff', '#eb8859ff', '#eb8859ff', '#eb8959ff', '#eb8a5aff', '#eb8a5aff', '#ec8b5bff', '#ec8c5bff', '#ec8c5bff', '#ec8d5cff', '#ec8e5cff', '#ec8f5dff', '#ed8f5dff', '#ed905dff', '#ed915eff', '#ed915eff', '#ed925fff', '#ed935fff', '#ed945fff', '#ee9460ff', '#ee9560ff', '#ee9661ff', '#ee9661ff', '#ee9761ff', '#ee9862ff', '#ef9862ff', '#ef9963ff', '#ef9a63ff', '#ef9b63ff', '#ef9b64ff', '#ef9c64ff', '#f09d65ff', '#f09d65ff', '#f09e65ff', '#f09f66ff', '#f0a066ff', '#f0a067ff', '#f0a167ff', '#f1a267ff', '#f1a268ff', '#f1a368ff', '#f1a469ff', '#f1a569ff', '#f1a569ff', '#f2a66aff', '#f2a76aff', '#f2a76bff', '#f2a86bff', '#f2a96bff', '#f2a96cff', '#f2aa6cff', '#f3ab6dff', '#f3ac6dff', '#f3ac6dff', '#f3ad6eff', '#f3ae6eff', '#f3ae6fff', '#f4af6fff', '#f4b06fff', '#f4b170ff', '#f4b170ff', '#f4b271ff', '#f4b371ff', '#f5b371ff', '#f5b472ff', '#f5b572ff', '#f5b673ff', '#f5b673ff', '#f5b774ff', '#f5b874ff', '#f6b874ff', '#f6b975ff', '#f6ba75ff', '#f6ba76ff', '#f6bb76ff', '#f6bc76ff', '#f7bd77ff', '#f7bd77ff', '#f7be78ff', '#f7bf78ff', '#f7bf78ff', '#f7c079ff', '#f8c179ff', '#f8c27aff', '#f8c27aff', '#f8c37aff', '#f8c47bff', '#f8c47bff', '#f8c57cff', '#f9c67cff', '#f9c77cff', '#f9c77dff', '#f9c87dff', '#f9c97eff', '#f9c97eff', '#faca7eff', '#facb7fff', '#facb7fff', '#facc80ff', '#facd80ff', '#face80ff', '#face81ff', '#fbcf81ff', '#fbd082ff', '#fbd082ff', '#fbd182ff', '#fbd283ff', '#fbd383ff', '#fcd384ff', '#fcd484ff', '#fcd584ff', '#fcd585ff', '#fcd685ff', '#fcd786ff', '#fdd886ff', '#fdd886ff', '#fdd987ff', '#fdda87ff', '#fdda88ff', '#fddb88ff', '#fddc88ff', '#fedc89ff', '#fedd89ff', '#fede8aff', '#fedf8aff', '#fedf8aff', '#fee08bff', '#fee08bff', '#fde08bff', '#fce08aff', '#fbdf8aff', '#fadf8aff', '#f9df8aff', '#f9de8aff', '#f8de89ff', '#f7de89ff', '#f6de89ff', '#f5dd89ff', '#f4dd88ff', '#f3dd88ff', '#f2dc88ff', '#f1dc88ff', '#f0dc87ff', '#efdc87ff', '#eedb87ff', '#eedb87ff', '#eddb86ff', '#ecda86ff', '#ebda86ff', '#eada86ff', '#e9da85ff', '#e8d985ff', '#e7d985ff', '#e6d985ff', '#e5d885ff', '#e4d884ff', '#e3d884ff', '#e3d884ff', '#e2d784ff', '#e1d783ff', '#e0d783ff', '#dfd683ff', '#ded683ff', '#ddd682ff', '#dcd682ff', '#dbd582ff', '#dad582ff', '#d9d581ff', '#d8d481ff', '#d8d481ff', '#d7d481ff', '#d6d380ff', '#d5d380ff', '#d4d380ff', '#d3d380ff', '#d2d280ff', '#d1d27fff', '#d0d27fff', '#cfd17fff', '#ced17fff', '#cdd17eff', '#ccd17eff', '#ccd07eff', '#cbd07eff', '#cad07dff', '#c9cf7dff', '#c8cf7dff', '#c7cf7dff', '#c6cf7cff', '#c5ce7cff', '#c4ce7cff', '#c3ce7cff', '#c2cd7bff', '#c1cd7bff', '#c1cd7bff', '#c0cd7bff', '#bfcc7bff', '#becc7aff', '#bdcc7aff', '#bccb7aff', '#bbcb7aff', '#bacb79ff', '#b9cb79ff', '#b8ca79ff', '#b7ca79ff', '#b6ca78ff', '#b6c978ff', '#b5c978ff', '#b4c978ff', '#b3c877ff', '#b2c877ff', '#b1c877ff', '#b0c877ff', '#afc777ff', '#aec776ff', '#adc776ff', '#acc676ff', '#abc676ff', '#abc675ff', '#aac675ff', '#a9c575ff', '#a8c575ff', '#a7c574ff', '#a6c474ff', '#a5c474ff', '#a4c474ff', '#a3c473ff', '#a2c373ff', '#a1c373ff', '#a0c373ff', '#a0c272ff', '#9fc272ff', '#9ec272ff', '#9dc272ff', '#9cc172ff', '#9bc171ff', '#9ac171ff', '#99c071ff', '#98c071ff', '#97c070ff', '#96bf70ff', '#95bf70ff', '#95bf70ff', '#94bf6fff', '#93be6fff', '#92be6fff', '#91be6fff', '#90bd6eff', '#8fbd6eff', '#8ebd6eff', '#8dbd6eff', '#8cbc6dff', '#8bbc6dff', '#8abc6dff', '#8abb6dff', '#89bb6dff', '#88bb6cff', '#87bb6cff', '#86ba6cff', '#85ba6cff', '#84ba6bff', '#83b96bff', '#82b96bff', '#81b96bff', '#80b96aff', '#7fb86aff', '#7fb86aff', '#7eb86aff', '#7db769ff', '#7cb769ff', '#7bb769ff', '#7ab769ff', '#79b669ff', '#78b668ff', '#77b668ff', '#76b568ff', '#75b568ff', '#74b567ff', '#74b467ff', '#73b467ff', '#72b467ff', '#71b466ff', '#70b366ff', '#6fb366ff', '#6eb366ff', '#6db265ff', '#6cb265ff', '#6bb265ff', '#6ab265ff', '#69b164ff', '#68b164ff', '#68b164ff', '#67b064ff', '#66b064ff', '#65b063ff', '#64b063ff', '#63af63ff', '#62af63ff', '#61af62ff', '#60ae62ff', '#5fae62ff', '#5eae62ff', '#5dae61ff', '#5dad61ff', '#5cad61ff', '#5bad61ff', '#5aac60ff', '#59ac60ff', '#58ac60ff', '#57ac60ff', '#56ab5fff', '#55ab5fff', '#54ab5fff', '#53aa5fff', '#52aa5fff', '#52aa5eff', '#51a95eff', '#50a95eff', '#4fa95eff', '#4ea95dff', '#4da85dff', '#4ca85dff', '#4ba85dff', '#4aa75cff', '#49a75cff', '#48a75cff', '#47a75cff', '#47a65bff', '#46a65bff', '#45a65bff', '#44a55bff', '#43a55aff', '#42a55aff', '#41a55aff', '#40a45aff', '#3fa45aff', '#3ea459ff', '#3da359ff', '#3ca359ff', '#3ca359ff', '#3ba358ff', '#3aa258ff', '#39a258ff', '#38a258ff', '#37a157ff', '#36a157ff', '#35a157ff', '#34a057ff', '#33a056ff', '#32a056ff', '#31a056ff', '#319f56ff', '#309f56ff', '#2f9f55ff', '#2e9e55ff', '#2d9e55ff', '#2c9e55ff', '#2b9e54ff', '#2a9d54ff', '#299d54ff', '#289d54ff', '#279c53ff', '#269c53ff', '#269c53ff', '#259c53ff', '#249b52ff', '#239b52ff', '#229b52ff', '#219a52ff', '#209a51ff', '#1f9a51ff', '#1e9a51ff', '#1d9951ff', '#1c9951ff', '#1b9950ff', '#1b9850ff', '#1a9850ff']);
+    
+
+    color_map_a473fdcab8b42448951bb50539627e33.x = d3.scale.linear()
+              .domain([20.895036310548775, 74.80609418282548])
+              .range([0, 450 - 50]);
+
+    color_map_a473fdcab8b42448951bb50539627e33.legend = L.control({position: 'topright'});
+    color_map_a473fdcab8b42448951bb50539627e33.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_a473fdcab8b42448951bb50539627e33.legend.addTo(map_c2369815c35670565faf2420d70bb15b);
+
+    color_map_a473fdcab8b42448951bb50539627e33.xAxis = d3.svg.axis()
+        .scale(color_map_a473fdcab8b42448951bb50539627e33.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([20.895036310548775, 47.850565246687125, 74.80609418282548]);
+
+    color_map_a473fdcab8b42448951bb50539627e33.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_a473fdcab8b42448951bb50539627e33.g = color_map_a473fdcab8b42448951bb50539627e33.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_a473fdcab8b42448951bb50539627e33.g.selectAll("rect")
+        .data(color_map_a473fdcab8b42448951bb50539627e33.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_a473fdcab8b42448951bb50539627e33.x(color_map_a473fdcab8b42448951bb50539627e33.color.domain()[i - 1]) : color_map_a473fdcab8b42448951bb50539627e33.x.range()[0],
+            x1: i < color_map_a473fdcab8b42448951bb50539627e33.color.domain().length ? color_map_a473fdcab8b42448951bb50539627e33.x(color_map_a473fdcab8b42448951bb50539627e33.color.domain()[i]) : color_map_a473fdcab8b42448951bb50539627e33.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_a473fdcab8b42448951bb50539627e33.g.call(color_map_a473fdcab8b42448951bb50539627e33.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("Totalscore (0\u2013100, standardvekter)");
+    
+            var layer_control_3ca1e295d3d6de30f105d5e939d31ed7_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_39964a5e1f3c760d81f95e901b578892,
+                },
+                overlays :  {
+                    "Filtrert bort (gr\u00e5)" : feature_group_d42c8b61eab2be42e11c0761a71f101c,
+                },
+            };
+            let layer_control_3ca1e295d3d6de30f105d5e939d31ed7 = L.control.layers(
+                layer_control_3ca1e295d3d6de30f105d5e939d31ed7_layers.base_layers,
+                layer_control_3ca1e295d3d6de30f105d5e939d31ed7_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c2369815c35670565faf2420d70bb15b);
+
+        
+</script>
+</html>

@@ -40,6 +40,10 @@ def _finn_manual(df: pd.DataFrame) -> pd.DataFrame:
 
 def cmd_data(cfg: dict, limit: int | None) -> None:
     from . import osm, rando, snow
+    PROCESSED.mkdir(parents=True, exist_ok=True)
+    meta = pd.DataFrame(VARIABLES, columns=["variabel", "kategori", "enhet", "kilde", "beskrivelse"])
+    meta["hentedato"] = date.today().isoformat()
+    meta.to_csv(PROCESSED / "variables.csv", index=False)
     df = candidates.build(cfg, limit)
     f = cfg["filters"]
     df = df.merge(ssb.price_summary(f["price_years"]), on="kommunenr", how="left")
@@ -61,9 +65,6 @@ def cmd_data(cfg: dict, limit: int | None) -> None:
     ok = rando.add_rando(ok, cfg["params"])
     out = pd.concat([ok, df[~keep]], ignore_index=True)
     out.to_csv(PROCESSED / "areas.csv", index=False)
-    meta = pd.DataFrame(VARIABLES, columns=["variabel", "kategori", "enhet", "kilde", "beskrivelse"])
-    meta["hentedato"] = date.today().isoformat()
-    meta.to_csv(PROCESSED / "variables.csv", index=False)
     logging.info("Skrev %d rader til areas.csv", len(out))
 
 
