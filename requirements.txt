@@ -10,3 +10,4 @@ python-dotenv
 pytest
 pillow
 shapely
+scipy
