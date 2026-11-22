@@ -94,8 +94,10 @@ def cmd_score(cfg: dict) -> None:
 
 
 def cmd_report(cfg: dict) -> None:
-    from . import mapview, report
+    from . import dashboard, findings, mapview, report
     mapview.build(cfg)
+    dashboard.build(cfg)
+    findings.build(cfg)
     report.build(cfg)
 
 

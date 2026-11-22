@@ -30,3 +30,9 @@ def test_seg_length_only_inside_radius():
 def test_bbox_contains_center():
     s, w, n, e = [float(x) for x in osm.bbox(61.0, 10.0, 15).strip("()").split(",")]
     assert s < 61 < n and w < 10 < e
+
+
+def test_seg_length_skips_null_points():
+    geom = [{"lat": 61.0, "lon": 10.0}, None, {"lat": 61.0, "lon": 10.05}, {"lat": 61.0, "lon": 10.06}]
+    assert osm._seg_len_in_radius(geom, 61.0, 10.0, 5) > 0
+    assert osm._min_dist(geom, 61.0, 10.0) == 0

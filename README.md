@@ -1,5 +1,13 @@
 # hytte-finder
 
+![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)
+![Tester](https://img.shields.io/badge/pytest-17%20passed-brightgreen?logo=pytest&logoColor=white)
+![Lisens](https://img.shields.io/badge/kode-MIT-yellow)
+![Data](https://img.shields.io/badge/data-SSB%20%C2%B7%20Kartverket%20%C2%B7%20NVE%2FMET%20%C2%B7%20OSM-informational)
+![Region](https://img.shields.io/badge/region-Norge-red)
+![Status](https://img.shields.io/badge/status-beslutningsst%C3%B8tte-orange)
+![Kart](https://img.shields.io/badge/kart-Leaflet%2Ffolium-green)
+
 Datadrevet rangering av norske fjellområder (kommuner og hyttefelt) for hyttekjøp: snøsikkerhet, pris mot hva man får og praktiske forhold. Utgangspunkt: Holmenkollen, maks 2 t 45 min kjøring, budsjett 3,0–3,9 mill. kr.
 
 > Beslutningsstøtte, ikke finansiell rådgivning. Pris og kjøretid må verifiseres mot aktuelle annonser.
@@ -28,6 +36,8 @@ API-svar caches i `data/cache/`, så reruns er raske. Slett cachen for å hente 
 ## Resultater
 - `output/rapport.md` – topp 10, begrunnelse, profiler, sensitivitet, forbehold, neste steg
 - `output/ranking.csv`, `output/ranking_profiler.csv`, `output/sensitivity.csv`
+- `output/dashboard.html` – enkelt dashboard: sorterbar rangering, kategoriscorer, sensitivitet (åpnes direkte i nettleser)
+- `docs/FINDINGS.md` – funn og forklaring av alle nøkler/kolonner
 - `output/map.html` – Leaflet-kart (farge = score, popup = alle variabler, grå = filtrert bort)
 - `data/processed/areas.csv` – én rad per område med alle variabler; `variables.csv` – enhet, kilde og dato per variabel
 
@@ -40,6 +50,7 @@ data/SOURCES.md    kilder, lisenser, hentedato, utilgjengelige kilder
 ```
 
 ## Datakilder og lisenser
+Koden er MIT-lisensiert (LICENSE). Dataene har egne lisenser.
 SSB (NLOD 2.0), Kartverket (CC BY 4.0), NVE/MET Klima i Norge (åpne data), NVE skredkart, OpenStreetMap (ODbL), OSRM-demoserver. Detaljer i `data/SOURCES.md`. Kartdata © OpenStreetMap-bidragsytere.
 
 ## Kjente svakheter

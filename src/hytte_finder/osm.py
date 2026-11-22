@@ -58,13 +58,15 @@ def query_lines(lat, lon) -> str:
  rel["route"~"^(hiking|foot|ski|skitour)$"]{n};
  way["route"="ski"]{n};
 );
-out geom tags;"""
+out geom{n};"""
 
 
 def _seg_len_in_radius(geom, lat0, lon0, radius_km) -> float:
     """Lengde (km) av polylinje der segmentets midtpunkt ligger innen radius."""
     tot = 0.0
     for p, q in zip(geom, geom[1:]):
+        if p is None or q is None:  # punkt utenfor bbox (out geom(bbox))
+            continue
         mlat, mlon = (p["lat"] + q["lat"]) / 2, (p["lon"] + q["lon"]) / 2
         if haversine_km(lat0, lon0, mlat, mlon) <= radius_km:
             tot += haversine_km(p["lat"], p["lon"], q["lat"], q["lon"])
@@ -72,7 +74,7 @@ def _seg_len_in_radius(geom, lat0, lon0, radius_km) -> float:
 
 
 def _min_dist(geom, lat0, lon0) -> float:
-    return min((haversine_km(lat0, lon0, p["lat"], p["lon"]) for p in geom), default=math.inf)
+    return min((haversine_km(lat0, lon0, p["lat"], p["lon"]) for p in geom if p), default=math.inf)
 
 
 def _center(e):
