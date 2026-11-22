@@ -1,0 +1,97 @@
+# Alt som kan justeres uten å røre kode.
+home:
+  navn: Holmenkollen, Oslo
+  lat: 59.9640
+  lon: 10.6670
+
+# ---- Harde filtre ----
+filters:
+  max_drive_min: 165          # kjøretid (sommer, OSRM) fra Holmenkollen
+  winter_factor: 1.15         # vinterkjøretid = sommer * faktor (anslag, ikke målt)
+  price_min_nok: 3000000      # kjøpers budsjett (kun informasjon, nedre grense filtrerer ikke)
+  price_max_nok: 3900000
+  # SSB gir kun gjennomsnitt (ikke median). Snitt er typisk høyere enn median,
+  # så vi tillater snittpris opp til budsjett * toleranse.
+  price_tolerance: 1.30
+  min_sales_certain: 15       # færre salg siste år => «usikkert»
+  price_years: [2023, 2024, 2025]   # år slått sammen for pris (stabilitet)
+  candidate_radius_km: 200    # luftlinje fra Holmenkollen for kommuner
+  min_mountain_cabins: 300    # kommune må ha >= så mange fritidsbygg over mountain_min_masl (SSB 12511)
+  mountain_min_masl: 600
+  kommune_band_masl: [600, 1100]   # kommune-rad plasseres i tyngdepunktet av arealet i dette høydebåndet (DTM)
+
+# ---- Tekniske parametre ----
+params:
+  snow_radius_km: 5
+  osm_radii_km: [5, 15]
+  terrain_radius_km: 10
+  terrain_resolution_m: 50
+  slope_min_deg: 25
+  slope_max_deg: 40
+  peak_min_masl: 1000
+  normalization: percentile   # percentile | minmax
+  value_snow_floor: 0.05      # unngå deling på 0 i verdi-indeks
+  sensitivity_runs: 1000
+  sensitivity_alpha: 50       # Dirichlet-konsentrasjon (høyere = nærmere standardvekter)
+  random_seed: 42
+
+# ---- Standardvekter (sum = 1) ----
+weights:
+  default:
+    Snø: 0.30
+    Verdi: 0.25
+    Rando: 0.15
+    Praktisk: 0.15
+    Kjøretid: 0.10
+    Sosialt: 0.05
+
+# ---- Profiler (alternative vektsett) ----
+profiles:
+  alpint_familie:
+    Snø: 0.25
+    Verdi: 0.15
+    Rando: 0.05
+    Praktisk: 0.30
+    Kjøretid: 0.20
+    Sosialt: 0.05
+  rando_langrenn:
+    Snø: 0.30
+    Verdi: 0.10
+    Rando: 0.40
+    Praktisk: 0.05
+    Kjøretid: 0.10
+    Sosialt: 0.05
+  rimelig_enkel:
+    Snø: 0.15
+    Verdi: 0.45
+    Rando: 0.05
+    Praktisk: 0.15
+    Kjøretid: 0.20
+    Sosialt: 0.00
+
+# ---- Variabler per kategori (høyere = bedre, med mindre invert: true) ----
+categories:
+  Snø:
+    - {col: ski_season_days, w: 0.7}
+    - {col: elevation_m, w: 0.3}
+  Verdi:
+    - {col: value_price_per_snow, w: 0.5, invert: true}
+    - {col: value_price_per_trail, w: 0.5, invert: true}
+  Rando:
+    - {col: slope_25_40_share, w: 0.35}
+    - {col: relief_to_1000m_peak_m, w: 0.2}
+    - {col: nordic_km_10km, w: 0.25}
+    - {col: marked_routes_km_15km, w: 0.2}
+  Praktisk:
+    - {col: nearest_grocery_km, w: 0.25, invert: true}
+    - {col: nearest_eat_km, w: 0.2, invert: true}
+    - {col: nearest_vinmonopol_km, w: 0.1, invert: true}
+    - {col: nearest_alpine_km, w: 0.2, invert: true}
+    - {col: nearest_pharmacy_km, w: 0.1, invert: true}
+    - {col: nearest_fuel_km, w: 0.05, invert: true}
+    - {col: ev_charging_15km, w: 0.1}
+  Kjøretid:
+    - {col: drive_min, w: 1.0, invert: true}
+  Sosialt:
+    - {col: friends_cabins, w: 0.6}
+    - {col: owner_oslo_akershus_share, w: 0.4}

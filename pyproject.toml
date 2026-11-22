@@ -1,0 +1,10 @@
+[project]
+name = "hytte-finder"
+version = "0.1.0"
+description = "Datadrevet rangering av norske fjellområder for hyttekjøp"
+requires-python = ">=3.11"
+dependencies = ["requests","pandas","numpy","pyyaml","folium","netCDF4","rasterio","pyproj","python-dotenv","pytest","pillow","shapely"]
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]

@@ -1,0 +1,12 @@
+requests
+pandas
+numpy
+pyyaml
+folium
+netCDF4
+rasterio
+pyproj
+python-dotenv
+pytest
+pillow
+shapely

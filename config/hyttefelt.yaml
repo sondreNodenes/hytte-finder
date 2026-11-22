@@ -1,0 +1,26 @@
+# Hyttefelt/knutepunkt som egne rader. Koordinater hentes fra OSM (Nominatim) – første
+# treff som lykkes i `queries` (place/tourism/landuse foretrekkes) og sanity-sjekkes mot
+# kommunens avgrensningsboks (Geonorge). Feiler geokoding/sjekk, droppes raden (logges).
+# kommune = kommunenavn (2024-inndeling) som brukes for SSB-pris og boks-sjekk.
+hyttefelt:
+  - {navn: Sjusjøen, queries: ["Sjusjøen, Ringsaker"], kommune: Ringsaker}
+  - {navn: Nordseter, queries: ["Nordseter, Lillehammer"], kommune: Lillehammer}
+  - {navn: Skeikampen, queries: ["Skeikampen"], kommune: Gausdal}
+  - {navn: Hafjell, queries: ["Hafjell Alpinsenter"], kommune: Øyer}
+  - {navn: Kvitfjell, queries: ["Kvitfjell Alpinanlegg"], kommune: Ringebu}
+  - {navn: Gålå, queries: ["Gålå, Sør-Fron"], kommune: Sør-Fron}
+  - {navn: Norefjell, queries: ["Norefjell Skisenter"], kommune: Krødsherad}
+  - {navn: Golsfjellet, queries: ["Golsfjellet alpinsenter"], kommune: Gol}
+  - {navn: Geilo, queries: ["Geilo"], kommune: Hol}
+  - {navn: Gaustablikk, queries: ["Gaustablikk Fjellresort"], kommune: Tinn}
+  - {navn: Blefjell, queries: ["Blefjell Tinn"], kommune: Tinn}
+  - {navn: Lifjell, queries: ["Lifjell Telemark", "Lifjell Notodden"], kommune: Midt-Telemark}
+  - {navn: Beitostølen, queries: ["Beitostølen"], kommune: Øystre Slidre}
+  - {navn: Hemsedal, queries: ["Hemsedal skisenter"], kommune: Hemsedal}
+  - {navn: Trysilfjellet, queries: ["Trysilfjellet"], kommune: Trysil}
+  - {navn: Savalen, queries: ["Savalen"], kommune: Tynset}
+  - {navn: Uvdal, queries: ["Uvdal alpinsenter"], kommune: Nore og Uvdal}
+  - {navn: Eggedal, queries: ["Eggedal, Sigdal"], kommune: Sigdal}
+  - {navn: Tisleidalen, queries: ["Tisleidalen"], kommune: Nord-Aurdal}
+  - {navn: Venabu, queries: ["Venabu, Ringebu"], kommune: Ringebu}
+  - {navn: Sikkilsdalen, queries: ["Sikkilsdalen"], kommune: Nord-Fron}
