@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 import math
 import re
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
@@ -19,6 +20,7 @@ FAR_KM = 30      # søkeradius for «nærmeste»-variabler
 NEAR_KM = 15     # radius for telling og ruter
 
 
+@lru_cache(maxsize=6)
 def _run(query: str) -> dict | None:
     for url in MIRRORS:
         try:
@@ -35,9 +37,22 @@ def bbox(lat, lon, km) -> str:
     return f"({lat-dlat:.5f},{lon-dlon:.5f},{lat+dlat:.5f},{lon+dlon:.5f})"
 
 
+TILE_LAT, TILE_LON = 0.25, 0.5   # flis-størrelse (grader); klynger i samme flis deler Overpass-spørringer
+
+
+def tile_bbox(lat, lon, margin_km) -> str:
+    """Overpass-bbox for flisen som inneholder punktet, utvidet med margin. Alle punkter i samme flis
+    får identisk bbox -> én cachet spørring deles av mange områder."""
+    s0 = math.floor(lat / TILE_LAT) * TILE_LAT
+    w0 = math.floor(lon / TILE_LON) * TILE_LON
+    dlat = margin_km / 111.32
+    dlon = margin_km / (111.32 * math.cos(math.radians(s0 + TILE_LAT / 2)))
+    return f"({s0-dlat:.4f},{w0-dlon:.4f},{s0+TILE_LAT+dlat:.4f},{w0+TILE_LON+dlon:.4f})"
+
+
 def query_points(lat, lon) -> str:
-    a = bbox(lat, lon, FAR_KM)
-    n = bbox(lat, lon, NEAR_KM)
+    a = tile_bbox(lat, lon, FAR_KM)
+    n = tile_bbox(lat, lon, NEAR_KM)
     return f"""[out:json][timeout:90];
 (
  nwr["amenity"~"^(pub|bar|cafe|restaurant|pharmacy|doctors|clinic|hospital|fuel|charging_station)$"]{a};
@@ -51,7 +66,7 @@ out center tags;"""
 
 
 def query_lines(lat, lon) -> str:
-    n = bbox(lat, lon, NEAR_KM)
+    n = tile_bbox(lat, lon, NEAR_KM)
     return f"""[out:json][timeout:90];
 (
  way["piste:type"~"^(nordic|skitour)$"]{n};

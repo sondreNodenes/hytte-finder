@@ -18,6 +18,10 @@ Hentedato: se `data/processed/variables.csv` (kolonnen `hentedato`) – dato for
 | OpenStreetMap via Overpass | https://overpass-api.de (speil: maps.mail.ru, kumi.systems) | tilbud, alpin, løyper, ruter | ODbL © OSM-bidragsytere |
 | OSM Nominatim | https://nominatim.openstreetmap.org | koordinater for hyttefelt | ODbL |
 | OSRM demo-server | https://router.project-osrm.org | kjøretid, snap til vei | data ODbL; demoserver uten garantier |
+| SSB 03432 / 03434 – felt elg / hjort (K) | https://data.ssb.no/api/v0/no/table/03432 | jakt-proxy | NLOD 2.0 |
+| NVE Innsjødatabase | https://kart.nve.no/enterprise/rest/services/Innsjodatabase2/MapServer/5 | innsjøer (fiske-proxy) | NLOD |
+| Kartverket Stedsnavn | https://ws.geonorge.no/stedsnavn/v1/ | navn på hyttefelt | CC BY 4.0 |
+| Finn.no (valgfritt engangsuttrekk) | https://www.finn.no/realestate/leisuresale/search.html | annonsepriser, kr/m² (kun medianer lagres i repoet) | © FINN.no – vilkår krever skriftlig tillatelse til automatisert bruk; brukerens ansvar |
 | Open-Meteo elevation (fallback) | https://api.open-meteo.com/v1/elevation | høyde hvis Kartverket feiler | CC BY 4.0 |
 
 ## Forsøkt, men utilgjengelig (NaN)

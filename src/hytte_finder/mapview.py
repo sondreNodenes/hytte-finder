@@ -35,10 +35,9 @@ def build(cfg: dict) -> None:
     cm = LinearColormap(["#d73027", "#fee08b", "#1a9850"], vmin=ranked["score"].min(), vmax=ranked["score"].max(),
                         caption="Totalscore (0–100, standardvekter)")
     for _, r in ranked.iterrows():
-        shape = dict(radius=9 if r["type"] == "hyttefelt" else 7)
-        folium.CircleMarker([r["lat"], r["lon"]], color="black" if r["type"] == "hyttefelt" else "#555",
-                            weight=2 if r["type"] == "hyttefelt" else 1, fill=True, fill_opacity=0.9,
-                            fill_color=cm(r["score"]), tooltip=f"#{int(r['rank'])} {r['navn']} ({r['type']}) – {r['score']:.0f}",
+        shape = dict(radius=5 + min(14.0, float(r.get("n_cabins", 25)) ** 0.5 / 3))
+        folium.CircleMarker([r["lat"], r["lon"]], color="black", weight=1, fill=True, fill_opacity=0.9,
+                            fill_color=cm(r["score"]), tooltip=f"#{int(r['rank'])} {r['navn']} ({r['kommune']}, {int(r['n_cabins'])} hytter) – {r['score']:.0f}",
                             popup=folium.Popup(_popup(r, units), max_width=420), **shape).add_to(m)
     g = folium.FeatureGroup(name="Filtrert bort (grå)", show=False)
     for _, r in out.iterrows():

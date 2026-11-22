@@ -8,7 +8,7 @@
 ![Status](https://img.shields.io/badge/status-beslutningsst%C3%B8tte-orange)
 ![Kart](https://img.shields.io/badge/kart-Leaflet%2Ffolium-green)
 
-Datadrevet rangering av norske fjellområder (kommuner og hyttefelt) for hyttekjøp: snøsikkerhet, pris mot hva man får og praktiske forhold. Utgangspunkt: Holmenkollen, maks 2 t 45 min kjøring, budsjett 3,0–3,9 mill. kr.
+Datadrevet rangering av norske **hyttefelt** for hyttekjøp: snøsikkerhet, pris (inkl. kr/m² fra annonser) mot hva man får, rando, jakt og fiske og praktiske forhold. Hyttefeltene er funnet automatisk ved å klynge OSM-hytter, så store kommuner deles geografisk. Utgangspunkt: Holmenkollen, maks 2 t 45 min kjøring, budsjett 3,0–3,9 mill. kr.
 
 > Beslutningsstøtte, ikke finansiell rådgivning. Pris og kjøretid må verifiseres mot aktuelle annonser.
 
@@ -22,7 +22,8 @@ cp .env.example .env   # fyll inn CONTACT_EMAIL (brukes i User-Agent)
 make data      # henter og renser alle data  -> data/processed/areas.csv   (første kjøring tar ~1 time pga. Overpass)
 make score     # filtre + score + sensitivitet -> output/ranking.csv m.fl.
 make report    # output/map.html og output/rapport.md
-make all       # data + score + report
+make finn      # VALGFRITT engangs-uttrekk av Finn-annonser for kr/m² (se under)
+make all       # data + score + report  (Finn er ikke med)
 make test      # pytest
 ```
 API-svar caches i `data/cache/`, så reruns er raske. Slett cachen for å hente på nytt.
@@ -31,7 +32,11 @@ API-svar caches i `data/cache/`, så reruns er raske. Slett cachen for å hente 
 - `config/weights.yaml`: harde filtre, vekter, tre profiler, variabler per kategori, normalisering, sensitivitetsparametre.
 - `config/hyttefelt.yaml`: hyttefelt/knutepunkt som egne rader.
 - `config/venner.csv`: `kommune,antall_venner_med_hytte` – inngår i kategorien Sosialt når fylt ut.
-- `data/raw/finn_manual.csv` (valgfri): `kommune,pris_per_m2_nok` – kun vist i datatabellen.
+- `config/jakt_fiske.csv`: `nokkel,jaktrett_tilgang,fiskekort_tilgang,merknad` (nokkel = felt-id, feltnavn eller kommune; 0–2) – manuell vurdering som inngår i Jakt/Fiske.
+- `data/raw/finn_manual.csv` (valgfri): `nokkel,pris_nok,bra_m2` – egne annonser som legges til Finn-medianen.
+
+## Finn-priser (valgfritt, engangs)
+`make finn` henter side 1 av Finns hytteannonser for inntil 30 hyttefelt (rolig tempo, cachet, robots.txt leses maskinelt, stopper ved enhver blokkering). Rå annonsedata ligger i `data/raw/finn_listings.csv` (ikke i git); bare medianer (kr, kr/m²) brukes videre. **Finn.no krever skriftlig tillatelse til automatisert bruk i sine vilkår;** dette er brukerens eget valg og ansvar, bruk det sparsomt og ikke publiser rådata. Annonsepriser er prisantydning, ikke solgt pris.
 
 ## Resultater
 - `output/rapport.md` – topp 10, begrunnelse, profiler, sensitivitet, forbehold, neste steg
@@ -43,7 +48,7 @@ API-svar caches i `data/cache/`, så reruns er raske. Slett cachen for å hente 
 
 ## Struktur
 ```
-src/hytte_finder/  candidates · ssb · geo · snow · osm · rando · terrain · scoring · mapview · report · cli
+src/hytte_finder/  candidates · clusters · ssb · geo · snow · osm · rando · fiske · finn · terrain · scoring · mapview · dashboard · findings · report · cli
 tests/             normalisering, scoring, filtre, sensitivitet, hjelpefunksjoner
 docs/              PLAN.md, ASSUMPTIONS.md
 data/SOURCES.md    kilder, lisenser, hentedato, utilgjengelige kilder
@@ -54,9 +59,10 @@ Koden er MIT-lisensiert (LICENSE). Dataene har egne lisenser.
 SSB (NLOD 2.0), Kartverket (CC BY 4.0), NVE/MET Klima i Norge (åpne data), NVE skredkart, OpenStreetMap (ODbL), OSRM-demoserver. Detaljer i `data/SOURCES.md`. Kartdata © OpenStreetMap-bidragsytere.
 
 ## Kjente svakheter
-- SSB gir kun **snittpris** (ikke median) og ingen ny/brukt-splitt; priser er kommunenivå og kan være svært usikre ved få salg.
+- SSB gir kun **snittpris** (ikke median) på kommunenivå. Finn-medianer (kr/m²) bygger på ett uttrekk av side 1 og prisantydning.
+- Jakt = felt elg/hjort per kommune (SSB); fiske = innsjøareal (NVE). Ingen data på rype/småvilt, jaktkort, fiskekort eller fiskekvalitet.
 - Snødata er modellert (1 km); snødybde >30 cm og framskrivning 2031–2060 var utilgjengelig (framskrivning 2041–2070 brukes).
 - OSRM demo-server: kjøretid uten trafikk/føre; vinter er kun et påslag.
 - OSM-dekning varierer; åpningstider mangler ofte. 50 m DTM undervurderer helning. Skredaktsomhet er kontekst, ikke sikkerhetsvurdering.
 - Mobildekning/fiber, eierbosted, Frost-stasjonsdata og Finn-priser er ikke med.
-- Kommune-rader plasseres i høydebånd-tyngdepunkt, ikke i faktiske hyttefelt.
+- Hyttefelt er DBSCAN-klynger av OSM-hytter (`building=cabin|hut`); resultat avhenger av OSM-dekning og klyngeparametere i config.

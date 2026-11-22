@@ -107,3 +107,14 @@ def villrein_cabins(year: str = "2025") -> pd.DataFrame:
         villrein_cabins=("value", "sum"),
         villrein_areas=("VillreinOmrReg_label", lambda s: ", ".join(sorted(set(s)))))
     return g.reset_index().rename(columns={"Region": "kommunenr"})
+
+
+def hunting(seasons: list[str]) -> pd.DataFrame:
+    """Felte elg (03432) og hjort (03434), alle dyr/begge kjønn, snitt over sesonger, per kommune."""
+    res = None
+    for table, name in (("03432", "elg_felt_snitt"), ("03434", "hjort_felt_snitt")):
+        df = query_table(table, {"Region": None, "Dyr": ["00a"], "Kjonn": ["0"],
+                                 "ContentsCode": ["Feltedyr"], "Tid": seasons})
+        g = df.groupby("Region")["value"].mean().rename(name).reset_index()
+        res = g if res is None else res.merge(g, on="Region", how="outer")
+    return res.rename(columns={"Region": "kommunenr"})

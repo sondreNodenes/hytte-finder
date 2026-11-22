@@ -37,7 +37,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 <div class="cards" id="cards"></div>
 <h2>Rangering (klikk på kolonne for å sortere)</h2>
 <div class="wrap"><table id="t"></table></div>
-<div class="note">Kategoriscorer 0–1 (rangpersentil blant rangerte områder). Gul pris = færre enn 15 salg siste år. Snittpris er kommunenivå, ikke median.</div>
+<div class="note">Kategoriscorer 0–1 (rangpersentil blant rangerte områder). ⚠ = kommunesnitt fra SSB (ingen Finn-annonser nok for feltet); uten ⚠ = median fra Finn/manuell. kr/m² vises bare når nok annonser finnes.</div>
 <h2>Sensitivitet: andel av 1000 tilfeldige vektsett i topp 5</h2>
 <div class="wrap"><table id="s"></table></div>
 <h2>Mer</h2>
@@ -51,8 +51,8 @@ document.getElementById('cards').innerHTML=[[D.length,'rangerte områder'],[__OU
  [D[0].navn,'høyest score ('+f(D[0].score,1)+')'],[f(Math.min(...D.map(d=>d.drive_min))),'korteste kjøretid (min)']]
  .map(([a,b])=>`<div class="card"><b>${a}</b><span>${b}</span></div>`).join('');
 let sortKey='rank',asc=true;
-const COLS=[['rank','#'],['navn','Område'],['type','Type'],['score','Score'],...CATS.map(c=>[c,c]),
- ['drive_min','Kjøretid'],['avg_price_nok','Snittpris'],['ski_season_days','Skisesong'],['elevation_m','Moh'],['nordic_km_10km','Løype km']];
+const COLS=[['rank','#'],['navn','Hyttefelt'],['kommune','Kommune'],['n_cabins','Hytter'],['score','Score'],...CATS.map(c=>[c,c]),
+ ['drive_min','Kjøretid'],['price_used_nok','Pris'],['price_per_m2_used','kr/m²'],['ski_season_days','Skisesong'],['elevation_m','Moh'],['nordic_km_10km','Løype km']];
 function draw(){
  const rows=[...D].sort((a,b)=>{const x=a[sortKey],y=b[sortKey];if(x==null)return 1;if(y==null)return -1;
   return (typeof x==='string'?x.localeCompare(y):x-y)*(asc?1:-1)});
@@ -60,7 +60,8 @@ function draw(){
  rows.map(r=>'<tr>'+COLS.map(([k])=>{const v=r[k];
   if(k==='score')return `<td class="n"><span class="bar" style="width:${v*0.6}px"></span>${f(v,1)}</td>`;
   if(CATS.includes(k))return `<td><span class="cat" style="background:${col(v)}">${v==null?'–':f(v,2)}</span></td>`;
-  if(k==='avg_price_nok')return `<td class="n ${r.usikker?'warn':''}">${f(v/1e6,2)} mill${r.usikker?' ⚠':''}</td>`;
+  if(k==='price_used_nok')return `<td class="n ${r.price_source&&r.price_source.startsWith('SSB')?'warn':''}" title="${r.price_source||''}">${f(v/1e6,2)} mill${r.price_source&&r.price_source.startsWith('SSB')?' ⚠':''}</td>`;
+  if(k==='price_per_m2_used')return `<td class="n">${v==null?'–':f(v)}</td>`;
   if(k==='drive_min')return `<td class="n">${f(v)} min</td>`;
   if(k==='type')return `<td><span class="tag">${v}</span></td>`;
   return typeof v==='number'?`<td class="n">${f(v,k==='rank'?0:0)}</td>`:`<td>${v??'–'}</td>`}).join('')+'</tr>').join('');
@@ -80,8 +81,8 @@ def build(cfg: dict) -> None:
     rk = pd.read_csv(OUTPUT / "ranking.csv", dtype={"kommunenr": str})
     se = pd.read_csv(OUTPUT / "sensitivity.csv")
     fo = pd.read_csv(PROCESSED / "filtered_out.csv")
-    keep = ["rank", "navn", "type", "score", *CATS, "drive_min", "avg_price_nok", "usikker",
-            "ski_season_days", "elevation_m", "nordic_km_10km"]
+    keep = ["rank", "navn", "kommune", "n_cabins", "score", *CATS, "drive_min", "price_used_nok",
+            "price_per_m2_used", "price_source", "usikker", "ski_season_days", "elevation_m", "nordic_km_10km"]
     f = cfg["filters"]
     html = (TEMPLATE.replace("__DATA__", json.dumps(_clean(rk[keep])))
             .replace("__SENS__", json.dumps(_clean(se)))

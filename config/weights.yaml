@@ -18,7 +18,7 @@ filters:
   candidate_radius_km: 200    # luftlinje fra Holmenkollen for kommuner
   min_mountain_cabins: 300    # kommune må ha >= så mange fritidsbygg over mountain_min_masl (SSB 12511)
   mountain_min_masl: 600
-  kommune_band_masl: [600, 1100]   # kommune-rad plasseres i tyngdepunktet av arealet i dette høydebåndet (DTM)
+  min_elevation_m: 450        # hyttefelt lavere enn dette regnes ikke som fjell (hard filter)
 
 # ---- Tekniske parametre ----
 params:
@@ -31,6 +31,13 @@ params:
   peak_min_masl: 1000
   normalization: percentile   # percentile | minmax
   value_snow_floor: 0.05      # unngå deling på 0 i verdi-indeks
+  cluster_eps_km: 1.5         # DBSCAN: maks avstand mellom hytter i samme felt
+  cluster_min_cabins: 25      # DBSCAN: minste antall hytter i et felt
+  cluster_max_radius_km: 5    # felt større enn dette deles (k-means)
+  hunting_seasons: ['2023-2024', '2024-2025', '2025-2026']
+  lake_min_km2: 0.1
+  lake_radius_km: 10
+  finn_min_ads: 5             # minst så mange annonser for å bruke Finn-pris
   sensitivity_runs: 1000
   sensitivity_alpha: 50       # Dirichlet-konsentrasjon (høyere = nærmere standardvekter)
   random_seed: 42
@@ -38,36 +45,21 @@ params:
 # ---- Standardvekter (sum = 1) ----
 weights:
   default:
-    Snø: 0.30
-    Verdi: 0.25
+    Snø: 0.25
+    Verdi: 0.20
     Rando: 0.15
-    Praktisk: 0.15
+    Praktisk: 0.13
     Kjøretid: 0.10
-    Sosialt: 0.05
+    Jakt: 0.07
+    Fiske: 0.07
+    Sosialt: 0.03
 
 # ---- Profiler (alternative vektsett) ----
 profiles:
-  alpint_familie:
-    Snø: 0.25
-    Verdi: 0.15
-    Rando: 0.05
-    Praktisk: 0.30
-    Kjøretid: 0.20
-    Sosialt: 0.05
-  rando_langrenn:
-    Snø: 0.30
-    Verdi: 0.10
-    Rando: 0.40
-    Praktisk: 0.05
-    Kjøretid: 0.10
-    Sosialt: 0.05
-  rimelig_enkel:
-    Snø: 0.15
-    Verdi: 0.45
-    Rando: 0.05
-    Praktisk: 0.15
-    Kjøretid: 0.20
-    Sosialt: 0.00
+  alpint_familie:   {Snø: 0.24, Verdi: 0.14, Rando: 0.04, Praktisk: 0.30, Kjøretid: 0.18, Jakt: 0.02, Fiske: 0.04, Sosialt: 0.04}
+  rando_langrenn:   {Snø: 0.28, Verdi: 0.09, Rando: 0.38, Praktisk: 0.05, Kjøretid: 0.10, Jakt: 0.02, Fiske: 0.05, Sosialt: 0.03}
+  rimelig_enkel:    {Snø: 0.14, Verdi: 0.42, Rando: 0.04, Praktisk: 0.14, Kjøretid: 0.18, Jakt: 0.03, Fiske: 0.05, Sosialt: 0.00}
+  jakt_fiske:       {Snø: 0.10, Verdi: 0.15, Rando: 0.05, Praktisk: 0.10, Kjøretid: 0.10, Jakt: 0.25, Fiske: 0.25, Sosialt: 0.00}
 
 # ---- Variabler per kategori (høyere = bedre, med mindre invert: true) ----
 categories:
@@ -75,8 +67,9 @@ categories:
     - {col: ski_season_days, w: 0.7}
     - {col: elevation_m, w: 0.3}
   Verdi:
-    - {col: value_price_per_snow, w: 0.5, invert: true}
-    - {col: value_price_per_trail, w: 0.5, invert: true}
+    - {col: value_price_per_snow, w: 0.35, invert: true}
+    - {col: value_price_per_trail, w: 0.35, invert: true}
+    - {col: price_per_m2_used, w: 0.30, invert: true}   # kun der Finn/manuelle annonser finnes
   Rando:
     - {col: slope_25_40_share, w: 0.35}
     - {col: relief_to_1000m_peak_m, w: 0.2}
@@ -92,6 +85,15 @@ categories:
     - {col: ev_charging_15km, w: 0.1}
   Kjøretid:
     - {col: drive_min, w: 1.0, invert: true}
+  Jakt:
+    - {col: jakt_elg_per_100km2, w: 0.4}
+    - {col: jakt_hjort_per_100km2, w: 0.2}
+    - {col: jaktrett_tilgang, w: 0.4}        # manuell, config/jakt_fiske.csv
+  Fiske:
+    - {col: lake_area_km2_10km, w: 0.4}
+    - {col: lake_count_10km, w: 0.2}
+    - {col: nearest_lake_km, w: 0.2, invert: true}
+    - {col: fiskekort_tilgang, w: 0.2}       # manuell, config/jakt_fiske.csv
   Sosialt:
     - {col: friends_cabins, w: 0.6}
     - {col: owner_oslo_akershus_share, w: 0.4}

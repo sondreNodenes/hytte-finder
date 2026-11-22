@@ -2,7 +2,15 @@
 
 Valg som er tatt uten å spørre. Alle kan endres i `config/weights.yaml` eller koden.
 
-## Kandidater
+## v2-endringer (hyttefelt-klynger, jakt, fiske, Finn)
+- **Klynger:** OSM `building=cabin|hut` per fjellhyttekommune (SSB 12511), DBSCAN eps 1,5 km / min 25 hytter, klynger med radius > 5 km deles med k-means (seed 42). Medoid = hytta nærmest sentrum. Felt lavere enn 450 moh filtreres bort (ikke fjell). Navn: seed i `config/hyttefelt.yaml` innen 2,5 km, ellers Kartverket Stedsnavn (prioritert objekttype), ellers «<kommune> hyttefelt».
+- **Ruting:** OSRM table (batch) fra Holmenkollen. **OSM-spørringer** deles i 0,25°×0,5°-fliser med margin (30 km punkter, 15 km linjer).
+- **Jakt:** SSB 03432/03434 (felt elg/hjort, kommune, snitt 2023–24…2025–26) delt på kommuneareal (inkl. ikke-jaktbart areal, så tallet er grovt) + manuell `jaktrett_tilgang`. «Tillatt felt» (08696) finnes bare på fylkesnivå og er ikke brukt.
+- **Fiske:** NVE Innsjødatabase (≥ 0,1 km², kant innen 10 km). Areal = hele innsjøens areal. Elver ikke med. Måler tilgang til vann, ikke fiskekvalitet.
+- **Vekter v2:** Snø 25, Verdi 20, Rando 15, Praktisk 13, Kjøretid 10, Jakt 7, Fiske 7, Sosialt 3. Ny profil `jakt_fiske`.
+- **Finn:** engangs, robots-sjekket uttrekk av side 1 per felt (maks 30 søk, 6 s pause, cachet). Kun annonser av type «Hytte» der stedsangivelsen inneholder feltnavnet. Median prisantydning og kr/m² (areal fra annonsen). Brukes i Verdi kun med ≥ 5 annonser; ellers SSB kommunesnitt (flagget). Rådata ikke i git (offentlig repo).
+
+## Kandidater (v1, delvis erstattet av v2)
 - **Fjellhyttekommuner** = kommuner innen 200 km luftlinje fra Holmenkollen med ≥ 300 fritidsbygg over 600 moh (SSB 12511, 2025). Dette er en datadrevet avgrensning; den kan ta med randkommuner (Hamar, Gjøvik, Gran …) som scores lavt på snø.
 - **Kommunerad-plassering:** Kommunepunktet fra Geonorge ligger ofte i tettstedet. Derfor plasseres hver kommune i tyngdepunktet av arealet i høydebåndet 600–1100 moh (Kartverket DTM 500 m), snappet til nærmeste vei (OSRM). Snap-avstand står i `loc_source`.
 - **Hyttefelt** (`config/hyttefelt.yaml`): koordinater fra Nominatim/OSM, sanity-sjekket mot kommunens avgrensningsboks. Seeds som feiler droppes (logges). Lifjell ble droppet fordi OSM-treffet lå utenfor kommunen.

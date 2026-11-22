@@ -4,7 +4,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-CATS = ["Snø", "Verdi", "Rando", "Praktisk", "Kjøretid", "Sosialt"]
+CATS = ["Snø", "Verdi", "Rando", "Praktisk", "Kjøretid", "Jakt", "Fiske", "Sosialt"]
 
 
 # ---------------------------------------------------------------- filtre
@@ -19,6 +19,9 @@ def apply_filters(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
             why.append("kjøretid mangler")
         elif r["drive_min"] > f["max_drive_min"]:
             why.append(f"kjøretid {r['drive_min']:.0f} min > {f['max_drive_min']}")
+        z = r.get("elevation_m")
+        if "min_elevation_m" in f and f["min_elevation_m"] and (pd.isna(z) or z < f["min_elevation_m"]):
+            why.append("høyde mangler" if pd.isna(z) else f"høyde {z:.0f} moh < {f['min_elevation_m']} (ikke fjell)")
         p = r.get("avg_price_nok")
         if pd.isna(p):
             why.append("pris mangler (ingen salg i SSB)")
@@ -69,13 +72,14 @@ def weighted_mean_rowwise(frame: pd.DataFrame, weights: dict[str, float]) -> pd.
 def value_indices(df: pd.DataFrame, snow_score: pd.Series, floor: float) -> pd.DataFrame:
     """Verdi-indeks: pris per snøsikkerhetspoeng og pris per tur-/skitilbud (km)."""
     df = df.copy()
-    df["value_price_per_snow"] = df["avg_price_nok"] / snow_score.clip(lower=floor)
+    price = df["price_used_nok"] if "price_used_nok" in df.columns else df["avg_price_nok"]
+    df["value_price_per_snow"] = price / snow_score.clip(lower=floor)
     offer = df.get("nordic_km_10km", pd.Series(np.nan, index=df.index)).fillna(0) \
         + df.get("marked_routes_km_15km", pd.Series(np.nan, index=df.index)).fillna(0)
     have = df.get("nordic_km_10km", pd.Series(np.nan, index=df.index)).notna() | \
         df.get("marked_routes_km_15km", pd.Series(np.nan, index=df.index)).notna()
     df["trail_offer_km"] = offer.where(have)
-    df["value_price_per_trail"] = df["avg_price_nok"] / df["trail_offer_km"].clip(lower=1.0)
+    df["value_price_per_trail"] = price / df["trail_offer_km"].clip(lower=1.0)
     return df
 
 
@@ -94,7 +98,8 @@ def category_scores(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
                 snow_frame, {v["col"]: v["w"] for v in cfg["categories"]["Snø"]})
             df = value_indices(df, df["Snø"], cfg["params"]["value_snow_floor"])
             for v in cfg["categories"]["Verdi"]:
-                norm[v["col"]] = normalize(df[v["col"]], method, v.get("invert", False))
+                if v["col"] in df.columns:
+                    norm[v["col"]] = normalize(df[v["col"]], method, v.get("invert", False))
     nf = pd.DataFrame(norm)
     for cat in CATS:
         if cat == "Snø":

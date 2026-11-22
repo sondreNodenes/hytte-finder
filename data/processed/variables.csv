@@ -40,6 +40,27 @@ dist_to_1000m_peak_km,Rando,km,"Kartverket DTM, avledet",Avstand til nærmeste t
 avalanche_zone_share_of_steep,Rando,andel,"NVE Snøskred aktsomhetsområder (kart.nve.no), avledet","Andel av 25–40°-terrenget i aktsomhetsområde. KONTEKST, ikke sikkerhetsvurdering",2026-11-22
 friends_cabins,Sosialt,antall,config/venner.csv (manuell),Antall venner med hytte i kommunen,2026-11-22
 owner_oslo_akershus_share,Sosialt,andel,SSB – ikke publisert som kommunetabell,NaN: ingen åpen kommunetabell funnet,2026-11-22
+n_cabins,Identitet,antall,"OpenStreetMap via Overpass API, ODbL (building=cabin|hut)",Antall hytter i klyngen (DBSCAN),2026-11-22
+cluster_radius_km,Identitet,km,Avledet,Største avstand fra klyngens sentrum til en hytte,2026-11-22
+kommune_area_km2,Identitet,km²,"Geonorge kommuneinfo, avledet",Kommunens areal,2026-11-22
+elg_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03432","Felte elg i kommunen, snitt over config.hunting_seasons",2026-11-22
+hjort_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03434","Felte hjort i kommunen, snitt over sesongene",2026-11-22
+jakt_elg_per_100km2,Jakt,dyr/100 km²,Avledet,Felt elg per 100 km² kommuneareal (inkl. ikke-jaktbart areal),2026-11-22
+jakt_hjort_per_100km2,Jakt,dyr/100 km²,Avledet,Felt hjort per 100 km² kommuneareal,2026-11-22
+jaktrett_tilgang,Jakt,0–2,config/jakt_fiske.csv (manuell),"Tilgang til jaktrett/jaktkort (0 ingen, 1 mulig, 2 god). NaN hvis ikke fylt",2026-11-22
+lake_count_10km,Fiske,antall,NVE Innsjødatabase,Innsjøer ≥ lake_min_km2 med kant innen 10 km,2026-11-22
+lake_area_km2_10km,Fiske,km²,NVE Innsjødatabase,Samlet areal av disse innsjøene (hele innsjøens areal),2026-11-22
+nearest_lake_km,Fiske,km,NVE Innsjødatabase,Avstand til nærmeste innsjø (til forenklet kantpunkt),2026-11-22
+largest_lake_name,Fiske,-,NVE Innsjødatabase,Største innsjø innen 10 km,2026-11-22
+fiskekort_tilgang,Fiske,0–2,config/jakt_fiske.csv (manuell),"Tilgang til fiskekort/fiskerett. NaN hvis ikke fylt. Proxy-en måler tilgang til vann, ikke fiskekvalitet",2026-11-22
+finn_n_ads,Verdi,antall,Finn.no (engangsuttrekk) + data/raw/finn_manual.csv,Antall annonser brukt (kun hytter hvis sted inneholder feltnavn; side 1 av søket),2026-11-22
+finn_median_price_nok,Verdi,NOK,Finn.no / manuell,Median prisantydning,2026-11-22
+finn_median_price_per_m2,Verdi,NOK/m²,Finn.no / manuell,Median prisantydning per m² BRA/areal oppgitt i annonse,2026-11-22
+finn_median_area_m2,Verdi,m²,Finn.no / manuell,Median areal,2026-11-22
+price_used_nok,Verdi,NOK,Avledet,"Finn-median hvis ≥ finn_min_ads annonser, ellers SSB kommunesnitt",2026-11-22
+price_per_m2_used,Verdi,NOK/m²,Avledet,Finn-median kr/m² (kun når nok annonser),2026-11-22
+price_source,Verdi,-,Avledet,Hvilken pris som brukes,2026-11-22
+finn_tynt,Verdi,bool,Avledet,1–(min−1) annonser: Finn-pris brukes ikke,2026-11-22
 nominal_snow_days_30cm_1971_2000,Snø,dager,NVE – utilgjengelig (tom THREDDS-katalog),NaN: datasettet har ingen fungerende nedlastingslenke,2026-11-22
 mobile_coverage,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-22
 fiber_broadband,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-22

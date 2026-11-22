@@ -3,7 +3,11 @@ from __future__ import annotations
 
 import math
 
+import logging
+
 from .common import get_json
+
+log = logging.getLogger("geo")
 
 OSRM = "https://router.project-osrm.org/route/v1/driving/{},{};{},{}"
 
@@ -90,3 +94,62 @@ def snap_to_road(lat, lon) -> tuple[float, float, float] | None:
         return w["location"][1], w["location"][0], w["distance"]
     except Exception:  # noqa: BLE001
         return None
+
+
+def drive_table(home_lat, home_lon, points: list[tuple[float, float]], chunk: int = 80) -> list[dict]:
+    """Batch-kjøretid fra hjem til mange punkter via OSRM table (færre kall enn route).
+    Returnerer liste med {drive_min, drive_km, snap_m} (tom dict ved feil)."""
+    out: list[dict] = []
+    for i in range(0, len(points), chunk):
+        part = points[i:i + chunk]
+        coords = f"{home_lon},{home_lat};" + ";".join(f"{lo},{la}" for la, lo in part)
+        dests = ";".join(str(k + 1) for k in range(len(part)))
+        try:
+            d = get_json("https://router.project-osrm.org/table/v1/driving/" + coords,
+                         params={"sources": 0, "destinations": dests, "annotations": "duration,distance"},
+                         pause=1.5, ns="osrm", timeout=120)
+            if d.get("code") != "Ok":
+                raise RuntimeError(d.get("code"))
+            for j in range(len(part)):
+                dur, dist = d["durations"][0][j], d["distances"][0][j]
+                if dur is None:
+                    out.append({})
+                else:
+                    out.append({"drive_min": dur / 60, "drive_km": dist / 1000,
+                                "snap_m": d["destinations"][j].get("distance")})
+        except Exception:  # noqa: BLE001
+            out.extend({} for _ in part)
+    return out
+
+
+def kommune_area_km2(poly) -> float:
+    """Areal (km²) av kommunepolygon (EPSG:4326 -> EPSG:25833)."""
+    from pyproj import Transformer
+    from shapely.ops import transform
+    t = Transformer.from_crs(4326, 25833, always_xy=True).transform
+    return transform(t, poly).area / 1e6
+
+
+# Navneobjekttyper som egner seg som hyttefelt-navn, med avstandsstraff (meter) per type.
+# Valgt etter hva Kartverkets stedsnavn faktisk returnerer rundt hyttefelt (seter, haug, li …).
+STEDSNAVN_STRAFF = {"Fjellområde": 0, "Grend": 0, "Seter/støl": 0, "Setergrend": 0, "Setervoll": 200,
+                    "Fjell": 300, "Høyde": 300, "Haug": 400, "Li": 700, "Bakke": 900, "Tjern": 800,
+                    "Vann": 600, "Innsjø": 600, "Slette": 500, "Dal": 500, "Skogholt": 900}
+
+
+def place_name(lat, lon, radius_m: int = 5000) -> str | None:
+    """Beste stedsnavn nær punktet (Kartverket Stedsnavn; maks radius 5000 m). Rangering =
+    avstand + typestraff, så nære setre/høyder vinner over fjerne grender."""
+    try:
+        d = get_json("https://ws.geonorge.no/stedsnavn/v1/punkt",
+                     params={"nord": lat, "ost": lon, "koordsys": 4326, "radius": radius_m,
+                             "treffPerSide": 100, "utkoordsys": 4326}, pause=0.5, ns="stedsnavn")
+    except RuntimeError as e:
+        log.warning("Stedsnavn feilet: %s", str(e)[:120])
+        return None
+    cands = []
+    for n in d.get("navn", []):
+        t = n.get("navneobjekttype")
+        if t in STEDSNAVN_STRAFF:
+            cands.append((n.get("meterFraPunkt", 1e9) + STEDSNAVN_STRAFF[t], n["stedsnavn"][0]["skrivemåte"]))
+    return min(cands)[1] if cands else None

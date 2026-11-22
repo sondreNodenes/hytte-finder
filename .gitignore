@@ -7,3 +7,4 @@ __pycache__/
 .DS_Store
 data/raw/dem/
 data/raw/snow/*.nc
+data/raw/finn_listings.csv

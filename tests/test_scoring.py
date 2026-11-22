@@ -48,7 +48,7 @@ def test_default_weights_sum_to_one():
 
 
 def _base(**kw):
-    d = {"drive_min": 100.0, "avg_price_nok": 3e6, "sales_last_year": 50}
+    d = {"drive_min": 100.0, "avg_price_nok": 3e6, "sales_last_year": 50, "elevation_m": 800.0}
     d.update(kw)
     return d
 
@@ -99,3 +99,22 @@ def test_rank_table_orders_descending():
 def test_haversine_oslo_lillehammer():
     d = haversine_km(59.964, 10.667, 61.115, 10.466)
     assert 125 < d < 135
+
+
+def test_elevation_filter_excludes_lowland():
+    cfg = load_config()
+    df = pd.DataFrame([_base(elevation_m=cfg["filters"]["min_elevation_m"]),
+                       _base(elevation_m=cfg["filters"]["min_elevation_m"] - 1), _base(elevation_m=np.nan)])
+    out = scoring.apply_filters(df, cfg)
+    assert out["passes"].tolist() == [True, False, False]
+
+
+def test_new_categories_in_config_and_scored():
+    cfg = load_config()
+    assert {"Jakt", "Fiske"} <= set(cfg["weights"]["default"]) <= set(scoring.CATS)
+    df = pd.DataFrame({"id": ["a", "b"], "avg_price_nok": [3e6, 3e6], "ski_season_days": [100.0, 200.0],
+                       "elevation_m": [700.0, 900.0], "drive_min": [100.0, 120.0],
+                       "jakt_elg_per_100km2": [1.0, 5.0], "lake_area_km2_10km": [9.0, 1.0]})
+    out = scoring.category_scores(df, cfg)
+    assert out["Jakt"][1] > out["Jakt"][0] and out["Fiske"][0] > out["Fiske"][1]
+    assert out["Sosialt"].isna().all()
