@@ -1,66 +1,66 @@
 variabel,kategori,enhet,kilde,beskrivelse,hentedato
-drive_min,Kjøretid,min,"OSRM (router.project-osrm.org), data © OSM/ODbL","Kjøretid bil fra Holmenkollen til nærmeste vei ved området (sommer, uten trafikk)",2026-11-22
-drive_min_winter,Kjøretid,min,Avledet: drive_min × vinterfaktor (config),Anslag vinterkjøretid; IKKE målt,2026-11-22
-elevation_m,Snø,moh,Kartverket høydedata-API (fallback Open-Meteo/Copernicus DEM),Høyde over havet ved punktet,2026-11-22
-ski_season_days,Snø,dager/år,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Skisesongens lengde 1991–2020 (dager med snøvannekv. >60 mm ≈ 25 cm), snitt innen radius",2026-11-22
-swe_max_mm,Snø,mm,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Maksimal årlig snømengde (snøvannekvivalent) 1991–2020, snitt innen radius",2026-11-22
-ski_season_change_2041_2070_rcp45,Snø,dager/år,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Endring i skisesong 2041–2070 vs 1991–2020 (RCP4.5, ensemblesnitt)",2026-11-22
-ski_season_proj_2041_2070,Snø,dager/år,Avledet,Skisesong 1991–2020 + endring (framskrivning),2026-11-22
-avg_price_nok,Verdi,NOK,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694","Snittpris fritidseiendom med bygning i fritt salg, kommune, sammenslått over price_years. IKKE median",2026-11-22
-sales_pooled,Verdi,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694","Antall salg i kommunen, sammenslått",2026-11-22
-sales_last_year,Verdi,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694",Antall salg siste år; <15 => usikkert,2026-11-22
-value_price_per_snow,Verdi,NOK/poeng,Avledet,"Snittpris / snøscore (0–1, gulv i config)",2026-11-22
-value_price_per_trail,Verdi,NOK/km,Avledet,Snittpris / (løype-km 10 km + merkede ruter-km 15 km),2026-11-22
-tax_rate_permille,Økonomi,‰,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Generell eiendomsskattesats (kommune),2026-11-22
-tax_exempt_cabins,Økonomi,1/0,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Fritak for fritidseiendom (1=ja),2026-11-22
-tax_cabins_total_1000,Økonomi,1000 NOK,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Innbetalt eiendomsskatt fra fritidsboliger i kommunen,2026-11-22
-villrein_cabins,Regler,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 12761",Fritidsbygg i nasjonalt villreinområde i kommunen (regelverk kan påvirke bruk/bygging),2026-11-22
-nearest_eat_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste pub/bar/kafé/restaurant,2026-11-22
-eat_5km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Antall pub/bar/kafé/restaurant innen 5 km,2026-11-22
-eat_15km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",… innen 15 km,2026-11-22
-gathering_5km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Samlingssteder (pub/bar/kafé) innen 5 km,2026-11-22
-nearest_grocery_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste dagligvare (supermarket/convenience),2026-11-22
-nearest_grocery_weekend_open,Praktisk,bool,"OpenStreetMap via Overpass API, ODbL",Nærmeste dagligvare har helgeåpent iflg. opening_hours (NaN = ukjent),2026-11-22
-nearest_vinmonopol_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste Vinmonopol,2026-11-22
-nearest_pharmacy_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste apotek,2026-11-22
-nearest_doctor_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til legekontor/klinikk/sykehus,2026-11-22
-nearest_fuel_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste bensinstasjon,2026-11-22
-ev_charging_15km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Ladestasjoner innen 15 km,2026-11-22
-nearest_ev_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste elbil-lading,2026-11-22
-nearest_alpine_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til alpinanlegg (winter_sports/aerialway/downhill),2026-11-22
-nearest_main_road_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste trunk/primary/secondary vei (typisk riks-/fylkesvei),2026-11-22
-nordic_km_10km,Rando,km,"OpenStreetMap via Overpass API, ODbL",Preparerte langrennsløyper (piste:type=nordic) innen 10 km,2026-11-22
-nordic_direct_access,Rando,bool,"OpenStreetMap via Overpass API, ODbL",Løype ≤1 km fra punktet,2026-11-22
-dnt_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL",DNT-merkede turruter (hiking-relasjoner) innen 15 km,2026-11-22
-winter_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL","Vinterruter (route=ski/skitour, piste:type=skitour) innen 15 km",2026-11-22
-marked_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL",DNT + vinterruter,2026-11-22
-slope_25_40_share,Rando,andel,"Kartverket DTM (WCS) 50 m, avledet",Andel av areal innen 10 km med helning 25–40° (50 m DTM jevner ut helning),2026-11-22
-relief_to_1000m_peak_m,Rando,m,"Kartverket DTM, avledet",Høydeforskjell til nærmeste topp ≥1000 moh innen 15 km (0 hvis ingen),2026-11-22
-dist_to_1000m_peak_km,Rando,km,"Kartverket DTM, avledet",Avstand til nærmeste topp ≥1000 moh,2026-11-22
-avalanche_zone_share_of_steep,Rando,andel,"NVE Snøskred aktsomhetsområder (kart.nve.no), avledet","Andel av 25–40°-terrenget i aktsomhetsområde. KONTEKST, ikke sikkerhetsvurdering",2026-11-22
-friends_cabins,Sosialt,antall,config/venner.csv (manuell),Antall venner med hytte i kommunen,2026-11-22
-owner_oslo_akershus_share,Sosialt,andel,SSB – ikke publisert som kommunetabell,NaN: ingen åpen kommunetabell funnet,2026-11-22
-n_cabins,Identitet,antall,"OpenStreetMap via Overpass API, ODbL (building=cabin|hut)",Antall hytter i klyngen (DBSCAN),2026-11-22
-cluster_radius_km,Identitet,km,Avledet,Største avstand fra klyngens sentrum til en hytte,2026-11-22
-kommune_area_km2,Identitet,km²,"Geonorge kommuneinfo, avledet",Kommunens areal,2026-11-22
-elg_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03432","Felte elg i kommunen, snitt over config.hunting_seasons",2026-11-22
-hjort_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03434","Felte hjort i kommunen, snitt over sesongene",2026-11-22
-jakt_elg_per_100km2,Jakt,dyr/100 km²,Avledet,Felt elg per 100 km² kommuneareal (inkl. ikke-jaktbart areal),2026-11-22
-jakt_hjort_per_100km2,Jakt,dyr/100 km²,Avledet,Felt hjort per 100 km² kommuneareal,2026-11-22
-jaktrett_tilgang,Jakt,0–2,config/jakt_fiske.csv (manuell),"Tilgang til jaktrett/jaktkort (0 ingen, 1 mulig, 2 god). NaN hvis ikke fylt",2026-11-22
-lake_count_10km,Fiske,antall,NVE Innsjødatabase,Innsjøer ≥ lake_min_km2 med kant innen 10 km,2026-11-22
-lake_area_km2_10km,Fiske,km²,NVE Innsjødatabase,Samlet areal av disse innsjøene (hele innsjøens areal),2026-11-22
-nearest_lake_km,Fiske,km,NVE Innsjødatabase,Avstand til nærmeste innsjø (til forenklet kantpunkt),2026-11-22
-largest_lake_name,Fiske,-,NVE Innsjødatabase,Største innsjø innen 10 km,2026-11-22
-fiskekort_tilgang,Fiske,0–2,config/jakt_fiske.csv (manuell),"Tilgang til fiskekort/fiskerett. NaN hvis ikke fylt. Proxy-en måler tilgang til vann, ikke fiskekvalitet",2026-11-22
-finn_n_ads,Verdi,antall,Finn.no (engangsuttrekk) + data/raw/finn_manual.csv,Antall annonser brukt (kun hytter hvis sted inneholder feltnavn; side 1 av søket),2026-11-22
-finn_median_price_nok,Verdi,NOK,Finn.no / manuell,Median prisantydning,2026-11-22
-finn_median_price_per_m2,Verdi,NOK/m²,Finn.no / manuell,Median prisantydning per m² BRA/areal oppgitt i annonse,2026-11-22
-finn_median_area_m2,Verdi,m²,Finn.no / manuell,Median areal,2026-11-22
-price_used_nok,Verdi,NOK,Avledet,"Finn-median hvis ≥ finn_min_ads annonser, ellers SSB kommunesnitt",2026-11-22
-price_per_m2_used,Verdi,NOK/m²,Avledet,Finn-median kr/m² (kun når nok annonser),2026-11-22
-price_source,Verdi,-,Avledet,Hvilken pris som brukes,2026-11-22
-finn_tynt,Verdi,bool,Avledet,1–(min−1) annonser: Finn-pris brukes ikke,2026-11-22
-nominal_snow_days_30cm_1971_2000,Snø,dager,NVE – utilgjengelig (tom THREDDS-katalog),NaN: datasettet har ingen fungerende nedlastingslenke,2026-11-22
-mobile_coverage,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-22
-fiber_broadband,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-22
+drive_min,Kjøretid,min,"OSRM (router.project-osrm.org), data © OSM/ODbL","Kjøretid bil fra Holmenkollen til nærmeste vei ved området (sommer, uten trafikk)",2026-11-23
+drive_min_winter,Kjøretid,min,Avledet: drive_min × vinterfaktor (config),Anslag vinterkjøretid; IKKE målt,2026-11-23
+elevation_m,Snø,moh,Kartverket høydedata-API (fallback Open-Meteo/Copernicus DEM),Høyde over havet ved punktet,2026-11-23
+ski_season_days,Snø,dager/år,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Skisesongens lengde 1991–2020 (dager med snøvannekv. >60 mm ≈ 25 cm), snitt innen radius",2026-11-23
+swe_max_mm,Snø,mm,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Maksimal årlig snømengde (snøvannekvivalent) 1991–2020, snitt innen radius",2026-11-23
+ski_season_change_2041_2070_rcp45,Snø,dager/år,"NVE/MET Klima i Norge utgave 2025 (thredds.met.no), NLOD 2.0","Endring i skisesong 2041–2070 vs 1991–2020 (RCP4.5, ensemblesnitt)",2026-11-23
+ski_season_proj_2041_2070,Snø,dager/år,Avledet,Skisesong 1991–2020 + endring (framskrivning),2026-11-23
+avg_price_nok,Verdi,NOK,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694","Snittpris fritidseiendom med bygning i fritt salg, kommune, sammenslått over price_years. IKKE median",2026-11-23
+sales_pooled,Verdi,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694","Antall salg i kommunen, sammenslått",2026-11-23
+sales_last_year,Verdi,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 11694",Antall salg siste år; <15 => usikkert,2026-11-23
+value_price_per_snow,Verdi,NOK/poeng,Avledet,"Snittpris / snøscore (0–1, gulv i config)",2026-11-23
+value_price_per_trail,Verdi,NOK/km,Avledet,Snittpris / (løype-km 10 km + merkede ruter-km 15 km),2026-11-23
+tax_rate_permille,Økonomi,‰,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Generell eiendomsskattesats (kommune),2026-11-23
+tax_exempt_cabins,Økonomi,1/0,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Fritak for fritidseiendom (1=ja),2026-11-23
+tax_cabins_total_1000,Økonomi,1000 NOK,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 14674 (KOSTRA)",Innbetalt eiendomsskatt fra fritidsboliger i kommunen,2026-11-23
+villrein_cabins,Regler,antall,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 12761",Fritidsbygg i nasjonalt villreinområde i kommunen (regelverk kan påvirke bruk/bygging),2026-11-23
+nearest_eat_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste pub/bar/kafé/restaurant,2026-11-23
+eat_5km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Antall pub/bar/kafé/restaurant innen 5 km,2026-11-23
+eat_15km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",… innen 15 km,2026-11-23
+gathering_5km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Samlingssteder (pub/bar/kafé) innen 5 km,2026-11-23
+nearest_grocery_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste dagligvare (supermarket/convenience),2026-11-23
+nearest_grocery_weekend_open,Praktisk,bool,"OpenStreetMap via Overpass API, ODbL",Nærmeste dagligvare har helgeåpent iflg. opening_hours (NaN = ukjent),2026-11-23
+nearest_vinmonopol_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste Vinmonopol,2026-11-23
+nearest_pharmacy_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste apotek,2026-11-23
+nearest_doctor_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til legekontor/klinikk/sykehus,2026-11-23
+nearest_fuel_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste bensinstasjon,2026-11-23
+ev_charging_15km,Praktisk,antall,"OpenStreetMap via Overpass API, ODbL",Ladestasjoner innen 15 km,2026-11-23
+nearest_ev_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste elbil-lading,2026-11-23
+nearest_alpine_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til alpinanlegg (winter_sports/aerialway/downhill),2026-11-23
+nearest_main_road_km,Praktisk,km,"OpenStreetMap via Overpass API, ODbL",Avstand til nærmeste trunk/primary/secondary vei (typisk riks-/fylkesvei),2026-11-23
+nordic_km_10km,Rando,km,"OpenStreetMap via Overpass API, ODbL",Preparerte langrennsløyper (piste:type=nordic) innen 10 km,2026-11-23
+nordic_direct_access,Rando,bool,"OpenStreetMap via Overpass API, ODbL",Løype ≤1 km fra punktet,2026-11-23
+dnt_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL",DNT-merkede turruter (hiking-relasjoner) innen 15 km,2026-11-23
+winter_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL","Vinterruter (route=ski/skitour, piste:type=skitour) innen 15 km",2026-11-23
+marked_routes_km_15km,Rando,km,"OpenStreetMap via Overpass API, ODbL",DNT + vinterruter,2026-11-23
+slope_25_40_share,Rando,andel,"Kartverket DTM (WCS) 50 m, avledet",Andel av areal innen 10 km med helning 25–40° (50 m DTM jevner ut helning),2026-11-23
+relief_to_1000m_peak_m,Rando,m,"Kartverket DTM, avledet",Høydeforskjell til nærmeste topp ≥1000 moh innen 15 km (0 hvis ingen),2026-11-23
+dist_to_1000m_peak_km,Rando,km,"Kartverket DTM, avledet",Avstand til nærmeste topp ≥1000 moh,2026-11-23
+avalanche_zone_share_of_steep,Rando,andel,"NVE Snøskred aktsomhetsområder (kart.nve.no), avledet","Andel av 25–40°-terrenget i aktsomhetsområde. KONTEKST, ikke sikkerhetsvurdering",2026-11-23
+friends_cabins,Sosialt,antall,config/venner.csv (manuell),Antall venner med hytte i kommunen,2026-11-23
+owner_oslo_akershus_share,Sosialt,andel,SSB – ikke publisert som kommunetabell,NaN: ingen åpen kommunetabell funnet,2026-11-23
+n_cabins,Identitet,antall,"OpenStreetMap via Overpass API, ODbL (building=cabin|hut)",Antall hytter i klyngen (DBSCAN),2026-11-23
+cluster_radius_km,Identitet,km,Avledet,Største avstand fra klyngens sentrum til en hytte,2026-11-23
+kommune_area_km2,Identitet,km²,"Geonorge kommuneinfo, avledet",Kommunens areal,2026-11-23
+elg_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03432","Felte elg i kommunen, snitt over config.hunting_seasons",2026-11-23
+hjort_felt_snitt,Jakt,dyr/år,"SSB (data.ssb.no), lisens NLOD 2.0 tabell 03434","Felte hjort i kommunen, snitt over sesongene",2026-11-23
+jakt_elg_per_100km2,Jakt,dyr/100 km²,Avledet,Felt elg per 100 km² kommuneareal (inkl. ikke-jaktbart areal),2026-11-23
+jakt_hjort_per_100km2,Jakt,dyr/100 km²,Avledet,Felt hjort per 100 km² kommuneareal,2026-11-23
+jaktrett_tilgang,Jakt,0–2,config/jakt_fiske.csv (manuell),"Tilgang til jaktrett/jaktkort (0 ingen, 1 mulig, 2 god). NaN hvis ikke fylt",2026-11-23
+lake_count_10km,Fiske,antall,NVE Innsjødatabase,Innsjøer ≥ lake_min_km2 med kant innen 10 km,2026-11-23
+lake_area_km2_10km,Fiske,km²,NVE Innsjødatabase,Samlet areal av disse innsjøene (hele innsjøens areal),2026-11-23
+nearest_lake_km,Fiske,km,NVE Innsjødatabase,Avstand til nærmeste innsjø (til forenklet kantpunkt),2026-11-23
+largest_lake_name,Fiske,-,NVE Innsjødatabase,Største innsjø innen 10 km,2026-11-23
+fiskekort_tilgang,Fiske,0–2,config/jakt_fiske.csv (manuell),"Tilgang til fiskekort/fiskerett. NaN hvis ikke fylt. Proxy-en måler tilgang til vann, ikke fiskekvalitet",2026-11-23
+finn_n_ads,Verdi,antall,Finn.no (engangsuttrekk) + data/raw/finn_manual.csv,Antall annonser brukt (kun hytter hvis sted inneholder feltnavn; side 1 av søket),2026-11-23
+finn_median_price_nok,Verdi,NOK,Finn.no / manuell,Median prisantydning,2026-11-23
+finn_median_price_per_m2,Verdi,NOK/m²,Finn.no / manuell,Median prisantydning per m² BRA/areal oppgitt i annonse,2026-11-23
+finn_median_area_m2,Verdi,m²,Finn.no / manuell,Median areal,2026-11-23
+price_used_nok,Verdi,NOK,Avledet,"Finn-median hvis ≥ finn_min_ads annonser, ellers SSB kommunesnitt",2026-11-23
+price_per_m2_used,Verdi,NOK/m²,Avledet,Finn-median kr/m² (kun når nok annonser),2026-11-23
+price_source,Verdi,-,Avledet,Hvilken pris som brukes,2026-11-23
+finn_tynt,Verdi,bool,Avledet,1–(min−1) annonser: Finn-pris brukes ikke,2026-11-23
+nominal_snow_days_30cm_1971_2000,Snø,dager,NVE – utilgjengelig (tom THREDDS-katalog),NaN: datasettet har ingen fungerende nedlastingslenke,2026-11-23
+mobile_coverage,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-23
+fiber_broadband,Praktisk,-,Nkom – ikke hentet,NaN: ikke åpen API-tilgang implementert,2026-11-23

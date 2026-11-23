@@ -57,7 +57,10 @@ def build(cfg: dict, limit: int | None = None) -> pd.DataFrame:
     d = geo.drive_table(home["lat"], home["lon"], list(zip(df["lat"], df["lon"])))
     df = pd.concat([df, pd.DataFrame(d)], axis=1)
     df["drive_min_winter"] = df["drive_min"] * f["winter_factor"]
-    z = [geo.elevation(la, lo) for la, lo in zip(df["lat"], df["lon"])]
+    # Høyde (ett API-kall per felt) kun for felt som består kjøretidsfilteret; resten filtreres bort uansett.
+    near = df["drive_min"].le(f["max_drive_min"])
+    z = [geo.elevation(la, lo) if ok else (float("nan"), None)
+         for la, lo, ok in zip(df["lat"], df["lon"], near)]
     df["elevation_m"] = [a for a, _ in z]
     df["elevation_source"] = [b for _, b in z]
     df["loc_source"] = "medoid av OSM-hytter i klynge (DBSCAN)"

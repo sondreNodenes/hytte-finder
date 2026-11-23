@@ -20,7 +20,8 @@ def apply_filters(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
         elif r["drive_min"] > f["max_drive_min"]:
             why.append(f"kjøretid {r['drive_min']:.0f} min > {f['max_drive_min']}")
         z = r.get("elevation_m")
-        if "min_elevation_m" in f and f["min_elevation_m"] and (pd.isna(z) or z < f["min_elevation_m"]):
+        # høyde vurderes bare for felt som består kjøretid (høyde hentes ikke for de andre)
+        if not why and f.get("min_elevation_m") and (pd.isna(z) or z < f["min_elevation_m"]):
             why.append("høyde mangler" if pd.isna(z) else f"høyde {z:.0f} moh < {f['min_elevation_m']} (ikke fjell)")
         p = r.get("avg_price_nok")
         if pd.isna(p):
