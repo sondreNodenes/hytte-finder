@@ -1,21 +1,106 @@
 id,topp5_andel,topp10_andel,snittrang,beste_rang,dårligste_rang,navn,type,kommune,rank
-h-sjusjøen,1.0,1.0,1.127,1,2,Sjusjøen,hyttefelt,Ringsaker,1
-h-nordseter,1.0,1.0,1.946,1,5,Nordseter,hyttefelt,Lillehammer,2
-k3411,0.973,1.0,3.375,2,7,Ringsaker,kommune,Ringsaker,3
-k3412,0.92,1.0,4.824,2,8,Løten,kommune,Løten,5
-k3318,0.876,1.0,4.157,1,8,Krødsherad,kommune,Krødsherad,4
-k3442,0.183,1.0,6.044,1,10,Østre Toten,kommune,Østre Toten,6
-h-norefjell,0.031,0.903,8.026,4,13,Norefjell,hyttefelt,Krødsherad,7
-h-eggedal,0.015,0.456,10.695,4,15,Eggedal,hyttefelt,Sigdal,11
-k3407,0.002,0.653,9.847,5,17,Gjøvik,kommune,Gjøvik,9
-k3334,0.0,0.499,10.473,8,13,Flesberg,kommune,Flesberg,10
-k3403,0.0,0.877,8.382,6,14,Hamar,kommune,Hamar,8
-k3446,0.0,0.261,11.846,7,15,Gran,kommune,Gran,12
-k3305,0.0,0.155,12.086,8,15,Ringerike,kommune,Ringerike,13
-h-blefjell,0.0,0.194,12.459,7,17,Blefjell,hyttefelt,Tinn,14
-k3332,0.0,0.002,15.238,10,17,Sigdal,kommune,Sigdal,15
-k3303,0.0,0.0,15.554,12,17,Kongsberg,kommune,Kongsberg,16
-k3320,0.0,0.0,16.93,12,18,Flå,kommune,Flå,17
-k3336,0.0,0.0,18.099,17,20,Rollag,kommune,Rollag,18
-k4005,0.0,0.0,18.998,18,20,Notodden,kommune,Notodden,19
-k4020,0.0,0.0,19.894,18,20,Midt-Telemark,kommune,Midt-Telemark,20
+c3332-1,0.957,1.0,1.646,1,10,Djupsjølia,hyttefelt,Sigdal,1
+c3442-1,0.547,0.739,7.128,1,35,Kvernomsætra,hyttefelt,Østre Toten,3
+c3411-1,0.519,0.773,7.172,1,33,Svarthaugen,hyttefelt,Ringsaker,4
+c3320-1,0.492,0.755,7.561,1,39,Miljoseter,hyttefelt,Flå,2
+c3449-10,0.367,0.693,8.974,1,45,Busufjellet,hyttefelt,Sør-Aurdal,6
+c3442-5,0.346,0.606,9.981,2,37,Høgkorset,hyttefelt,Østre Toten,7
+c3305-4,0.323,0.54,10.666,1,41,Dyrbeintjernshøgda,hyttefelt,Ringerike,8
+c3411-2,0.311,0.526,12.199,1,48,Sjusjøen,hyttefelt,Ringsaker,9
+c3332-2,0.28,0.682,8.741,2,33,Rislelia,hyttefelt,Sigdal,5
+c3411-4,0.218,0.587,10.971,1,47,Kuåsen,hyttefelt,Ringsaker,10
+c3405-1,0.183,0.489,12.809,1,57,Nordseter,hyttefelt,Lillehammer,11
+c3449-3,0.098,0.273,17.751,2,62,Djupedal,hyttefelt,Sør-Aurdal,17
+c3305-3,0.096,0.339,15.972,1,47,Ringerudsetra,hyttefelt,Ringerike,14
+c3442-4,0.061,0.258,19.357,3,57,Borgelia,hyttefelt,Østre Toten,20
+c3449-5,0.053,0.273,16.701,3,55,Gaukeberg,hyttefelt,Sør-Aurdal,16
+c3305-2,0.041,0.107,31.828,1,72,Kolltjernhaugen,hyttefelt,Ringerike,30
+c3448-5,0.033,0.104,23.585,2,70,Svartsætra,hyttefelt,Nordre Land,22
+c3332-5,0.02,0.361,14.676,4,51,Rugland seter,hyttefelt,Sigdal,12
+c3305-5,0.016,0.081,33.463,2,72,Huken,hyttefelt,Ringerike,34
+c3320-2,0.009,0.148,20.022,5,48,Flagligrende,hyttefelt,Flå,18
+c3446-1,0.008,0.038,31.605,2,59,Lauvlisætra,hyttefelt,Gran,32
+c3332-6,0.006,0.14,15.855,4,38,Fekjanhaugen,hyttefelt,Sigdal,13
+c3305-1,0.006,0.039,41.56,4,80,Kjerringknatten,hyttefelt,Ringerike,40
+c3332-8,0.005,0.096,20.748,4,60,Slokoseter,hyttefelt,Sigdal,19
+c3442-3,0.003,0.117,24.486,4,65,Mønssetra,hyttefelt,Østre Toten,24
+c3412-1,0.002,0.026,26.147,3,54,Budor,hyttefelt,Løten,26
+c4005-3,0.0,0.0,75.385,58,92,Breidstul,hyttefelt,Notodden,78
+c3405-5,0.0,0.0,77.127,27,101,Kanthaugen,hyttefelt,Lillehammer,81
+c3318-2,0.0,0.0,75.94,45,92,Norefjell 2,hyttefelt,Krødsherad,79
+c4005-10,0.0,0.0,78.415,39,97,Bolkesjø,hyttefelt,Notodden,80
+c4024-12,0.0,0.0,80.14,61,95,Åslien,hyttefelt,Hjartdal,82
+c3407-1,0.0,0.0,81.476,52,100,Bråtåfallsvelia,hyttefelt,Gjøvik,83
+c3303-10,0.0,0.0,75.172,40,92,Sydsetrene,hyttefelt,Kongsberg,77
+c3405-7,0.0,0.0,67.927,37,94,Sjoga,hyttefelt,Lillehammer,70
+c3320-8,0.0,0.0,75.232,51,89,Dagalitjern,hyttefelt,Flå,76
+c4005-1,0.0,0.0,74.065,32,93,Driveknatten,hyttefelt,Notodden,75
+c3407-11,0.0,0.0,74.031,41,94,Biriseterhaugen,hyttefelt,Gjøvik,74
+c3403-4,0.0,0.0,72.33,45,97,Bringbusætra,hyttefelt,Hamar,73
+c4024-2,0.0,0.0,68.851,47,94,Kåldalen,hyttefelt,Hjartdal,72
+c3322-11,0.0,0.0,68.427,50,85,Bruhaugan 2,hyttefelt,Nesbyen,71
+c3320-4,0.0,0.0,84.363,63,95,Veneknatten,hyttefelt,Flå,85
+c3334-3,0.0,0.0,67.297,39,78,Nattesetra,hyttefelt,Flesberg,69
+c3303-1,0.0,0.0,66.274,26,86,Moltemyrhaugen,hyttefelt,Kongsberg,68
+c3411-14,0.0,0.0,82.412,68,90,Velt-Aursmoen,hyttefelt,Ringsaker,84
+c4024-4,0.0,0.0,95.381,87,102,Folalii,hyttefelt,Hjartdal,96
+c3332-12,0.0,0.0,84.264,61,102,Tveitseter,hyttefelt,Sigdal,86
+c4005-6,0.0,0.0,85.738,62,100,Steinsnippen,hyttefelt,Notodden,87
+c3334-7,0.0,0.0,104.098,91,105,Hagaåsen,hyttefelt,Flesberg,104
+c3421-14,0.0,0.0,100.45,84,104,Hølvelta,hyttefelt,Trysil,103
+c4026-14,0.0,0.0,100.741,78,105,Bjønneflatin,hyttefelt,Tinn,102
+c4026-9,0.0,0.0,100.669,91,105,Rabban,hyttefelt,Tinn,101
+c3303-8,0.0,0.0,100.09,66,105,Dørsjøstua,hyttefelt,Kongsberg,100
+c4026-7,0.0,0.0,98.204,83,104,Kvennhusflatin,hyttefelt,Tinn,99
+c3422-3,0.0,0.0,97.574,72,105,Bergesætra,hyttefelt,Åmot,98
+c3318-8,0.0,0.0,94.554,59,104,Kjellarmyrhaugan,hyttefelt,Krødsherad,97
+c3336-2,0.0,0.0,66.069,39,96,Høghaug,hyttefelt,Rollag,66
+c3332-10,0.0,0.0,94.646,76,102,Grunntjennlia,hyttefelt,Sigdal,95
+c3320-7,0.0,0.0,94.181,74,104,Krossmyrnatten,hyttefelt,Flå,94
+c3407-9,0.0,0.0,93.491,70,103,Sløhaugen,hyttefelt,Gjøvik,93
+c4005-8,0.0,0.0,92.417,80,99,Duttomhaugen,hyttefelt,Notodden,92
+c3412-3,0.0,0.0,91.163,60,103,Savalsætra,hyttefelt,Løten,91
+c3332-14,0.0,0.0,89.276,81,94,Dukelikollen,hyttefelt,Sigdal,90
+c3403-2,0.0,0.0,86.514,59,102,Ormsætra,hyttefelt,Hamar,89
+c3320-13,0.0,0.0,86.662,63,97,Bruhaugan,hyttefelt,Flå,88
+c3336-4,0.0,0.0,66.376,44,90,Årsethaugan,hyttefelt,Rollag,67
+c3336-6,0.0,0.0,51.806,26,85,Vindhøgde,hyttefelt,Rollag,53
+c3407-5,0.0,0.0,65.109,28,88,Ankerlia,hyttefelt,Gjøvik,65
+c3334-4,0.0,0.0,32.594,17,45,Lauvhaugen,hyttefelt,Flesberg,33
+c3320-3,0.0,0.0,42.99,16,75,Skurvenatten,hyttefelt,Flå,42
+c3336-1,0.0,0.0,41.653,19,77,Baklie,hyttefelt,Rollag,41
+c3442-2,0.0,0.0,40.565,11,69,Oksbakken,hyttefelt,Østre Toten,39
+c3322-8,0.0,0.0,40.15,20,70,Langevasslie,hyttefelt,Nesbyen,38
+c3449-9,0.0,0.003,37.906,7,81,Nybusætra,hyttefelt,Sør-Aurdal,37
+c3422-2,0.0,0.001,36.683,8,92,Almussætra,hyttefelt,Åmot,36
+c3446-6,0.0,0.003,35.99,7,62,Bustevollen,hyttefelt,Gran,35
+c3403-1,0.0,0.0,32.793,14,63,Kråktjernet,hyttefelt,Hamar,31
+c4024-3,0.0,0.0,44.127,18,84,Heggelii,hyttefelt,Hjartdal,44
+c3318-1,0.0,0.029,31.763,6,59,Norefjell,hyttefelt,Krødsherad,29
+c3320-5,0.0,0.004,31.985,7,61,Sørbølsetran,hyttefelt,Flå,28
+c3403-3,0.0,0.0,28.401,12,52,Måsætra,hyttefelt,Hamar,27
+c4005-5,0.0,0.02,25.576,7,59,Nåttertjørna,hyttefelt,Notodden,25
+c4024-1,0.0,0.011,24.912,6,69,Fjøsstul,hyttefelt,Hjartdal,23
+c3411-3,0.0,0.012,23.641,8,50,Store Ljøsvatnet,hyttefelt,Ringsaker,21
+c3332-4,0.0,0.123,17.073,6,45,Åslandsetermarka,hyttefelt,Sigdal,15
+c3411-9,0.0,0.0,42.916,16,62,Oddsæterhøgda,hyttefelt,Ringsaker,43
+c4020-3,0.0,0.0,44.558,15,62,Grostulhaugane,hyttefelt,Midt-Telemark,45
+c3446-10,0.0,0.0,64.155,23,85,Skålsætra,hyttefelt,Gran,64
+c3411-5,0.0,0.0,54.035,26,86,Bjørnåsen,hyttefelt,Ringsaker,56
+c4020-1,0.0,0.0,64.067,29,86,Nutestul,hyttefelt,Midt-Telemark,63
+c3305-7,0.0,0.0,61.509,24,89,Svarttjernshaugen,hyttefelt,Ringerike,62
+c3320-10,0.0,0.0,59.883,31,85,Venelinatten,hyttefelt,Flå,61
+c3411-7,0.0,0.0,58.601,21,97,Øyungen,hyttefelt,Ringsaker,60
+c3303-3,0.0,0.0,57.431,21,85,Gunnesseter,hyttefelt,Kongsberg,59
+c4020-8,0.0,0.0,54.192,25,79,Dyrås,hyttefelt,Midt-Telemark,58
+c3405-4,0.0,0.0,53.931,18,81,Myggbukta,hyttefelt,Lillehammer,57
+c3407-10,0.0,0.0,51.608,22,76,Skundbergsætra,hyttefelt,Gjøvik,55
+c3336-3,0.0,0.0,45.727,20,88,Rotihaug,hyttefelt,Rollag,46
+c3411-10,0.0,0.0,51.69,26,69,Gunnerssætra,hyttefelt,Ringsaker,54
+c3334-1,0.0,0.0,51.026,21,70,Søre Gjellerudsetra,hyttefelt,Flesberg,52
+c3446-5,0.0,0.003,50.459,9,84,Olabråtålia,hyttefelt,Gran,51
+c3449-16,0.0,0.0,48.783,19,83,Utsikten 2,hyttefelt,Sør-Aurdal,50
+c3305-8,0.0,0.0,48.435,14,84,Flaskerudsetra,hyttefelt,Ringerike,49
+c3334-2,0.0,0.0,47.305,18,70,Gampeflå,hyttefelt,Flesberg,48
+c3303-2,0.0,0.001,45.856,10,81,Haugmosetra,hyttefelt,Kongsberg,47
+c3421-27,0.0,0.0,104.09,96,105,Haigonshaugen,hyttefelt,Trysil,105

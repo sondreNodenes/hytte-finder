@@ -27,9 +27,9 @@ def test_finn_aggregate_median(tmp_path, monkeypatch):
                   "area_m2": [50, 50, 100, 40]}).to_csv(f, index=False)
     monkeypatch.setattr(finn, "LISTINGS", f)
     monkeypatch.setattr(finn, "MANUAL", tmp_path / "none.csv")
-    areas = pd.DataFrame({"id": ["a", "b"], "navn": ["A", "B"], "kommune": ["K", "K"]})
+    areas = pd.DataFrame({"id": ["a", "b"], "navn": ["A", "B"], "kommune": ["K", "K"], "kommunenr": ["1", "1"]})
     g = finn.aggregate(areas, 3).set_index("id")
-    assert g.loc["a", "finn_n_ads"] == 3
+    assert g.loc["a", "finn_n_ads"] == 3 and g.loc["a", "finn_level"] == "felt"
     assert g.loc["a", "finn_median_price_per_m2"] == 60000     # median(60000, 80000, 50000)
     assert g.loc["a", "finn_median_price_nok"] == 4e6
 
@@ -56,3 +56,23 @@ def test_tile_bbox_shared_within_tile():
     a = osm.tile_bbox(61.05, 10.10, 30)
     assert a == osm.tile_bbox(61.20, 10.40, 30)
     assert a != osm.tile_bbox(61.30, 10.40, 30)
+
+
+def test_finn_falls_back_to_kommune_level(tmp_path, monkeypatch):
+    f = tmp_path / "l.csv"
+    pd.DataFrame({"cluster_id": ["a", "kommune:1", "kommune:1", "kommune:1"], "price_nok": [3e6, 4e6, 5e6, 6e6],
+                  "area_m2": [50, 50, 50, 50]}).to_csv(f, index=False)
+    monkeypatch.setattr(finn, "LISTINGS", f)
+    monkeypatch.setattr(finn, "MANUAL", tmp_path / "none.csv")
+    areas = pd.DataFrame({"id": ["a"], "navn": ["A"], "kommune": ["K"], "kommunenr": ["1"]})
+    g = finn.aggregate(areas, 3, 3).set_index("id")
+    assert g.loc["a", "finn_level"] == "kommune" and g.loc["a", "finn_median_price_per_m2"] == 100000
+
+
+def test_kommune_level_needs_more_ads(tmp_path, monkeypatch):
+    f = tmp_path / "l.csv"
+    pd.DataFrame({"cluster_id": ["kommune:1"] * 4, "price_nok": [1e6] * 4, "area_m2": [50] * 4}).to_csv(f, index=False)
+    monkeypatch.setattr(finn, "LISTINGS", f)
+    monkeypatch.setattr(finn, "MANUAL", tmp_path / "none.csv")
+    areas = pd.DataFrame({"id": ["a"], "navn": ["A"], "kommune": ["K"], "kommunenr": ["1"]})
+    assert finn.aggregate(areas, 3, 10).empty       # 4 annonser < 10 på kommune-nivå

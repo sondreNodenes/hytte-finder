@@ -1,7 +1,7 @@
 # hytte-finder
 
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)
-![Tester](https://img.shields.io/badge/pytest-17%20passed-brightgreen?logo=pytest&logoColor=white)
+![Tester](https://img.shields.io/badge/pytest-26%20passed-brightgreen?logo=pytest&logoColor=white)
 ![Lisens](https://img.shields.io/badge/kode-MIT-yellow)
 ![Data](https://img.shields.io/badge/data-SSB%20%C2%B7%20Kartverket%20%C2%B7%20NVE%2FMET%20%C2%B7%20OSM-informational)
 ![Region](https://img.shields.io/badge/region-Norge-red)

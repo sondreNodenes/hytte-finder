@@ -80,7 +80,8 @@ def build(cfg: dict) -> None:
     if rk["price_per_m2_used"].notna().any():
         q = rk.loc[rk["price_per_m2_used"].notna()]
         L.append(f"- **Kvadratpris (Finn/manuell median):** lavest {_row(q.loc[q['price_per_m2_used'].idxmin()], 'price_per_m2_used', 0, ' kr/m²')}; "
-                 f"høyest {_row(q.loc[q['price_per_m2_used'].idxmax()], 'price_per_m2_used', 0, ' kr/m²')} ({len(q)} felt har nok annonser).")
+                 f"høyest {_row(q.loc[q['price_per_m2_used'].idxmax()], 'price_per_m2_used', 0, ' kr/m²')}. "
+                 f"{int((q['finn_level'] == 'felt').sum())} felt har egne feltannonser, {int((q['finn_level'] == 'kommune').sum())} bruker kommune-median (grovere, delt av alle felt i kommunen).")
     else:
         L.append("- **Kvadratpris:** ikke hentet (kjør `make finn` eller fyll `data/raw/finn_manual.csv`).")
     if rk["lake_area_km2_10km"].notna().any():

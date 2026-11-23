@@ -68,6 +68,8 @@ VARIABLES = [
     ("price_used_nok", "Verdi", "NOK", "Avledet", "Finn-median hvis ≥ finn_min_ads annonser, ellers SSB kommunesnitt"),
     ("price_per_m2_used", "Verdi", "NOK/m²", "Avledet", "Finn-median kr/m² (kun når nok annonser)"),
     ("price_source", "Verdi", "-", "Avledet", "Hvilken pris som brukes"),
+    ("over_budsjett", "Verdi", "bool", "Avledet", "Brukt pris (Finn-median eller SSB-snitt) over budsjettets øvre grense"),
+    ("finn_level", "Verdi", "-", "Avledet", "felt = annonser med feltnavn i stedet; kommune = søk på kommunenavn (grovere)"),
     ("finn_tynt", "Verdi", "bool", "Avledet", "1–(min−1) annonser: Finn-pris brukes ikke"),
     ("nominal_snow_days_30cm_1971_2000", "Snø", "dager", "NVE – utilgjengelig (tom THREDDS-katalog)", "NaN: datasettet har ingen fungerende nedlastingslenke"),
     ("mobile_coverage", "Praktisk", "-", "Nkom – ikke hentet", "NaN: ikke åpen API-tilgang implementert"),

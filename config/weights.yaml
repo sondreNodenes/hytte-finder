@@ -37,7 +37,8 @@ params:
   hunting_seasons: ['2023-2024', '2024-2025', '2025-2026']
   lake_min_km2: 0.1
   lake_radius_km: 10
-  finn_min_ads: 5             # minst så mange annonser for å bruke Finn-pris
+  finn_min_ads: 5             # minst så mange annonser for å bruke Finn-pris på felt-nivå
+  finn_min_ads_kommune: 15    # strengere krav for kommune-nivå (søk på kommunenavn er grovere)
   sensitivity_runs: 1000
   sensitivity_alpha: 50       # Dirichlet-konsentrasjon (høyere = nærmere standardvekter)
   random_seed: 42

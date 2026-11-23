@@ -1,61 +1,421 @@
 profil,rank,id,navn,type,kommune,score
-alpint_familie,1,h-sjusjøen,Sjusjøen,hyttefelt,Ringsaker,71.62049861495845
-alpint_familie,2,k3318,Krødsherad,kommune,Krødsherad,67.71018941379052
-alpint_familie,3,h-nordseter,Nordseter,hyttefelt,Lillehammer,64.54293628808865
-alpint_familie,4,h-norefjell,Norefjell,hyttefelt,Krødsherad,62.48858276559108
-alpint_familie,5,k3412,Løten,kommune,Løten,59.37935165081979
-alpint_familie,6,k3446,Gran,kommune,Gran,59.342666766489494
-alpint_familie,7,k3411,Ringsaker,kommune,Ringsaker,57.73414688927154
-alpint_familie,8,k3442,Østre Toten,kommune,Østre Toten,57.69446732050611
-alpint_familie,9,h-eggedal,Eggedal,hyttefelt,Sigdal,54.109081380549526
-alpint_familie,10,k3305,Ringerike,kommune,Ringerike,52.72216815153104
-alpint_familie,11,k3334,Flesberg,kommune,Flesberg,48.58089391330388
-alpint_familie,12,k3303,Kongsberg,kommune,Kongsberg,48.4977914202291
-alpint_familie,13,k3403,Hamar,kommune,Hamar,46.499962566444566
-alpint_familie,14,k3407,Gjøvik,kommune,Gjøvik,44.605824661226315
-alpint_familie,15,k3320,Flå,kommune,Flå,44.536572583664004
-alpint_familie,16,h-blefjell,Blefjell,hyttefelt,Tinn,42.44515984128172
-alpint_familie,17,k3332,Sigdal,kommune,Sigdal,37.03151905367972
-alpint_familie,18,k4005,Notodden,kommune,Notodden,28.345436849591977
-alpint_familie,19,k3336,Rollag,kommune,Rollag,28.068428539342666
-alpint_familie,20,k4020,Midt-Telemark,kommune,Midt-Telemark,24.32881635097702
-rando_langrenn,1,k3318,Krødsherad,kommune,Krødsherad,67.92805270644605
-rando_langrenn,2,h-sjusjøen,Sjusjøen,hyttefelt,Ringsaker,67.36842105263159
-rando_langrenn,3,h-nordseter,Nordseter,hyttefelt,Lillehammer,66.606648199446
-rando_langrenn,4,k3411,Ringsaker,kommune,Ringsaker,61.9285767762222
-rando_langrenn,5,h-eggedal,Eggedal,hyttefelt,Sigdal,58.12195852362058
-rando_langrenn,6,k3412,Løten,kommune,Løten,57.94340046417609
-rando_langrenn,7,h-norefjell,Norefjell,hyttefelt,Krødsherad,57.81724938234633
-rando_langrenn,8,h-blefjell,Blefjell,hyttefelt,Tinn,54.36737291307928
-rando_langrenn,9,k3442,Østre Toten,kommune,Østre Toten,51.7634947967358
-rando_langrenn,10,k3334,Flesberg,kommune,Flesberg,51.30643108482443
-rando_langrenn,11,k3403,Hamar,kommune,Hamar,49.28501909111328
-rando_langrenn,12,k3332,Sigdal,kommune,Sigdal,49.00838511641836
-rando_langrenn,13,k3305,Ringerike,kommune,Ringerike,48.162386763494794
-rando_langrenn,14,k3446,Gran,kommune,Gran,44.97679119562776
-rando_langrenn,15,k3320,Flå,kommune,Flå,42.66377180504605
-rando_langrenn,16,k3407,Gjøvik,kommune,Gjøvik,41.08482443662499
-rando_langrenn,17,k3303,Kongsberg,kommune,Kongsberg,38.99341169424272
-rando_langrenn,18,k4005,Notodden,kommune,Notodden,33.910309201167934
-rando_langrenn,19,k3336,Rollag,kommune,Rollag,31.07097402111253
-rando_langrenn,20,k4020,Midt-Telemark,kommune,Midt-Telemark,27.968480946320284
-rimelig_enkel,1,k3442,Østre Toten,kommune,Østre Toten,72.50711237553344
-rimelig_enkel,2,h-sjusjøen,Sjusjøen,hyttefelt,Ringsaker,70.88157894736842
-rimelig_enkel,3,h-nordseter,Nordseter,hyttefelt,Lillehammer,69.38157894736842
-rimelig_enkel,4,k3412,Løten,kommune,Løten,65.12091038406828
-rimelig_enkel,5,k3411,Ringsaker,kommune,Ringsaker,63.6369132290185
-rimelig_enkel,6,k3318,Krødsherad,kommune,Krødsherad,58.41678520625889
-rimelig_enkel,7,k3403,Hamar,kommune,Hamar,56.01706970128023
-rimelig_enkel,8,k3407,Gjøvik,kommune,Gjøvik,55.875533428165014
-rimelig_enkel,9,k3446,Gran,kommune,Gran,55.83605974395449
-rimelig_enkel,10,k3305,Ringerike,kommune,Ringerike,54.88869132290185
-rimelig_enkel,11,k3334,Flesberg,kommune,Flesberg,53.04658605974395
-rimelig_enkel,12,h-norefjell,Norefjell,hyttefelt,Krødsherad,50.79836415362732
-rimelig_enkel,13,h-eggedal,Eggedal,hyttefelt,Sigdal,50.49573257467994
-rimelig_enkel,14,k3303,Kongsberg,kommune,Kongsberg,49.743954480796596
-rimelig_enkel,15,h-blefjell,Blefjell,hyttefelt,Tinn,40.38869132290184
-rimelig_enkel,16,k3332,Sigdal,kommune,Sigdal,37.087837837837846
-rimelig_enkel,17,k3320,Flå,kommune,Flå,33.836059743954486
-rimelig_enkel,18,k3336,Rollag,kommune,Rollag,23.02027027027027
-rimelig_enkel,19,k4005,Notodden,kommune,Notodden,22.77027027027027
-rimelig_enkel,20,k4020,Midt-Telemark,kommune,Midt-Telemark,16.520270270270277
+alpint_familie,1,c3332-1,Djupsjølia,hyttefelt,Sigdal,69.62536504399253
+alpint_familie,2,c3411-1,Svarthaugen,hyttefelt,Ringsaker,68.33953798859314
+alpint_familie,3,c3320-1,Miljoseter,hyttefelt,Flå,67.53611690325302
+alpint_familie,4,c3411-2,Sjusjøen,hyttefelt,Ringsaker,67.46266216118232
+alpint_familie,5,c3320-2,Flagligrende,hyttefelt,Flå,65.38952293261013
+alpint_familie,6,c3332-2,Rislelia,hyttefelt,Sigdal,64.97444531155107
+alpint_familie,7,c3318-1,Norefjell,hyttefelt,Krødsherad,64.88222830621831
+alpint_familie,8,c3446-1,Lauvlisætra,hyttefelt,Gran,64.39850609935452
+alpint_familie,9,c3305-2,Kolltjernhaugen,hyttefelt,Ringerike,62.67939141473817
+alpint_familie,10,c3305-1,Kjerringknatten,hyttefelt,Ringerike,62.624303273712535
+alpint_familie,11,c3405-1,Nordseter,hyttefelt,Lillehammer,62.450028168124504
+alpint_familie,12,c3305-5,Huken,hyttefelt,Ringerike,62.04674149370509
+alpint_familie,13,c3442-1,Kvernomsætra,hyttefelt,Østre Toten,61.158836487550694
+alpint_familie,14,c3442-5,Høgkorset,hyttefelt,Østre Toten,61.10414027796318
+alpint_familie,15,c3446-6,Bustevollen,hyttefelt,Gran,60.97103664097472
+alpint_familie,16,c3442-4,Borgelia,hyttefelt,Østre Toten,60.58110051579298
+alpint_familie,17,c3411-4,Kuåsen,hyttefelt,Ringsaker,60.06445727974885
+alpint_familie,18,c3305-3,Ringerudsetra,hyttefelt,Ringerike,60.059866842088596
+alpint_familie,19,c3412-1,Budor,hyttefelt,Løten,59.37826526734319
+alpint_familie,20,c3334-2,Gampeflå,hyttefelt,Flesberg,59.12681206710752
+alpint_familie,21,c3403-3,Måsætra,hyttefelt,Hamar,59.05320623240606
+alpint_familie,22,c3305-4,Dyrbeintjernshøgda,hyttefelt,Ringerike,58.841947156098264
+alpint_familie,23,c3446-5,Olabråtålia,hyttefelt,Gran,58.7384645255901
+alpint_familie,24,c3332-6,Fekjanhaugen,hyttefelt,Sigdal,58.21889730430468
+alpint_familie,25,c3332-4,Åslandsetermarka,hyttefelt,Sigdal,57.71750086710661
+alpint_familie,26,c3332-5,Rugland seter,hyttefelt,Sigdal,57.62494698379187
+alpint_familie,27,c3320-5,Sørbølsetran,hyttefelt,Flå,57.28255177876397
+alpint_familie,28,c4020-3,Grostulhaugane,hyttefelt,Midt-Telemark,57.2247318737355
+alpint_familie,29,c3411-9,Oddsæterhøgda,hyttefelt,Ringsaker,56.71258704099002
+alpint_familie,30,c3411-3,Store Ljøsvatnet,hyttefelt,Ringsaker,56.358310052881514
+alpint_familie,31,c3446-10,Skålsætra,hyttefelt,Gran,55.95199167627758
+alpint_familie,32,c3334-1,Søre Gjellerudsetra,hyttefelt,Flesberg,55.76443225941521
+alpint_familie,33,c3411-10,Gunnerssætra,hyttefelt,Ringsaker,55.43731472122043
+alpint_familie,34,c3334-4,Lauvhaugen,hyttefelt,Flesberg,55.38382328505623
+alpint_familie,35,c4020-1,Nutestul,hyttefelt,Midt-Telemark,55.28763251476114
+alpint_familie,36,c4024-1,Fjøsstul,hyttefelt,Hjartdal,55.092868364879024
+alpint_familie,37,c3336-1,Baklie,hyttefelt,Rollag,55.001234923049466
+alpint_familie,38,c3403-1,Kråktjernet,hyttefelt,Hamar,54.91091189479923
+alpint_familie,39,c3332-8,Slokoseter,hyttefelt,Sigdal,54.7074093583738
+alpint_familie,40,c3422-2,Almussætra,hyttefelt,Åmot,54.54820669937589
+alpint_familie,41,c3449-10,Busufjellet,hyttefelt,Sør-Aurdal,53.926349001734074
+alpint_familie,42,c3442-2,Oksbakken,hyttefelt,Østre Toten,53.2947757294682
+alpint_familie,43,c3442-3,Mønssetra,hyttefelt,Østre Toten,53.198288015793
+alpint_familie,44,c3318-2,Norefjell 2,hyttefelt,Krødsherad,52.91531312598789
+alpint_familie,45,c4024-3,Heggelii,hyttefelt,Hjartdal,52.53464477234837
+alpint_familie,46,c3303-1,Moltemyrhaugen,hyttefelt,Kongsberg,52.497740251951555
+alpint_familie,47,c4005-5,Nåttertjørna,hyttefelt,Notodden,52.46159690636267
+alpint_familie,48,c3303-10,Sydsetrene,hyttefelt,Kongsberg,51.29067851839525
+alpint_familie,49,c3407-10,Skundbergsætra,hyttefelt,Gjøvik,50.85946927556926
+alpint_familie,50,c3336-3,Rotihaug,hyttefelt,Rollag,50.743422423049466
+alpint_familie,51,c3305-8,Flaskerudsetra,hyttefelt,Ringerike,50.327135050932895
+alpint_familie,52,c3405-4,Myggbukta,hyttefelt,Lillehammer,50.28033927459051
+alpint_familie,53,c3303-2,Haugmosetra,hyttefelt,Kongsberg,50.1186002946866
+alpint_familie,54,c3336-4,Årsethaugan,hyttefelt,Rollag,49.77687594869049
+alpint_familie,55,c3336-6,Vindhøgde,hyttefelt,Rollag,49.74746657485177
+alpint_familie,56,c4005-1,Driveknatten,hyttefelt,Notodden,49.695417395957605
+alpint_familie,57,c3303-3,Gunnesseter,hyttefelt,Kongsberg,49.20995806131611
+alpint_familie,58,c3449-5,Gaukeberg,hyttefelt,Sør-Aurdal,48.91432977096484
+alpint_familie,59,c3320-3,Skurvenatten,hyttefelt,Flå,48.811548898793696
+alpint_familie,60,c3334-3,Nattesetra,hyttefelt,Flesberg,48.47340429583289
+alpint_familie,61,c3407-11,Biriseterhaugen,hyttefelt,Gjøvik,48.25739290990595
+alpint_familie,62,c3403-2,Ormsætra,hyttefelt,Hamar,48.034808680380806
+alpint_familie,63,c3448-5,Svartsætra,hyttefelt,Nordre Land,48.02910346406195
+alpint_familie,64,c3449-3,Djupedal,hyttefelt,Sør-Aurdal,47.976800739006464
+alpint_familie,65,c3407-5,Ankerlia,hyttefelt,Gjøvik,47.875840396899626
+alpint_familie,66,c3411-5,Bjørnåsen,hyttefelt,Ringsaker,47.396347724750704
+alpint_familie,67,c3320-10,Venelinatten,hyttefelt,Flå,46.857451328187985
+alpint_familie,68,c3305-7,Svarttjernshaugen,hyttefelt,Ringerike,46.766626643277746
+alpint_familie,69,c3405-5,Kanthaugen,hyttefelt,Lillehammer,46.63472368094502
+alpint_familie,70,c3322-8,Langevasslie,hyttefelt,Nesbyen,46.01111136040388
+alpint_familie,71,c3320-4,Veneknatten,hyttefelt,Flå,45.56957913848155
+alpint_familie,72,c4005-3,Breidstul,hyttefelt,Notodden,44.18843230677143
+alpint_familie,73,c4024-2,Kåldalen,hyttefelt,Hjartdal,44.070478918576526
+alpint_familie,74,c4020-8,Dyrås,hyttefelt,Midt-Telemark,43.955501104504734
+alpint_familie,75,c3336-2,Høghaug,hyttefelt,Rollag,43.27773819785437
+alpint_familie,76,c3412-3,Savalsætra,hyttefelt,Løten,43.13058782401357
+alpint_familie,77,c3449-16,Utsikten 2,hyttefelt,Sør-Aurdal,42.91372880942638
+alpint_familie,78,c4024-12,Åslien,hyttefelt,Hjartdal,42.63120506591952
+alpint_familie,79,c3320-7,Krossmyrnatten,hyttefelt,Flå,42.56677465130206
+alpint_familie,80,c4005-10,Bolkesjø,hyttefelt,Notodden,42.455587290978045
+alpint_familie,81,c3320-8,Dagalitjern,hyttefelt,Flå,42.43356151027643
+alpint_familie,82,c3403-4,Bringbusætra,hyttefelt,Hamar,42.356825356337694
+alpint_familie,83,c3411-14,Velt-Aursmoen,hyttefelt,Ringsaker,42.33988056570202
+alpint_familie,84,c4005-6,Steinsnippen,hyttefelt,Notodden,42.27425367893791
+alpint_familie,85,c3322-11,Bruhaugan 2,hyttefelt,Nesbyen,41.79517746036671
+alpint_familie,86,c3318-8,Kjellarmyrhaugan,hyttefelt,Krødsherad,40.76574337961109
+alpint_familie,87,c3422-3,Bergesætra,hyttefelt,Åmot,40.75513778911948
+alpint_familie,88,c3405-7,Sjoga,hyttefelt,Lillehammer,40.745779631335225
+alpint_familie,89,c3411-7,Øyungen,hyttefelt,Ringsaker,40.4923302823501
+alpint_familie,90,c3407-1,Bråtåfallsvelia,hyttefelt,Gjøvik,39.748967835584125
+alpint_familie,91,c3449-9,Nybusætra,hyttefelt,Sør-Aurdal,39.71658439285262
+alpint_familie,92,c3332-14,Dukelikollen,hyttefelt,Sigdal,38.50108793975619
+alpint_familie,93,c3320-13,Bruhaugan,hyttefelt,Flå,38.43516407437899
+alpint_familie,94,c3303-8,Dørsjøstua,hyttefelt,Kongsberg,36.335547410071214
+alpint_familie,95,c4005-8,Duttomhaugen,hyttefelt,Notodden,35.476449656269764
+alpint_familie,96,c3407-9,Sløhaugen,hyttefelt,Gjøvik,35.02541014327644
+alpint_familie,97,c3332-12,Tveitseter,hyttefelt,Sigdal,34.91301368761944
+alpint_familie,98,c3334-7,Hagaåsen,hyttefelt,Flesberg,34.8556448662528
+alpint_familie,99,c4026-14,Bjønneflatin,hyttefelt,Tinn,34.81341664572107
+alpint_familie,100,c3332-10,Grunntjennlia,hyttefelt,Sigdal,34.50269050385876
+alpint_familie,101,c4024-4,Folalii,hyttefelt,Hjartdal,34.126597694124655
+alpint_familie,102,c4026-7,Kvennhusflatin,hyttefelt,Tinn,33.25395048537176
+alpint_familie,103,c4026-9,Rabban,hyttefelt,Tinn,32.75274275590316
+alpint_familie,104,c3421-14,Hølvelta,hyttefelt,Trysil,27.19652264410074
+alpint_familie,105,c3421-27,Haigonshaugen,hyttefelt,Trysil,22.53105790051099
+rando_langrenn,1,c3320-1,Miljoseter,hyttefelt,Flå,70.09941434245795
+rando_langrenn,2,c3332-1,Djupsjølia,hyttefelt,Sigdal,69.73204528747928
+rando_langrenn,3,c3332-2,Rislelia,hyttefelt,Sigdal,64.75303090390976
+rando_langrenn,4,c3332-6,Fekjanhaugen,hyttefelt,Sigdal,63.36495610704967
+rando_langrenn,5,c3320-5,Sørbølsetran,hyttefelt,Flå,63.02547180011558
+rando_langrenn,6,c3305-4,Dyrbeintjernshøgda,hyttefelt,Ringerike,62.65743873437537
+rando_langrenn,7,c3411-1,Svarthaugen,hyttefelt,Ringsaker,62.43943752062506
+rando_langrenn,8,c3411-2,Sjusjøen,hyttefelt,Ringsaker,62.36575710394402
+rando_langrenn,9,c3411-4,Kuåsen,hyttefelt,Ringsaker,62.24153893159021
+rando_langrenn,10,c3320-2,Flagligrende,hyttefelt,Flå,62.223776716848334
+rando_langrenn,11,c3332-8,Slokoseter,hyttefelt,Sigdal,61.6413125759207
+rando_langrenn,12,c3332-5,Rugland seter,hyttefelt,Sigdal,61.38512858920669
+rando_langrenn,13,c3332-4,Åslandsetermarka,hyttefelt,Sigdal,61.33885344334057
+rando_langrenn,14,c3405-1,Nordseter,hyttefelt,Lillehammer,61.25834716797731
+rando_langrenn,15,c4005-5,Nåttertjørna,hyttefelt,Notodden,60.519489321131914
+rando_langrenn,16,c3320-3,Skurvenatten,hyttefelt,Flå,60.51375007209512
+rando_langrenn,17,c3411-3,Store Ljøsvatnet,hyttefelt,Ringsaker,60.084402169875915
+rando_langrenn,18,c3449-10,Busufjellet,hyttefelt,Sør-Aurdal,60.020163558604935
+rando_langrenn,19,c3305-3,Ringerudsetra,hyttefelt,Ringerike,59.054803757916986
+rando_langrenn,20,c4024-1,Fjøsstul,hyttefelt,Hjartdal,58.895691315110646
+rando_langrenn,21,c3322-8,Langevasslie,hyttefelt,Nesbyen,58.03538964130642
+rando_langrenn,22,c3449-5,Gaukeberg,hyttefelt,Sør-Aurdal,57.68620241665411
+rando_langrenn,23,c3336-1,Baklie,hyttefelt,Rollag,57.61893271608265
+rando_langrenn,24,c3442-1,Kvernomsætra,hyttefelt,Østre Toten,57.30901087951781
+rando_langrenn,25,c3318-1,Norefjell,hyttefelt,Krødsherad,57.006110792045305
+rando_langrenn,26,c3320-10,Venelinatten,hyttefelt,Flå,56.750785656536564
+rando_langrenn,27,c3449-3,Djupedal,hyttefelt,Sør-Aurdal,56.67674745605616
+rando_langrenn,28,c3334-4,Lauvhaugen,hyttefelt,Flesberg,56.44251144390536
+rando_langrenn,29,c3412-1,Budor,hyttefelt,Løten,56.005668912523866
+rando_langrenn,30,c3403-3,Måsætra,hyttefelt,Hamar,55.92786117769371
+rando_langrenn,31,c3403-1,Kråktjernet,hyttefelt,Hamar,55.901399595175405
+rando_langrenn,32,c3411-5,Bjørnåsen,hyttefelt,Ringsaker,55.33236622148744
+rando_langrenn,33,c3336-3,Rotihaug,hyttefelt,Rollag,55.291167053909774
+rando_langrenn,34,c3442-5,Høgkorset,hyttefelt,Østre Toten,55.00320056104502
+rando_langrenn,35,c3336-6,Vindhøgde,hyttefelt,Rollag,54.94159952832812
+rando_langrenn,36,c3448-5,Svartsætra,hyttefelt,Nordre Land,54.82085750704682
+rando_langrenn,37,c3411-9,Oddsæterhøgda,hyttefelt,Ringsaker,53.70119277008201
+rando_langrenn,38,c3305-5,Huken,hyttefelt,Ringerike,53.445696510390874
+rando_langrenn,39,c3303-2,Haugmosetra,hyttefelt,Kongsberg,53.444126376689596
+rando_langrenn,40,c3322-11,Bruhaugan 2,hyttefelt,Nesbyen,53.35240186609545
+rando_langrenn,41,c3442-3,Mønssetra,hyttefelt,Østre Toten,53.33583952176555
+rando_langrenn,42,c3411-7,Øyungen,hyttefelt,Ringsaker,53.278032522291554
+rando_langrenn,43,c3305-2,Kolltjernhaugen,hyttefelt,Ringerike,52.426604136805
+rando_langrenn,44,c3334-1,Søre Gjellerudsetra,hyttefelt,Flesberg,51.965657756355796
+rando_langrenn,45,c3405-4,Myggbukta,hyttefelt,Lillehammer,51.52223869069336
+rando_langrenn,46,c3336-4,Årsethaugan,hyttefelt,Rollag,51.459882359223016
+rando_langrenn,47,c3411-10,Gunnerssætra,hyttefelt,Ringsaker,51.44558678870843
+rando_langrenn,48,c3442-4,Borgelia,hyttefelt,Østre Toten,51.307769868051565
+rando_langrenn,49,c3334-2,Gampeflå,hyttefelt,Flesberg,51.18403602756912
+rando_langrenn,50,c4020-3,Grostulhaugane,hyttefelt,Midt-Telemark,51.12303596307406
+rando_langrenn,51,c3336-2,Høghaug,hyttefelt,Rollag,51.10620486609011
+rando_langrenn,52,c4024-3,Heggelii,hyttefelt,Hjartdal,50.99552437835696
+rando_langrenn,53,c3320-8,Dagalitjern,hyttefelt,Flå,50.97506010898783
+rando_langrenn,54,c3449-9,Nybusætra,hyttefelt,Sør-Aurdal,50.856713752646165
+rando_langrenn,55,c3446-1,Lauvlisætra,hyttefelt,Gran,50.487268689380215
+rando_langrenn,56,c3305-1,Kjerringknatten,hyttefelt,Ringerike,50.33922309001674
+rando_langrenn,57,c3305-8,Flaskerudsetra,hyttefelt,Ringerike,50.29238646008957
+rando_langrenn,58,c3303-3,Gunnesseter,hyttefelt,Kongsberg,49.8550951174712
+rando_langrenn,59,c4020-8,Dyrås,hyttefelt,Midt-Telemark,48.974691395270725
+rando_langrenn,60,c3303-1,Moltemyrhaugen,hyttefelt,Kongsberg,48.97178850551152
+rando_langrenn,61,c3446-6,Bustevollen,hyttefelt,Gran,48.84340378268474
+rando_langrenn,62,c3320-13,Bruhaugan,hyttefelt,Flå,48.83167192500688
+rando_langrenn,63,c3405-7,Sjoga,hyttefelt,Lillehammer,48.8123681600586
+rando_langrenn,64,c3305-7,Svarttjernshaugen,hyttefelt,Ringerike,48.753129984705794
+rando_langrenn,65,c3422-2,Almussætra,hyttefelt,Åmot,47.87908995387438
+rando_langrenn,66,c3449-16,Utsikten 2,hyttefelt,Sør-Aurdal,47.83142446264936
+rando_langrenn,67,c4005-3,Breidstul,hyttefelt,Notodden,47.19368514187078
+rando_langrenn,68,c3320-4,Veneknatten,hyttefelt,Flå,46.978727833016386
+rando_langrenn,69,c3407-10,Skundbergsætra,hyttefelt,Gjøvik,46.65800728381915
+rando_langrenn,70,c3442-2,Oksbakken,hyttefelt,Østre Toten,46.656176115298024
+rando_langrenn,71,c4024-2,Kåldalen,hyttefelt,Hjartdal,46.53467597953233
+rando_langrenn,72,c3334-3,Nattesetra,hyttefelt,Flesberg,46.518449469473595
+rando_langrenn,73,c4020-1,Nutestul,hyttefelt,Midt-Telemark,46.468495915492774
+rando_langrenn,74,c3446-5,Olabråtålia,hyttefelt,Gran,46.33002154636435
+rando_langrenn,75,c3403-4,Bringbusætra,hyttefelt,Hamar,45.960876201043774
+rando_langrenn,76,c4005-10,Bolkesjø,hyttefelt,Notodden,45.705105895279424
+rando_langrenn,77,c3318-2,Norefjell 2,hyttefelt,Krødsherad,45.22697252282411
+rando_langrenn,78,c3411-14,Velt-Aursmoen,hyttefelt,Ringsaker,44.24850803823435
+rando_langrenn,79,c4024-12,Åslien,hyttefelt,Hjartdal,43.79388312093916
+rando_langrenn,80,c3405-5,Kanthaugen,hyttefelt,Lillehammer,43.65401528851657
+rando_langrenn,81,c3303-10,Sydsetrene,hyttefelt,Kongsberg,42.83601160312212
+rando_langrenn,82,c3320-7,Krossmyrnatten,hyttefelt,Flå,42.75167589011393
+rando_langrenn,83,c3446-10,Skålsætra,hyttefelt,Gran,42.74068859421764
+rando_langrenn,84,c3332-12,Tveitseter,hyttefelt,Sigdal,42.608431159438894
+rando_langrenn,85,c4026-7,Kvennhusflatin,hyttefelt,Tinn,42.527030451213854
+rando_langrenn,86,c3407-5,Ankerlia,hyttefelt,Gjøvik,41.839269662806764
+rando_langrenn,87,c4005-1,Driveknatten,hyttefelt,Notodden,41.59060456974606
+rando_langrenn,88,c4005-8,Duttomhaugen,hyttefelt,Notodden,40.98052041178538
+rando_langrenn,89,c3332-14,Dukelikollen,hyttefelt,Sigdal,40.70837388567028
+rando_langrenn,90,c4026-14,Bjønneflatin,hyttefelt,Tinn,40.08741093867299
+rando_langrenn,91,c3318-8,Kjellarmyrhaugan,hyttefelt,Krødsherad,40.05438620991396
+rando_langrenn,92,c4024-4,Folalii,hyttefelt,Hjartdal,39.10068327954344
+rando_langrenn,93,c4026-9,Rabban,hyttefelt,Tinn,39.09475021775141
+rando_langrenn,94,c4005-6,Steinsnippen,hyttefelt,Notodden,38.74881401742771
+rando_langrenn,95,c3407-11,Biriseterhaugen,hyttefelt,Gjøvik,38.52277845691619
+rando_langrenn,96,c3332-10,Grunntjennlia,hyttefelt,Sigdal,37.94816373499621
+rando_langrenn,97,c3403-2,Ormsætra,hyttefelt,Hamar,37.794391029011756
+rando_langrenn,98,c3407-1,Bråtåfallsvelia,hyttefelt,Gjøvik,37.746970302970425
+rando_langrenn,99,c3303-8,Dørsjøstua,hyttefelt,Kongsberg,34.81853161063091
+rando_langrenn,100,c3412-3,Savalsætra,hyttefelt,Løten,34.40885732789853
+rando_langrenn,101,c3407-9,Sløhaugen,hyttefelt,Gjøvik,32.23803229081077
+rando_langrenn,102,c3421-14,Hølvelta,hyttefelt,Trysil,29.924388564349307
+rando_langrenn,103,c3422-3,Bergesætra,hyttefelt,Åmot,26.37755347488944
+rando_langrenn,104,c3421-27,Haigonshaugen,hyttefelt,Trysil,23.86297896879023
+rando_langrenn,105,c3334-7,Hagaåsen,hyttefelt,Flesberg,22.542112730362316
+rimelig_enkel,1,c3442-1,Kvernomsætra,hyttefelt,Østre Toten,74.07967771933053
+rimelig_enkel,2,c3442-5,Høgkorset,hyttefelt,Østre Toten,73.52113535589685
+rimelig_enkel,3,c3305-3,Ringerudsetra,hyttefelt,Ringerike,72.18959918534634
+rimelig_enkel,4,c3305-4,Dyrbeintjernshøgda,hyttefelt,Ringerike,72.02800962756112
+rimelig_enkel,5,c3442-4,Borgelia,hyttefelt,Østre Toten,71.94448982449589
+rimelig_enkel,6,c3442-3,Mønssetra,hyttefelt,Østre Toten,70.65402508090615
+rimelig_enkel,7,c3305-2,Kolltjernhaugen,hyttefelt,Ringerike,66.64341862979077
+rimelig_enkel,8,c3332-1,Djupsjølia,hyttefelt,Sigdal,66.49131057137599
+rimelig_enkel,9,c3442-2,Oksbakken,hyttefelt,Østre Toten,66.31080926894035
+rimelig_enkel,10,c3305-5,Huken,hyttefelt,Ringerike,66.23204274721924
+rimelig_enkel,11,c3305-1,Kjerringknatten,hyttefelt,Ringerike,64.55327439902155
+rimelig_enkel,12,c3449-10,Busufjellet,hyttefelt,Sør-Aurdal,63.87719251604592
+rimelig_enkel,13,c4005-5,Nåttertjørna,hyttefelt,Notodden,63.558967881747144
+rimelig_enkel,14,c3305-8,Flaskerudsetra,hyttefelt,Ringerike,63.32241226598549
+rimelig_enkel,15,c3303-2,Haugmosetra,hyttefelt,Kongsberg,62.90581322405141
+rimelig_enkel,16,c3449-3,Djupedal,hyttefelt,Sør-Aurdal,62.83541668921576
+rimelig_enkel,17,c3449-5,Gaukeberg,hyttefelt,Sør-Aurdal,61.88728866989208
+rimelig_enkel,18,c3332-2,Rislelia,hyttefelt,Sigdal,61.54960558252427
+rimelig_enkel,19,c3446-6,Bustevollen,hyttefelt,Gran,61.454755276938954
+rimelig_enkel,20,c3446-1,Lauvlisætra,hyttefelt,Gran,61.35718467121618
+rimelig_enkel,21,c3403-3,Måsætra,hyttefelt,Hamar,60.91561554629238
+rimelig_enkel,22,c3303-3,Gunnesseter,hyttefelt,Kongsberg,59.982667785552714
+rimelig_enkel,23,c3448-5,Svartsætra,hyttefelt,Nordre Land,59.8440531725673
+rimelig_enkel,24,c3403-1,Kråktjernet,hyttefelt,Hamar,58.439947811249645
+rimelig_enkel,25,c3446-5,Olabråtålia,hyttefelt,Gran,58.33456296924665
+rimelig_enkel,26,c3422-2,Almussætra,hyttefelt,Åmot,58.14050948099202
+rimelig_enkel,27,c3305-7,Svarttjernshaugen,hyttefelt,Ringerike,58.12929167884317
+rimelig_enkel,28,c3411-1,Svarthaugen,hyttefelt,Ringsaker,58.1155310548376
+rimelig_enkel,29,c3320-1,Miljoseter,hyttefelt,Flå,58.04339804246806
+rimelig_enkel,30,c3332-6,Fekjanhaugen,hyttefelt,Sigdal,57.964690588098414
+rimelig_enkel,31,c3412-1,Budor,hyttefelt,Løten,57.60199127102026
+rimelig_enkel,32,c3332-4,Åslandsetermarka,hyttefelt,Sigdal,57.19746883038752
+rimelig_enkel,33,c3332-5,Rugland seter,hyttefelt,Sigdal,57.11925789579071
+rimelig_enkel,34,c3449-9,Nybusætra,hyttefelt,Sør-Aurdal,56.962099381523444
+rimelig_enkel,35,c3334-4,Lauvhaugen,hyttefelt,Flesberg,56.09331659514094
+rimelig_enkel,36,c4005-1,Driveknatten,hyttefelt,Notodden,55.35532843544465
+rimelig_enkel,37,c3334-2,Gampeflå,hyttefelt,Flesberg,55.22913390283325
+rimelig_enkel,38,c3411-4,Kuåsen,hyttefelt,Ringsaker,54.884961563942014
+rimelig_enkel,39,c4020-8,Dyrås,hyttefelt,Midt-Telemark,54.68797496283909
+rimelig_enkel,40,c3449-16,Utsikten 2,hyttefelt,Sør-Aurdal,54.63728866989208
+rimelig_enkel,41,c3320-2,Flagligrende,hyttefelt,Flå,54.40609894362005
+rimelig_enkel,42,c4024-1,Fjøsstul,hyttefelt,Hjartdal,54.10537899615042
+rimelig_enkel,43,c3332-8,Slokoseter,hyttefelt,Sigdal,54.06510168062907
+rimelig_enkel,44,c3303-1,Moltemyrhaugen,hyttefelt,Kongsberg,54.05562625823944
+rimelig_enkel,45,c3303-10,Sydsetrene,hyttefelt,Kongsberg,53.95369272981135
+rimelig_enkel,46,c4020-3,Grostulhaugane,hyttefelt,Midt-Telemark,53.80600380899294
+rimelig_enkel,47,c3334-1,Søre Gjellerudsetra,hyttefelt,Flesberg,53.589710825910174
+rimelig_enkel,48,c3446-10,Skålsætra,hyttefelt,Gran,52.97280967121617
+rimelig_enkel,49,c3405-1,Nordseter,hyttefelt,Lillehammer,52.76427854286854
+rimelig_enkel,50,c3336-1,Baklie,hyttefelt,Rollag,52.58782204615889
+rimelig_enkel,51,c3411-3,Store Ljøsvatnet,hyttefelt,Ringsaker,52.42276465758751
+rimelig_enkel,52,c3411-2,Sjusjøen,hyttefelt,Ringsaker,52.25152081236267
+rimelig_enkel,53,c3318-1,Norefjell,hyttefelt,Krødsherad,51.03270809205803
+rimelig_enkel,54,c3320-5,Sørbølsetran,hyttefelt,Flå,50.78903163592774
+rimelig_enkel,55,c3336-3,Rotihaug,hyttefelt,Rollag,50.66931243077428
+rimelig_enkel,56,c4005-10,Bolkesjø,hyttefelt,Notodden,50.3298813432856
+rimelig_enkel,57,c3336-6,Vindhøgde,hyttefelt,Rollag,49.77964664667914
+rimelig_enkel,58,c4024-3,Heggelii,hyttefelt,Hjartdal,49.56121790361976
+rimelig_enkel,59,c4020-1,Nutestul,hyttefelt,Midt-Telemark,49.185330732069865
+rimelig_enkel,60,c3411-9,Oddsæterhøgda,hyttefelt,Ringsaker,48.966544850824214
+rimelig_enkel,61,c4005-6,Steinsnippen,hyttefelt,Notodden,48.45928491073265
+rimelig_enkel,62,c3407-10,Skundbergsætra,hyttefelt,Gjøvik,48.04462084600593
+rimelig_enkel,63,c3322-8,Langevasslie,hyttefelt,Nesbyen,47.21034005612018
+rimelig_enkel,64,c4005-3,Breidstul,hyttefelt,Notodden,47.11517026933541
+rimelig_enkel,65,c3403-4,Bringbusætra,hyttefelt,Hamar,46.977447811249654
+rimelig_enkel,66,c3403-2,Ormsætra,hyttefelt,Hamar,46.785639468626094
+rimelig_enkel,67,c3334-3,Nattesetra,hyttefelt,Flesberg,46.54235273412273
+rimelig_enkel,68,c3336-4,Årsethaugan,hyttefelt,Rollag,46.12556243077428
+rimelig_enkel,69,c3411-10,Gunnerssætra,hyttefelt,Ringsaker,45.91911708233667
+rimelig_enkel,70,c3320-3,Skurvenatten,hyttefelt,Flå,44.92003196108568
+rimelig_enkel,71,c3411-5,Bjørnåsen,hyttefelt,Ringsaker,44.64157156022593
+rimelig_enkel,72,c3336-2,Høghaug,hyttefelt,Rollag,44.22189743634842
+rimelig_enkel,73,c3407-5,Ankerlia,hyttefelt,Gjøvik,43.09885254425936
+rimelig_enkel,74,c3407-11,Biriseterhaugen,hyttefelt,Gjøvik,42.408089352137466
+rimelig_enkel,75,c4024-2,Kåldalen,hyttefelt,Hjartdal,42.29036134471972
+rimelig_enkel,76,c3405-4,Myggbukta,hyttefelt,Lillehammer,42.16490214933453
+rimelig_enkel,77,c3322-11,Bruhaugan 2,hyttefelt,Nesbyen,40.97749910480096
+rimelig_enkel,78,c3320-10,Venelinatten,hyttefelt,Flå,40.73304176227483
+rimelig_enkel,79,c3412-3,Savalsætra,hyttefelt,Løten,40.51961831487013
+rimelig_enkel,80,c4024-12,Åslien,hyttefelt,Hjartdal,40.48526217154989
+rimelig_enkel,81,c3411-7,Øyungen,hyttefelt,Ringsaker,40.48406854090226
+rimelig_enkel,82,c3318-2,Norefjell 2,hyttefelt,Krødsherad,39.827972399007116
+rimelig_enkel,83,c3320-8,Dagalitjern,hyttefelt,Flå,37.832950021286344
+rimelig_enkel,84,c3411-14,Velt-Aursmoen,hyttefelt,Ringsaker,37.775889657587506
+rimelig_enkel,85,c3320-4,Veneknatten,hyttefelt,Flå,37.73583463667096
+rimelig_enkel,86,c4005-8,Duttomhaugen,hyttefelt,Notodden,37.70915717011577
+rimelig_enkel,87,c3407-1,Bråtåfallsvelia,hyttefelt,Gjøvik,37.68532132909771
+rimelig_enkel,88,c3332-14,Dukelikollen,hyttefelt,Sigdal,37.12917289021658
+rimelig_enkel,89,c3332-12,Tveitseter,hyttefelt,Sigdal,35.998670753464445
+rimelig_enkel,90,c3405-5,Kanthaugen,hyttefelt,Lillehammer,35.3741343120993
+rimelig_enkel,91,c3332-10,Grunntjennlia,hyttefelt,Sigdal,35.30465365944735
+rimelig_enkel,92,c3303-8,Dørsjøstua,hyttefelt,Kongsberg,34.94331322405141
+rimelig_enkel,93,c3405-7,Sjoga,hyttefelt,Lillehammer,34.707105326592064
+rimelig_enkel,94,c3422-3,Bergesætra,hyttefelt,Åmot,34.476326788684325
+rimelig_enkel,95,c3320-13,Bruhaugan,hyttefelt,Flå,33.95819040590173
+rimelig_enkel,96,c3320-7,Krossmyrnatten,hyttefelt,Flå,33.36972886744019
+rimelig_enkel,97,c3407-9,Sløhaugen,hyttefelt,Gjøvik,33.256555303456686
+rimelig_enkel,98,c4024-4,Folalii,hyttefelt,Hjartdal,32.932377556165285
+rimelig_enkel,99,c3318-8,Kjellarmyrhaugan,hyttefelt,Krødsherad,32.49062220391236
+rimelig_enkel,100,c3334-7,Hagaåsen,hyttefelt,Flesberg,28.102237535311886
+rimelig_enkel,101,c4026-7,Kvennhusflatin,hyttefelt,Tinn,28.020236729407266
+rimelig_enkel,102,c4026-14,Bjønneflatin,hyttefelt,Tinn,26.84456667180786
+rimelig_enkel,103,c4026-9,Rabban,hyttefelt,Tinn,25.513019384554052
+rimelig_enkel,104,c3421-14,Hølvelta,hyttefelt,Trysil,25.250998924859207
+rimelig_enkel,105,c3421-27,Haigonshaugen,hyttefelt,Trysil,20.096912386397666
+jakt_fiske,1,c3442-1,Kvernomsætra,hyttefelt,Østre Toten,70.96947848605984
+jakt_fiske,2,c3442-5,Høgkorset,hyttefelt,Østre Toten,69.63611031437645
+jakt_fiske,3,c3442-4,Borgelia,hyttefelt,Østre Toten,69.38356130843071
+jakt_fiske,4,c3305-2,Kolltjernhaugen,hyttefelt,Ringerike,65.87391469332029
+jakt_fiske,5,c3446-6,Bustevollen,hyttefelt,Gran,65.1119052714069
+jakt_fiske,6,c3446-1,Lauvlisætra,hyttefelt,Gran,64.5731185750115
+jakt_fiske,7,c3446-5,Olabråtålia,hyttefelt,Gran,64.48209757909922
+jakt_fiske,8,c3449-5,Gaukeberg,hyttefelt,Sør-Aurdal,64.44921942177508
+jakt_fiske,9,c3449-3,Djupedal,hyttefelt,Sør-Aurdal,63.67693449052276
+jakt_fiske,10,c3449-10,Busufjellet,hyttefelt,Sør-Aurdal,62.12229634485201
+jakt_fiske,11,c3305-5,Huken,hyttefelt,Ringerike,61.62643466730766
+jakt_fiske,12,c3442-3,Mønssetra,hyttefelt,Østre Toten,61.18364143663584
+jakt_fiske,13,c3332-1,Djupsjølia,hyttefelt,Sigdal,60.970465394131104
+jakt_fiske,14,c3449-9,Nybusætra,hyttefelt,Sør-Aurdal,60.882463336676615
+jakt_fiske,15,c3305-1,Kjerringknatten,hyttefelt,Ringerike,60.23809738562799
+jakt_fiske,16,c3405-4,Myggbukta,hyttefelt,Lillehammer,60.15267218694792
+jakt_fiske,17,c3411-1,Svarthaugen,hyttefelt,Ringsaker,59.916283947472934
+jakt_fiske,18,c3305-4,Dyrbeintjernshøgda,hyttefelt,Ringerike,59.888320351068344
+jakt_fiske,19,c3405-1,Nordseter,hyttefelt,Lillehammer,59.60827070980187
+jakt_fiske,20,c3334-4,Lauvhaugen,hyttefelt,Flesberg,58.838617018222074
+jakt_fiske,21,c3411-2,Sjusjøen,hyttefelt,Ringsaker,58.60489441988096
+jakt_fiske,22,c3442-2,Oksbakken,hyttefelt,Østre Toten,58.53086365885807
+jakt_fiske,23,c3407-10,Skundbergsætra,hyttefelt,Gjøvik,58.190268709283856
+jakt_fiske,24,c3305-3,Ringerudsetra,hyttefelt,Ringerike,57.94536234289295
+jakt_fiske,25,c3411-4,Kuåsen,hyttefelt,Ringsaker,57.876591453976104
+jakt_fiske,26,c3446-10,Skålsætra,hyttefelt,Gran,56.98297434424229
+jakt_fiske,27,c4020-8,Dyrås,hyttefelt,Midt-Telemark,56.60019315929642
+jakt_fiske,28,c3407-5,Ankerlia,hyttefelt,Gjøvik,56.475571570673665
+jakt_fiske,29,c3334-3,Nattesetra,hyttefelt,Flesberg,55.54122524936291
+jakt_fiske,30,c3448-5,Svartsætra,hyttefelt,Nordre Land,55.48275373894042
+jakt_fiske,31,c4005-5,Nåttertjørna,hyttefelt,Notodden,55.34905580648939
+jakt_fiske,32,c3407-11,Biriseterhaugen,hyttefelt,Gjøvik,55.28196324663056
+jakt_fiske,33,c3411-9,Oddsæterhøgda,hyttefelt,Ringsaker,55.20615643911173
+jakt_fiske,34,c3318-1,Norefjell,hyttefelt,Krødsherad,54.75354569468648
+jakt_fiske,35,c3405-7,Sjoga,hyttefelt,Lillehammer,54.61379258828571
+jakt_fiske,36,c4024-1,Fjøsstul,hyttefelt,Hjartdal,54.361250088693104
+jakt_fiske,37,c3320-1,Miljoseter,hyttefelt,Flå,54.23088751016213
+jakt_fiske,38,c3405-5,Kanthaugen,hyttefelt,Lillehammer,54.22966494057111
+jakt_fiske,39,c3320-2,Flagligrende,hyttefelt,Flå,54.037006285710255
+jakt_fiske,40,c3411-3,Store Ljøsvatnet,hyttefelt,Ringsaker,53.9362172900965
+jakt_fiske,41,c3449-16,Utsikten 2,hyttefelt,Sør-Aurdal,53.69921942177509
+jakt_fiske,42,c3411-10,Gunnerssætra,hyttefelt,Ringsaker,53.11321352755469
+jakt_fiske,43,c3332-5,Rugland seter,hyttefelt,Sigdal,53.05052392255919
+jakt_fiske,44,c3305-8,Flaskerudsetra,hyttefelt,Ringerike,52.712618938953895
+jakt_fiske,45,c3412-1,Budor,hyttefelt,Løten,51.84061622558384
+jakt_fiske,46,c3332-4,Åslandsetermarka,hyttefelt,Sigdal,50.96868283188658
+jakt_fiske,47,c3334-1,Søre Gjellerudsetra,hyttefelt,Flesberg,50.88789586437592
+jakt_fiske,48,c3332-2,Rislelia,hyttefelt,Sigdal,50.75661018231392
+jakt_fiske,49,c3332-6,Fekjanhaugen,hyttefelt,Sigdal,50.41951430717459
+jakt_fiske,50,c4020-3,Grostulhaugane,hyttefelt,Midt-Telemark,50.29129892852718
+jakt_fiske,51,c3318-2,Norefjell 2,hyttefelt,Krødsherad,50.05201745239736
+jakt_fiske,52,c3322-8,Langevasslie,hyttefelt,Nesbyen,50.04128759760751
+jakt_fiske,53,c3305-7,Svarttjernshaugen,hyttefelt,Ringerike,49.97886522286322
+jakt_fiske,54,c4024-3,Heggelii,hyttefelt,Hjartdal,49.71329161600637
+jakt_fiske,55,c3334-2,Gampeflå,hyttefelt,Flesberg,49.520107402837446
+jakt_fiske,56,c3320-5,Sørbølsetran,hyttefelt,Flå,49.49493897801794
+jakt_fiske,57,c4005-1,Driveknatten,hyttefelt,Notodden,49.48278861957003
+jakt_fiske,58,c3332-8,Slokoseter,hyttefelt,Sigdal,49.20449201063054
+jakt_fiske,59,c3318-8,Kjellarmyrhaugan,hyttefelt,Krødsherad,48.993401928428575
+jakt_fiske,60,c3407-1,Bråtåfallsvelia,hyttefelt,Gjøvik,48.53458773566809
+jakt_fiske,61,c4005-10,Bolkesjø,hyttefelt,Notodden,48.35506542187401
+jakt_fiske,62,c3303-3,Gunnesseter,hyttefelt,Kongsberg,48.09375467893698
+jakt_fiske,63,c3403-3,Måsætra,hyttefelt,Hamar,47.896017291659895
+jakt_fiske,64,c3303-2,Haugmosetra,hyttefelt,Kongsberg,47.79229262951297
+jakt_fiske,65,c3407-9,Sløhaugen,hyttefelt,Gjøvik,47.71046914592451
+jakt_fiske,66,c3411-14,Velt-Aursmoen,hyttefelt,Ringsaker,47.30039998240419
+jakt_fiske,67,c4024-2,Kåldalen,hyttefelt,Hjartdal,46.02463033767118
+jakt_fiske,68,c3422-2,Almussætra,hyttefelt,Åmot,45.585256451596415
+jakt_fiske,69,c3403-1,Kråktjernet,hyttefelt,Hamar,44.97040297542058
+jakt_fiske,70,c4024-12,Åslien,hyttefelt,Hjartdal,44.85340565353888
+jakt_fiske,71,c3332-10,Grunntjennlia,hyttefelt,Sigdal,44.728965951544694
+jakt_fiske,72,c3320-3,Skurvenatten,hyttefelt,Flå,44.347439210273606
+jakt_fiske,73,c3336-6,Vindhøgde,hyttefelt,Rollag,44.33598221297409
+jakt_fiske,74,c4005-6,Steinsnippen,hyttefelt,Notodden,44.310820717303216
+jakt_fiske,75,c3332-14,Dukelikollen,hyttefelt,Sigdal,44.27223518231393
+jakt_fiske,76,c3303-1,Moltemyrhaugen,hyttefelt,Kongsberg,44.22004369788904
+jakt_fiske,77,c3322-11,Bruhaugan 2,hyttefelt,Nesbyen,43.69090669831357
+jakt_fiske,78,c3412-3,Savalsætra,hyttefelt,Løten,42.25121521294913
+jakt_fiske,79,c4020-1,Nutestul,hyttefelt,Midt-Telemark,42.223991236219504
+jakt_fiske,80,c3303-8,Dørsjøstua,hyttefelt,Kongsberg,41.77065801412836
+jakt_fiske,81,c3320-8,Dagalitjern,hyttefelt,Flå,41.387572989537816
+jakt_fiske,82,c3332-12,Tveitseter,hyttefelt,Sigdal,41.15017321650196
+jakt_fiske,83,c3303-10,Sydsetrene,hyttefelt,Kongsberg,41.02601150725359
+jakt_fiske,84,c4005-8,Duttomhaugen,hyttefelt,Notodden,40.894177276203244
+jakt_fiske,85,c3334-7,Hagaåsen,hyttefelt,Flesberg,40.85357428317934
+jakt_fiske,86,c3411-5,Bjørnåsen,hyttefelt,Ringsaker,40.267988704069
+jakt_fiske,87,c3411-7,Øyungen,hyttefelt,Ringsaker,40.25301401993671
+jakt_fiske,88,c3421-14,Hølvelta,hyttefelt,Trysil,39.65253965934633
+jakt_fiske,89,c4026-14,Bjønneflatin,hyttefelt,Tinn,39.18627729417488
+jakt_fiske,90,c4026-9,Rabban,hyttefelt,Tinn,38.617727034048535
+jakt_fiske,91,c3336-3,Rotihaug,hyttefelt,Rollag,38.466306674140945
+jakt_fiske,92,c3320-4,Veneknatten,hyttefelt,Flå,37.88757298953782
+jakt_fiske,93,c3336-2,Høghaug,hyttefelt,Rollag,37.84074926054004
+jakt_fiske,94,c3336-1,Baklie,hyttefelt,Rollag,37.71750859721787
+jakt_fiske,95,c4005-3,Breidstul,hyttefelt,Notodden,37.71406300641507
+jakt_fiske,96,c3320-10,Venelinatten,hyttefelt,Flå,37.6008940133208
+jakt_fiske,97,c3403-4,Bringbusætra,hyttefelt,Hamar,37.57376836003597
+jakt_fiske,98,c3403-2,Ormsætra,hyttefelt,Hamar,37.4865563570631
+jakt_fiske,99,c3336-4,Årsethaugan,hyttefelt,Rollag,36.88697975106402
+jakt_fiske,100,c3421-27,Haigonshaugen,hyttefelt,Trysil,36.80037619780787
+jakt_fiske,101,c4024-4,Folalii,hyttefelt,Hjartdal,36.61542488430812
+jakt_fiske,102,c3422-3,Bergesætra,hyttefelt,Åmot,36.418189143904115
+jakt_fiske,103,c4026-7,Kvennhusflatin,hyttefelt,Tinn,36.40687953311951
+jakt_fiske,104,c3320-13,Bruhaugan,hyttefelt,Flå,34.5113710664609
+jakt_fiske,105,c3320-7,Krossmyrnatten,hyttefelt,Flå,33.158005681845516

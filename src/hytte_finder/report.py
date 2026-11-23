@@ -61,8 +61,8 @@ def build(cfg: dict) -> None:
 
     L = []
     L.append(f"# Hytte-finder: rapport ({date.today().isoformat()})\n")
-    L.append(f"*Beslutningsstøtte, ikke finansiell rådgivning.* Rangering av {len(rk)} fjellområder "
-             f"(kommuner og hyttefelt) innen {f['max_drive_min']} min kjøring fra {cfg['home']['navn']} "
+    L.append(f"*Beslutningsstøtte, ikke finansiell rådgivning.* Rangering av {len(rk)} hyttefelt "
+             f"(klynger av OSM-hytter) innen {f['max_drive_min']} min kjøring fra {cfg['home']['navn']} "
              f"for budsjett {f['price_min_nok']/1e6:.1f}–{f['price_max_nok']/1e6:.1f} mill. kr.\n")
     L.append("## Sammendrag: topp 10 (standardvekter)\n")
     L.append("Vekter: " + ", ".join(f"{k} {v:.0%}" for k, v in w.items()) + ".\n")
@@ -72,7 +72,8 @@ def build(cfg: dict) -> None:
         "Pris (mill)": (top["price_used_nok"] / 1e6).map(lambda v: _f(v, 2)),
         "kr/m²": top["price_per_m2_used"].map(_f),
         "Skisesong (d)": top.get("ski_season_days", pd.Series(np.nan, index=top.index)).map(_f), "Moh": top["elevation_m"].map(_f),
-        "Prisgrunnlag": top["price_source"].map(lambda v: "Finn" if str(v).startswith("finn") else "SSB kommune")})
+        "Prisgrunnlag": top["price_source"].map(lambda v: str(v).replace("finn ", "Finn ").replace("SSB kommunesnitt", "SSB kommunesnitt")),
+        "Over budsjett": top["over_budsjett"].map(lambda b: "ja" if b else "")})
     L.append(_md(t) + "\n")
     L.append("### Begrunnelse\n")
     for _, r in top.iterrows():

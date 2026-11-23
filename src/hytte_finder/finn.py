@@ -98,7 +98,11 @@ def fetch(q: str, rp: robotparser.RobotFileParser) -> str:
     wait = FINN_PAUSE_S - (time.time() - _last)
     if wait > 0:
         time.sleep(wait)
-    r = requests.get(url, headers={"User-Agent": user_agent(), "Accept-Language": "nb-NO"}, timeout=30)
+    try:
+        r = requests.get(url, headers={"User-Agent": user_agent(), "Accept-Language": "nb-NO"}, timeout=45)
+    except requests.RequestException as e:   # timeout/nettverk: stopp rolig, ikke prøv hardere
+        _last = time.time()
+        raise Blocked(f"Finn svarte ikke ({type(e).__name__}) – stopper") from e
     _last = time.time()
     if r.status_code != 200:
         raise Blocked(f"HTTP {r.status_code} fra Finn – stopper (omgår ikke blokkering)")
@@ -115,20 +119,27 @@ def match_cluster(ads: list[dict], navn: str, kommune: str) -> list[dict]:
 
 
 def run(areas: pd.DataFrame, max_clusters: int = 30) -> pd.DataFrame:
-    """Hent annonser for inntil max_clusters områder (de som består filtrene, nærmest først)."""
-    ok = areas[areas["passes"]].sort_values("drive_min").head(max_clusters)
+    """Hent annonser for inntil max_clusters felt (de som består filtrene; best rangerte hvis ranking finnes):
+    ett søk på feltnavn per felt (nivå «felt») og ett søk per kommune (nivå «kommune», fallback)."""
+    ok = areas[areas["passes"]]
+    ok = ok.sort_values("drive_min").head(max_clusters) if len(ok) > max_clusters else ok
     rp = _robots()
-    rows = []
-    for _, r in ok.iterrows():
-        log.info("Finn: søker '%s' (%d/%d)", r["navn"], len(rows) and len({x['cluster_id'] for x in rows}) + 1 or 1, len(ok))
-        try:
-            ads = parse_search(fetch(r["navn"], rp))
-        except Blocked as e:
-            log.error("%s", e)
-            break
-        for a in match_cluster(ads, r["navn"], r["kommune"]):
-            rows.append({**a, "cluster_id": r["id"], "cluster": r["navn"], "kilde": "finn",
-                         "dato": date.today().isoformat()})
+    rows, n = [], 0
+    try:
+        for _, r in ok.iterrows():
+            n += 1
+            log.info("Finn: felt '%s' (%d/%d)", r["navn"], n, len(ok))
+            for a in match_cluster(parse_search(fetch(r["navn"], rp)), r["navn"], r["kommune"]):
+                rows.append({**a, "cluster_id": r["id"], "cluster": r["navn"], "nivaa": "felt", "kilde": "finn",
+                             "dato": date.today().isoformat()})
+        for nr, k in ok.drop_duplicates("kommunenr").set_index("kommunenr")["kommune"].items():
+            log.info("Finn: kommune '%s'", k)
+            for a in parse_search(fetch(k, rp)):
+                if a["type"] == "Hytte":
+                    rows.append({**a, "cluster_id": f"kommune:{nr}", "cluster": k, "nivaa": "kommune",
+                                 "kilde": "finn", "dato": date.today().isoformat()})
+    except Blocked as e:
+        log.error("%s – avbrutt, lagrer det som er hentet", e)
     df = pd.DataFrame(rows)
     RAW.mkdir(parents=True, exist_ok=True)
     df.to_csv(LISTINGS, index=False)
@@ -136,9 +147,20 @@ def run(areas: pd.DataFrame, max_clusters: int = 30) -> pd.DataFrame:
     return df
 
 
-def aggregate(areas: pd.DataFrame, min_ads: int) -> pd.DataFrame:
-    """Medianer per område fra Finn-annonser og manuell CSV (nokkel,pris_nok,bra_m2). Returnerer
-    kolonner finn_n_ads, finn_median_price_nok, finn_median_price_per_m2, finn_median_area_m2."""
+def _med(a: pd.DataFrame) -> pd.DataFrame:
+    a = a[(a["area_m2"] > 0) & (a["price_nok"] > 0)].copy()
+    a["ppm2"] = a["price_nok"] / a["area_m2"]
+    return a.groupby("cluster_id").agg(finn_n_ads=("price_nok", "size"), finn_median_price_nok=("price_nok", "median"),
+                                       finn_median_price_per_m2=("ppm2", "median"),
+                                       finn_median_area_m2=("area_m2", "median")).reset_index()
+
+
+def aggregate(areas: pd.DataFrame, min_ads: int, min_ads_kommune: int | None = None) -> pd.DataFrame:
+    """Medianer per felt. Felt-nivå (annonser der stedet inneholder feltnavnet, + manuell CSV
+    `nokkel,pris_nok,bra_m2`) brukes hvis ≥ min_ads annonser; ellers kommune-nivå (søk på kommunenavn) hvis
+    ≥ min_ads; ellers den tynne felt-verdien. Kolonne finn_level = felt|kommune."""
+    min_k = min_ads if min_ads_kommune is None else min_ads_kommune
+    cols = ["id", "finn_n_ads", "finn_median_price_nok", "finn_median_price_per_m2", "finn_median_area_m2", "finn_level"]
     frames = []
     if LISTINGS.exists() and LISTINGS.stat().st_size > 5:
         frames.append(pd.read_csv(LISTINGS)[["cluster_id", "price_nok", "area_m2"]])
@@ -152,13 +174,20 @@ def aggregate(areas: pd.DataFrame, min_ads: int) -> pd.DataFrame:
             m["cluster_id"] = m["nokkel"].astype(str).map(key)
             frames.append(m.dropna(subset=["cluster_id"]).rename(
                 columns={"pris_nok": "price_nok", "bra_m2": "area_m2"})[["cluster_id", "price_nok", "area_m2"]])
-    cols = ["id", "finn_n_ads", "finn_median_price_nok", "finn_median_price_per_m2", "finn_median_area_m2"]
     if not frames:
         return pd.DataFrame(columns=cols)
-    a = pd.concat(frames)
-    a = a[(a["area_m2"] > 0) & (a["price_nok"] > 0)]
-    a["ppm2"] = a["price_nok"] / a["area_m2"]
-    g = a.groupby("cluster_id").agg(finn_n_ads=("price_nok", "size"), finn_median_price_nok=("price_nok", "median"),
-                                    finn_median_price_per_m2=("ppm2", "median"),
-                                    finn_median_area_m2=("area_m2", "median")).reset_index()
-    return g.rename(columns={"cluster_id": "id"})[cols]
+    g = _med(pd.concat(frames)).set_index("cluster_id")
+    out = []
+    for _, r in areas.iterrows():
+        felt = g.loc[r["id"]] if r["id"] in g.index else None
+        kom = g.loc[f"kommune:{r['kommunenr']}"] if f"kommune:{r['kommunenr']}" in g.index else None
+        if felt is not None and felt["finn_n_ads"] >= min_ads:
+            pick, lvl = felt, "felt"
+        elif kom is not None and kom["finn_n_ads"] >= min_k:
+            pick, lvl = kom, "kommune"
+        elif felt is not None:
+            pick, lvl = felt, "felt"
+        else:
+            continue
+        out.append({"id": r["id"], **pick.to_dict(), "finn_level": lvl})
+    return pd.DataFrame(out, columns=cols)

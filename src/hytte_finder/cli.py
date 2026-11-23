@@ -78,6 +78,11 @@ def cmd_finn(cfg: dict, max_clusters: int) -> None:
     from .scoring import apply_filters
     df = pd.read_csv(PROCESSED / "areas.csv", dtype={"kommunenr": str})
     df = apply_filters(df.drop(columns=["passes", "filter_reason", "usikker"], errors="ignore"), cfg)
+    rk = OUTPUT / "ranking.csv"
+    if rk.exists():          # søk først for de best rangerte feltene (kjør `score` før `finn`)
+        top = pd.read_csv(rk)["id"].head(max_clusters)
+        df = df[df["id"].isin(top)]
+        logging.info("Finn: bruker topp %d fra ranking.csv", len(top))
     finn.run(df, max_clusters)
 
 
@@ -85,14 +90,18 @@ def _add_prices(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
     """Slå på Finn-/manuelle medianer. price_used = Finn-median hvis nok annonser, ellers kommunesnitt."""
     from . import finn
     min_ads = cfg["params"]["finn_min_ads"]
+    min_k = cfg["params"].get("finn_min_ads_kommune", min_ads)
     df = df.drop(columns=[c for c in df.columns if c.startswith("finn_median") or c == "finn_n_ads"], errors="ignore")
-    agg = finn.aggregate(df, min_ads)
+    agg = finn.aggregate(df, min_ads, min_k)
     df = df.merge(agg, on="id", how="left")
-    enough = df["finn_n_ads"].fillna(0) >= min_ads
-    df["price_source"] = enough.map({True: "finn/manuell median", False: "SSB kommunesnitt"})
+    need = df["finn_level"].map({"felt": min_ads, "kommune": min_k}).fillna(10 ** 9)
+    enough = df["finn_n_ads"].fillna(0) >= need
+    df["price_source"] = [("finn " + str(l) + "-median") if e else "SSB kommunesnitt"
+                          for e, l in zip(enough, df["finn_level"])]
     df["price_used_nok"] = df["finn_median_price_nok"].where(enough, df["avg_price_nok"])
     df["price_per_m2_used"] = df["finn_median_price_per_m2"].where(enough)
-    df["finn_tynt"] = df["finn_n_ads"].fillna(0).between(1, min_ads - 1)
+    df["finn_tynt"] = df["finn_n_ads"].notna() & ~enough
+    df["over_budsjett"] = df["price_used_nok"] > cfg["filters"]["price_max_nok"]
     return df
 
 
