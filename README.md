@@ -8,7 +8,7 @@
 ![Status](https://img.shields.io/badge/status-beslutningsst%C3%B8tte-orange)
 ![Kart](https://img.shields.io/badge/kart-Leaflet%2Ffolium-green)
 
-Datadrevet rangering av norske **hyttefelt** for hyttekjøp: snøsikkerhet, pris (inkl. kr/m² fra annonser) mot hva man får, rando, jakt og fiske og praktiske forhold. Hyttefeltene er funnet automatisk ved å klynge OSM-hytter, så store kommuner deles geografisk. Utgangspunkt: Holmenkollen, maks 2 t 45 min kjøring, budsjett 3,0–3,9 mill. kr.
+Datadrevet rangering av norske **hyttefelt** for hyttekjøp: snøsikkerhet, pris (inkl. kr/m² fra annonser) mot hva man får, rando, jakt og fiske og praktiske forhold. Hyttefeltene er funnet automatisk ved å klynge OSM-hytter, så store kommuner deles geografisk. Utgangspunkt, maks kjøretid, budsjett og vekter er konfigurerbare i `config/weights.yaml`.
 
 > Beslutningsstøtte, ikke finansiell rådgivning. Pris og kjøretid må verifiseres mot aktuelle annonser.
 
